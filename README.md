@@ -2,7 +2,7 @@
 
 capstone project for springboard bootcamp
 
-# capstone project ideas
+# capstone project ideas 💭
 
 ## (1) travel planning app
 
