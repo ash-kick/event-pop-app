@@ -1,8 +1,8 @@
-# springboard-capstone-project
+# Springboard-capstone-project
 
-capstone project for springboard bootcamp
+Capstone project for springboard bootcamp.
 
-# capstone project ideas 💭
+# Capstone project ideas 💭
 
 ## (1) travel planning app
 
@@ -31,7 +31,7 @@ capstone project for springboard bootcamp
 -    allows users to share events with friends/invite them
 -    creates a calendar with events you save/RSVP to
 
-# capstone project details & proposal -- idea 3: event recommendation app (EventPop)
+# Capstone project details & proposal -- idea 3: event recommendation app (EventPop)
 
 1. What tech stack will you use for your final project?
 
@@ -67,12 +67,42 @@ capstone project for springboard bootcamp
 
 7. What does your database schema look like?
 
-- 
+-    Note that we have not learned about backend/data structures yet so this is a work in progress.
+-    ![Table Sets Diagram for EventPop](assets/capstone_data_tables.png)
 
-     - What kinds of issues might you run into with your API? This is especially important
-       if you are creating your own API, web scraping produces notoriously messy data.
-     - Is there any sensitive information you need to secure?
-     - What functionality will your app include?
-     - What will the user flow look like?
-     - What features make your site more than a CRUD app? What are your stretch
-       goals?
+8. What kinds of issues might you run into with your API? This is especially important
+   if you are creating your own API, web scraping produces notoriously messy data.
+
+     - Potentially there could be issues accessing the API since I have not used a public API like this before.
+
+9. Is there any sensitive information you need to secure?
+
+-    Yes, user information will need to be secured. Including, but not limited to, passwords and emails.
+
+10. What functionality will your app include?
+
+-    Overarching idea: Keep you up to date on events in your area so you can plan fun outings and activities.
+-    Some features/functionality:
+     -    allows users to set event and location preferences
+     -    finds and recommends events for users on a set cadence
+     -    allows users to share events with friends/invite them
+     -    creates a calendar with events you save/RSVP to
+
+11. What will the user flow look like?
+
+-    Homepage: Displays home page for user with links to various content pages.
+-    Content pages:
+     -    Preference page: Users can set up their event notification/filter preferences.
+     -    Upcoming events page: Users can see upcoming events based on their set notification preferences and mark events as attending/share them with others.
+     -    Calendar page: Users can see events they have marked as attending in a calendar format.
+     -    Search/Filter page: Users can search for specific topics and filter content by category and create adhoc filtering.
+
+12. What features make your site more than a CRUD app?
+
+-    The API integration and automated real time event finding aspect make this more than a CRUD app. As well as mulitiple views the user can interact with.
+
+13. What are your stretch goals?
+
+-    Add more than just ticket master to the source data for a more robust set of events.
+-    Add notifications for users like when tickets for an event go on sale.
+-    For the future, event feed with friends in it/more cross user connection features.
