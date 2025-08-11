@@ -6,22 +6,22 @@ Capstone project for springboard bootcamp.
 
 ## (1) travel planning app
 
--    upload travel details inlcluding but not limited to:
+-    upload travel details including but not limited to:
      -    dates
      -    flights
      -    train tickets
      -    activites
      -    restaurants
--    add people to trips to share iteneraries
--    set up notifications to remind yourself about upcoming itenerary or planning action items
--    AI helper to suggest activities around the area of other events in the itenerary
+-    add people to trips to share itineraries
+-    set up notifications to remind yourself about upcoming itinerary or planning action items
+-    AI helper to suggest activities around the area of other events in the itinerary
 
 ## (2) recipe/meal planning app
 
 -    upload family recipes (or any recipes) from pdfs/hand written recipes
 -    shopping list builder
 -    create recipe books to store and categorize recipes
--    base list of recipes from recipe api available
+-    base list of recipes from recipe API available
 -    share "recipe books" with friends/family
 
 ## (3) event recommendation app
@@ -63,7 +63,7 @@ Capstone project for springboard bootcamp.
    of data you would like it to contain. You are welcome to create your own API and
    populate it with data.
 
--    I plan to use data from ticket master's api.
+-    I plan to use data from ticket master's API.
 
 7. What does your database schema look like?
 
@@ -99,10 +99,10 @@ Capstone project for springboard bootcamp.
 
 12. What features make your site more than a CRUD app?
 
--    The API integration and automated real time event finding aspect make this more than a CRUD app. As well as mulitiple views the user can interact with.
+-    The API integration and automated real time event finding aspect make this more than a CRUD app. As well as multiple views the user can interact with.
 
 13. What are your stretch goals?
 
--    Add more than just ticket master to the source data for a more robust set of events.
--    Add notifications for users like when tickets for an event go on sale.
--    For the future, event feed with friends in it/more cross user connection features.
+-    Data Sources: Add more than just ticket master to the source data for a more robust set of events.
+-    Notifications: Add notifications for users like when tickets for an event go on sale.
+-    Interactive features: For the future, event feed with friends in it/more cross user connection features.
