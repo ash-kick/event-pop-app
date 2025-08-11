@@ -1,4 +1,4 @@
-# Springboard-capstone-project
+# springboard-capstone-project
 
 Capstone project for springboard bootcamp.
 
