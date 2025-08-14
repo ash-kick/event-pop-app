@@ -47,11 +47,11 @@ Capstone project for springboard bootcamp.
 
 3. Will this be a website? A mobile app? Something else?
 
--    A website and mobile app.
+-    Mobile app.
 
 4. What goal will your project be designed to achieve?
 
--    It will be designed to be an app that people can use to help find and plan fun events/activities.
+-    It will be designed to be an app that people can use to help find and plan fun events/activities with friends.
 
 5. What kind of users will visit your app? In other words, what is the demographic of
    your users?
@@ -104,5 +104,8 @@ Capstone project for springboard bootcamp.
 13. What are your stretch goals?
 
 -    Data Sources: Add more than just ticket master to the source data for a more robust set of events.
--    Notifications: Add notifications for users like when tickets for an event go on sale.
+-    Notifications: Add notifications for users like when tickets for an event go on sale and prices dip to a certain amount.
 -    Interactive features: For the future, event feed with friends in it/more cross user connection features.
+-    Integrations:
+     -    Transportation applications like Uber/Lyft/Waymo for the planning aspects.
+     -    Instagram for posting your event/event plans to share with friends.
