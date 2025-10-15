@@ -36,12 +36,12 @@ Questions from bootcamp project -- Going with idea 3: event recommendation app (
    of data you would like it to contain. You are welcome to create your own API and
    populate it with data.
 
--    I plan to use data from ticket master's API.
+-    I plan to use data from ticket master's API for events data.
 
 7. What does your database schema look like?
 
 -    Note that we have not learned about backend/data structures yet so this is a work in progress.
--    ![Table Sets Diagram for EventPop](assets/capstone_data_tables.png)
+-    ![Table Sets Diagram for EventPop]()
 
 8. What kinds of issues might you run into with your API? This is especially important
    if you are creating your own API, web scraping produces notoriously messy data.
