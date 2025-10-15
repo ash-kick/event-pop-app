@@ -1,11 +1,11 @@
 # EventPop App
 
-Welcome to the EventPop App ReadME!
+Welcome to the EventPop App! This app is intended to help find fun things for you to do in your area tailored to your preferences! Sharing features allow you to include your friends and/or family in your plans!
 
 ### App Features:
 
--    Allows users to set event and location preferences to be notified about events in their selected area.
--    Finds and recommends events for users on a set cadence.
+-    Finds and notifies users events based on their preferences.
+-    Allows users to set event and location preferences.
 -    Allows users to share events with other users.
 
 # Springboard Capstone Project Requirements & Details
