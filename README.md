@@ -1,10 +1,12 @@
-# event-pop-app
+# EventPop App
 
-# springboard-capstone-project
+# Springboard Capstone Project Requirements & Details
 
-Capstone project for springboard bootcamp.
+Below are required items for the capstone project for springboard bootcamp. For more formal app details see above context.
 
-## Capstone project details & proposal (questions from bootcamp project)-- idea 3: event recommendation app (EventPop)
+## Capstone project details & proposal
+
+Questions from bootcamp project -- Going with idea 3: event recommendation app (EventPop)
 
 1. What tech stack will you use for your final project?
 
