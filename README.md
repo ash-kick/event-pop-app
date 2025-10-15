@@ -2,6 +2,8 @@
 
 Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Sharing features allow you to include your friends and/or family in your plans for maximum group enjoyment!
 
+![EventPop Logo](assets/event-pop-logo.png)
+
 ### App Features:
 
 -    🔎 Finds and notifies users events based on their preferences.
