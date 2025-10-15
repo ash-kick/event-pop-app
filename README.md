@@ -1,5 +1,13 @@
 # EventPop App
 
+Welcome to the EventPop App ReadME!
+
+### App Features:
+
+-    Allows users to set event and location preferences to be notified about events in their selected area.
+-    Finds and recommends events for users on a set cadence.
+-    Allows users to share events with other users.
+
 # Springboard Capstone Project Requirements & Details
 
 Below are required items for the capstone project for springboard bootcamp. For more formal app details see above context.
