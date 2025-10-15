@@ -1,0 +1,33 @@
+{
+  "name": "event-pop-app",
+  "version": "1.0.0",
+  "description": "Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Sharing features allow you to include your friends and/or family in your plans for maximum group enjoyment!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ash-kick/event-pop-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ash-kick/event-pop-app/issues"
+  },
+  "homepage": "https://github.com/ash-kick/event-pop-app#readme",
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "vite": "^7.1.10"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2"
+  }
+}
