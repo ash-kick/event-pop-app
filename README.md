@@ -1,53 +1,24 @@
+# event-pop-app
+
 # springboard-capstone-project
 
 Capstone project for springboard bootcamp.
 
-# Capstone project ideas 💭
-
-## (1) travel planning app
-
--    upload travel details including but not limited to:
-     -    dates
-     -    flights
-     -    train tickets
-     -    activites
-     -    restaurants
--    add people to trips to share itineraries
--    set up notifications to remind yourself about upcoming itinerary or planning action items
--    AI helper to suggest activities around the area of other events in the itinerary
-
-## (2) recipe/meal planning app
-
--    upload family recipes (or any recipes) from pdfs/hand written recipes
--    shopping list builder
--    create recipe books to store and categorize recipes
--    base list of recipes from recipe API available
--    share "recipe books" with friends/family
-
-## (3) event recommendation app
-
--    allows users to set event and location preferences
--    finds and recommends events for users on a set cadence
--    allows users to share events with friends/invite them
--    creates a calendar with events you save/RSVP to
-
-# Capstone project details & proposal -- idea 3: event recommendation app (EventPop)
+## Capstone project details & proposal (questions from bootcamp project)-- idea 3: event recommendation app (EventPop)
 
 1. What tech stack will you use for your final project?
 
--    React Native: For developing a cross-platform mobile application that runs on
-     iOS and Android using a single codebase.
 -    React: For building the web application, ensuring a consistent and interactive
      user experience across platforms.
 
 2. Is the front-end UI or the back-end going to be the focus of your project? Or are
    you going to make an evenly focused full-stack application?
 
-     - Evenly focused full stack.
+     - Front end focus.
 
 3. Will this be a website? A mobile app? Something else?
 
--    Mobile app.
+-    Website.
 
 4. What goal will your project be designed to achieve?
 
@@ -109,3 +80,32 @@ Capstone project for springboard bootcamp.
 -    Integrations:
      -    Transportation applications like Uber/Lyft/Waymo for the planning aspects.
      -    Instagram for posting your event/event plans to share with friends.
+
+## Capstone project ideas 💭
+
+### (1) travel planning app
+
+-    upload travel details including but not limited to:
+     -    dates
+     -    flights
+     -    train tickets
+     -    activites
+     -    restaurants
+-    add people to trips to share itineraries
+-    set up notifications to remind yourself about upcoming itinerary or planning action items
+-    AI helper to suggest activities around the area of other events in the itinerary
+
+### (2) recipe/meal planning app
+
+-    upload family recipes (or any recipes) from pdfs/hand written recipes
+-    shopping list builder
+-    create recipe books to store and categorize recipes
+-    base list of recipes from recipe API available
+-    share "recipe books" with friends/family
+
+### (3) event recommendation app
+
+-    allows users to set event and location preferences
+-    finds and recommends events for users on a set cadence
+-    allows users to share events with friends/invite them
+-    creates a calendar with events you save/RSVP to
