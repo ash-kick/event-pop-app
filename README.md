@@ -10,7 +10,7 @@ Welcome to the EventPop App 💗! This app is intended to help find fun things f
 -    ✅ Allows users to set event and location preferences.
 -    👯 Allows users to share events with other users.
 
-## App Layout Diagram:
+### App Layout Diagram:
 
 ![EventPop Diagram](assets/event-pop-app-diagram.png)
 
