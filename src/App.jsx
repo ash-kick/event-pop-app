@@ -1,11 +1,32 @@
 import "./App.css";
+import { createBrowserRouter, createRoutesFromElements, Route, Routes } from "react-router-dom";
+import RootLayout from "./layouts/RootLayout";
+
+import Landing from "./pages/landing/Landing";
+import Home from "./pages/home/Home";
+import Events from "./pages/events/Events";
+
+const router = createBrowserRouter(createRoutesFromElements(<Route element={<RootLayout />}></Route>));
 
 function App() {
      return (
           <div className="App">
-               <header className="App-header">
-                    <h1>🎉 Welcome to EventPop!</h1>
-               </header>
+               <header className="App-header"></header>
+               <Routes>
+                    <Route
+                         element={<RootLayout />}
+                         path="/">
+                         <Route
+                              index
+                              element={<Landing />}></Route>
+                         <Route
+                              element={<Home />}
+                              path="/home"></Route>
+                         <Route
+                              element={<Events />}
+                              path="/events"></Route>
+                    </Route>
+               </Routes>
           </div>
      );
 }
