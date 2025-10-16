@@ -1,3 +1,11 @@
+/* custom font */
+
+.damion-regular {
+     font-family: "Damion", cursive;
+     font-weight: 400;
+     font-style: normal;
+}
+
 /* root layout styling */
 nav {
      background-color: rgb(111, 195, 226);
@@ -17,13 +25,17 @@ a {
 /* landing styling */
 
 .welcome {
-     font-family: Arial, Helvetica, sans-serif;
+     font-family: "Damion", cursive;
      font-size: 2rem;
      display: flex;
      color: rgb(0, 42, 57);
      justify-self: center;
      align-items: center;
      max-width: 70%;
+}
+
+.event-pop-logo {
+     width: 60%;
 }
 
 .landing-image-container {
