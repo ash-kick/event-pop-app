@@ -5,6 +5,7 @@ import RootLayout from "./layouts/RootLayout";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/home/Home";
 import Events from "./pages/events/Events";
+import Preferences from "./pages/preferences/Preferences";
 
 const router = createBrowserRouter(createRoutesFromElements(<Route element={<RootLayout />}></Route>));
 
@@ -25,6 +26,9 @@ function App() {
                          <Route
                               element={<Events />}
                               path="/events"></Route>
+                         <Route
+                              element={<Preferences />}
+                              path="/preferences"></Route>
                     </Route>
                </Routes>
           </div>

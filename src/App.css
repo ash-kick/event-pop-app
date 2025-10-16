@@ -1,0 +1,39 @@
+/* root layout styling */
+nav {
+     background-color: rgb(111, 195, 226);
+     color: rgb(0, 42, 57);
+     font-family: Arial, Helvetica, sans-serif;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+}
+a {
+     color: rgb(0, 42, 57);
+     text-decoration: none;
+     padding: 10px 10px;
+}
+
+/* landing styling */
+
+.welcome {
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 2rem;
+     display: flex;
+     color: rgb(0, 42, 57);
+     justify-self: center;
+     align-items: center;
+     max-width: 70%;
+}
+
+.landing-image-container {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     padding: 0;
+     max-height: 400px;
+}
+
+.landing-photo {
+     width: 33.3333%;
+}
