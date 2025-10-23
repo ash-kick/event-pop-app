@@ -18,6 +18,10 @@ Welcome to the EventPop App 💗! This app is intended to help find fun things f
 
 ![EventPop Data Diagram](assets/event-pop-app-data-structure.png)
 
+### App Landing Page:
+
+![EventPop Landing Page Screenshot](assets/event-pop-app-landing-screenshot.png)
+
 # Springboard Capstone Project Requirements & Details
 
 Below are required items for the capstone project for springboard bootcamp. For more formal app details see above context.
