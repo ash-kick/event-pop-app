@@ -5,12 +5,19 @@ export default function RootLayout() {
           <div className="root-layout">
                <header>
                     <nav>
-                         <NavLink to="/">
-                              <img src="../assets/event-pop-icon-small.png" />
+                         <div className="nav-links-main">
+                              <NavLink to="/">
+                                   <img src="../assets/event-pop-icon-small.png" />
+                              </NavLink>
+                              <NavLink to="home">Home</NavLink>
+                              <NavLink to="events">Events</NavLink>
+                              <NavLink to="preferences">Preferences</NavLink>
+                         </div>
+                         <NavLink
+                              to="login"
+                              id="log-in-button">
+                              Log in
                          </NavLink>
-                         <NavLink to="home">Home</NavLink>
-                         <NavLink to="events">Events</NavLink>
-                         <NavLink to="preferences">Preferences</NavLink>
                     </nav>
                </header>
                <main>
