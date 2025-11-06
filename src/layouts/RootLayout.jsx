@@ -23,7 +23,7 @@ export default function RootLayout() {
                <main>
                     <Outlet />
                </main>
-               <footer></footer>
+               <footer>Powered by ticketmaster API - Made with ❤️ using React.</footer>
           </div>
      );
 }

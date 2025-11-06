@@ -33,7 +33,7 @@ nav {
      margin-left: auto;
      margin-right: 5px;
      background-color: rgba(0, 42, 57, 0.5);
-     color: white;
+     color: rgb(217, 228, 232);
      border-radius: 15px;
 }
 
@@ -41,6 +41,12 @@ a {
      color: rgb(0, 42, 57);
      text-decoration: none;
      padding: 10px 10px;
+}
+
+footer {
+     text-align: center;
+     padding: 20px;
+     color: rgb(0, 42, 57);
 }
 
 /* landing styling */
@@ -57,8 +63,8 @@ a {
      flex-direction: column;
      align-items: center;
      justify-content: space-between;
-     background-color: white;
-     padding-bottom: 10%;
+     background-color: rgb(217, 228, 232);
+     padding-bottom: 5%;
      width: 80vw;
      min-height: 10rem;
      margin: 0 auto;
@@ -72,20 +78,30 @@ a {
      justify-content: center;
      align-items: center;
      width: 100%;
+     gap: 5px;
      padding: 20px;
+     flex-wrap: wrap;
      white-space: nowrap;
      box-sizing: border-box;
-     margin-bottom: 20px;
 }
 
 .welcome-to-header-text {
      font-family: "Damion", cursive;
      width: auto;
      font-size: clamp(1.75rem, 5.5vw, 50px);
+     flex-shrink: 1;
 }
 
 .event-pop-logo {
-     height: clamp(80px, 15vw, 150px);
+     height: clamp(20px, 12vw, 140px);
+     width: auto;
+     max-width: 100%;
+     object-fit: contain;
+     flex-shrink: 1;
+}
+
+.landing-blurb {
+     padding: 0 3vh 3vh 3vh;
 }
 
 .landing-image-container {
@@ -99,4 +115,31 @@ a {
      width: 33.3333%;
      height: auto;
      object-fit: cover;
+}
+
+.landing-feature-cards {
+     display: flex;
+     justify-content: space-evenly;
+     width: 100%;
+     gap: 10px;
+     padding: 0 5px 0 5px;
+     box-sizing: border-box;
+}
+
+.feature-card {
+     background-color: rgb(0, 42, 57);
+     color: rgb(217, 228, 232);
+     border-radius: 15px;
+     padding: 15px 10px;
+     min-width: 25%;
+     min-height: 250px;
+}
+
+.feature-card-header {
+     font-size: 18px;
+}
+
+.feature-card-blurb {
+     color: rgb(111, 195, 226);
+     font-size: 14px;
 }
