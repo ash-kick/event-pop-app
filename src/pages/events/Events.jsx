@@ -1,4 +1,5 @@
 import { useState } from "react";
+import EventSearchDisplay from "./EventsSearchDisplay";
 
 export default function Events() {
      const [activeTab, setActiveTab] = useState("search");
@@ -28,7 +29,19 @@ export default function Events() {
                          upcoming
                     </button>
                     <div className="event-page-display">
-                         {activeTab === "search" ? "search events place holder" : ""}
+                         {activeTab === "search" ? (
+                              <div>
+                                   <form>
+                                        <input
+                                             type="search"
+                                             placeholder="🔎 Search Events"
+                                        />
+                                   </form>
+                                   <EventSearchDisplay />
+                              </div>
+                         ) : (
+                              ""
+                         )}
                          {activeTab === "saved" ? "saved events place holder" : ""}
                          {activeTab === "upcoming" ? "upcoming events place holder" : ""}
                     </div>

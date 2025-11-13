@@ -1,4 +1,4 @@
-export const testUser1 = {
+const testUser1 = {
      firstName: "Harry",
      lastName: "Potter",
      userName: "hpotter",
@@ -7,7 +7,7 @@ export const testUser1 = {
      locationId: "L92123",
 };
 
-export const ticketMasterRawEventsResponse = {
+const ticketMasterRawEventTest = {
      _embedded: {
           events: [
                {
@@ -4627,3 +4627,5 @@ export const ticketMasterRawEventsResponse = {
           number: 0,
      },
 };
+
+export { testUser1, ticketMasterRawEventTest };
