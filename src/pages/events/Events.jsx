@@ -3,7 +3,14 @@ import EventSearchDisplay from "./EventsSearchDisplay";
 
 export default function Events() {
      const [activeTab, setActiveTab] = useState("search");
-     console.log(activeTab);
+     const [currentSearchBarValue, setCurrentSearchBarValue] = useState("");
+     const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
+
+     const handleSubmit = (e) => {
+          e.preventDefault();
+          setSubmittedSearchTerm(currentSearchBarValue);
+     };
+
      return (
           <div className="events-page-container">
                <div className="event-tabs-container">
@@ -31,13 +38,16 @@ export default function Events() {
                     <div className="event-page-display">
                          {activeTab === "search" ? (
                               <div>
-                                   <form>
+                                   <form onSubmit={handleSubmit}>
                                         <input
                                              type="search"
                                              placeholder="🔎 Search Events"
+                                             value={currentSearchBarValue}
+                                             onChange={(event) => setCurrentSearchBarValue(event.target.value)}
                                         />
+                                        <button type="submit">Search</button>
                                    </form>
-                                   <EventSearchDisplay />
+                                   <EventSearchDisplay submittedSearchTerm={submittedSearchTerm} />
                               </div>
                          ) : (
                               ""
