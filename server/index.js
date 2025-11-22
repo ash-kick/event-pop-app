@@ -5,6 +5,7 @@ const connectDB = require("./db");
 
 const app = express();
 
+// Middlewear
 app.use(cors());
 app.use(express.json());
 
