@@ -17,7 +17,6 @@ const userSchema = new mongoose.Schema({
           unique: true,
      },
      eventPreferencesId: { type: String },
-     locationId: { type: String },
 
      // FOR FUTURE STATE OF APP TO BE CREATED MODELS
      alertsId: { type: String },
