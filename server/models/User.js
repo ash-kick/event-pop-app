@@ -18,9 +18,17 @@ const userSchema = new mongoose.Schema({
      },
      eventPreferencesId: { type: String },
 
-     // FOR FUTURE STATE OF APP TO BE CREATED MODELS
-     alertsId: { type: String },
-     friendsId: { type: String },
+     // FREINDS AND ALERTS FEATURES TO BE ADDED LATER
+
+     friends: {
+          type: [
+               {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "User",
+               },
+          ],
+          default: [],
+     },
 
      createdAt: {
           type: Date,
