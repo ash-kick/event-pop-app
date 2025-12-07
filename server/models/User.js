@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
      },
      eventPreferencesId: { type: String },
 
-     // FREINDS AND ALERTS FEATURES TO BE ADDED LATER
+     // FREINDS AND ALERTS FEATURES TO BE ADDED LATER, JUST FRIENDS PLACEHOLDER FOR NOW
 
      friends: {
           type: [

@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
-const getTomorrow = () => {
-     let today = Date.now;
+const getEightWeeksOut = () => {
+     let today = new Date();
+     let eightWeeksOut = new Date(today);
+     eightWeeksOut.setDate(today.getDate() + 56);
+     return eightWeeksOut;
 };
 
 // THIS SCHEMA WILL STORE ALL EVENT TYPES (concerts, sprots, arts-theatre, family)
@@ -29,7 +32,7 @@ const eventPreferenceSchema = new mongoose.Schema({
      },
      eventEndDatePreference: {
           type: Date,
-          default: Date.now,
+          default: getEightWeeksOut,
      },
      // FOR A FUTURE VERSION OF THE APP
      alertsOn: {
