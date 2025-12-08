@@ -5,6 +5,7 @@ const eventSchema = new mongoose.Schema({
      eventName: {
           type: String,
           required: true,
+          index: true, // adding index here for searching by name
      },
      ticketMasterEventId: {
           type: String,
@@ -21,12 +22,14 @@ const eventSchema = new mongoose.Schema({
      // The following two fields are called segment not event type by TM
      eventTypeId: {
           type: String,
+          index: true,
      },
      eventTypeName: {
           type: String,
      },
      venueId: {
           type: String,
+          index: true,
      },
      venueName: {
           type: String,
@@ -48,9 +51,11 @@ const eventSchema = new mongoose.Schema({
      },
      stateCode: {
           type: String,
+          index: true,
      },
      cityName: {
           type: String,
+          index: true,
      },
      countryCode: {
           type: String,
