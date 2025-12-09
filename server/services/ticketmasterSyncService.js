@@ -10,6 +10,7 @@ const cityNames = ["San Francisco", "Los Angeles", "New York"];
 // reformatting today's date to match ticketmaster api
 const today = new Date().toISOString().split(".")[0] + "Z";
 
+// fetch events for a particular city filter
 const fetchEventsForCity = async (cityName) => {
      try {
           let URL = `${TICKETMASTER_EVENTS_BASE_URL}apikey=${TICKETMASTER_API_KEY}&startDateTime=${today}&city=${cityName}`;
