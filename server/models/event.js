@@ -37,23 +37,20 @@ const eventSchema = new mongoose.Schema({
      venueAddress: {
           type: String,
      },
+     startDateTimeUTC: {
+          type: Date,
+     },
      startDateTime: {
           type: Date,
      },
-     endDateTime: {
-          type: Date,
+     eventStatusCode: {
+          type: String,
      },
-     onsaleOnStartDate: {
-          type: Date,
-     },
-     preSaleDateTime: {
-          type: Date,
-     },
-     stateCode: {
+     cityName: {
           type: String,
           index: true,
      },
-     cityName: {
+     stateCode: {
           type: String,
           index: true,
      },

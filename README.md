@@ -1,6 +1,6 @@
 # ![EventPop Logo](assets/event-pop-icon-small.png) EventPop App
 
-Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences!
+Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Currently supporting LA and SF.
 
 Future state: Sharing features allow you to include your friends and/or family in your plans for maximum group enjoyment!
 
