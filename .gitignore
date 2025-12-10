@@ -7,4 +7,3 @@ build/
 .vscode/
 .idea/
 *.log
-server/services/test-sync.js
