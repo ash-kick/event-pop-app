@@ -36,3 +36,27 @@ const createToken = (id) => {
           expiresIn: maxAgeToken,
      });
 };
+
+// log in user and generate token
+exports.loginUser = async (req, res, next) => {
+     try {
+          const user = await User.findOne({ userName: req.body.userName });
+          if (!user) {
+               return res.status(401).json({ message: "Invalid credentials" });
+          }
+          const passwordMatch = await bcrypt.compare(req.body.password, user.password);
+          if (passwordMatch) {
+               console.log("Log in was successful");
+               // genearte jwt token on successful password match
+               const token = createToken(user._id);
+               // respond with the user id and token
+               res.status(200).json({
+                    user: user._id,
+                    token: token,
+               });
+          } else return res.status(401).json({ message: "Invalid credentials" });
+     } catch (err) {
+          console.log("Log in unsuccessful");
+          next(err);
+     }
+};
