@@ -1,5 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET_DEV = process.env.JWT_SECRET_DEV;
 
 // create new user
 exports.registerUser = async (req, res, next) => {
@@ -25,4 +27,12 @@ exports.registerUser = async (req, res, next) => {
           console.log("Registration was unsuccessful");
           next(err);
      }
+};
+
+// jwt token generation variables
+const maxAgeToken = 1 * 24 * 60 * 60;
+const createToken = (id) => {
+     return jwt.sign({ id }, JWT_SECRET_DEV, {
+          expiresIn: maxAgeToken,
+     });
 };
