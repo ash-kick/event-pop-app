@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
           required: true,
           default: "San Francisco",
      },
-     eventPreferencesId: { type: String },
 
      // FREINDS AND ALERTS FEATURES TO BE ADDED LATER, JUST FRIENDS PLACEHOLDER FOR NOW
 

@@ -14,7 +14,6 @@ exports.registerUser = async (req, res, next) => {
                password: encryptedPassword,
                email: email,
                userCity: userCity,
-               eventPreferencesId: "dummy-preferences-id", // place holder for now
           });
           const savedUser = await newUser.save();
           const savedEventPreference = await createPreferenceForUser(savedUser);
