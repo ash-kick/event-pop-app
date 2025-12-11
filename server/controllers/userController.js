@@ -17,7 +17,6 @@ exports.registerUser = async (req, res, next) => {
           });
           const savedUser = await newUser.save();
           const savedEventPreference = await createPreferenceForUser(savedUser);
-          console.log(savedEventPreference);
           res.status(201).json({
                _id: savedUser._id,
                userName: savedUser.userName,
