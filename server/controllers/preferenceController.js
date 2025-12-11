@@ -1,19 +1,17 @@
 const EventPreference = require("../models/eventPreference");
 const User = require("../models/user");
 
-// create new preference (will all be set to default)
-exports.createPreference = async (req, res, next) => {
-     // find current user's user id
-     const user = await User.findOne({ userName: req.body.userName });
-     try {
-          const newEventPreference = new EventPreference({
-               userId: user._id,
-               eventLocationPreference: user.userCity,
-          });
-     } catch (err) {
-          console.log(err);
-     }
+// create new preference during user registration (will all be set to default)
+const createPreferenceForUser = async (user) => {
+     const newEventPreference = new EventPreference({
+          userId: user._id,
+          eventLocationPreference: user.userCity,
+     });
+     const savedEventPreference = await newEventPreference.save();
+     return savedEventPreference;
 };
+
+exports.createPreferenceForUser = createPreferenceForUser;
 
 // update preference
 
