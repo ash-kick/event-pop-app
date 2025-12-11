@@ -17,7 +17,7 @@ exports.createPreferenceForUser = createPreferenceForUser;
 exports.updatePreference = async (req, res, next) => {
      try {
           const updatedPreference = await EventPreference.updateOne(
-               { userId: req.body.userId },
+               { userId: req.user.id },
                {
                     $set: {
                          eventTypePreference: req.body.eventTypePreference,
@@ -39,6 +39,22 @@ exports.updatePreference = async (req, res, next) => {
      }
 };
 
-// reset preference (will need a hardcoded default json file for the request)
-
 // display preference for user
+exports.displayPreference = async (req, res, next) => {
+     try {
+          const currentUserPreference = await EventPreference.findOne({
+               userId: req.user.id,
+          });
+          if (currentUserPreference === null) {
+               return res.send(404).json({
+                    message: "Preferences not found for user",
+               });
+          }
+          res.status(200).json(currentUserPreference);
+     } catch (err) {
+          console.log("Preference not found");
+          next(err);
+     }
+};
+
+// FOR FUTURE STATE reset preference (will need a hardcoded default json file for the request)
