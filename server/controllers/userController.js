@@ -6,12 +6,13 @@ exports.registerUser = async (req, res, next) => {
      try {
           // need to set default preferences here somehow
           const eventPreferences = {};
-          const { userName, password, email } = req.body;
+          const { userName, password, email, userCity } = req.body;
           const encryptedPassword = await bcrypt.hash(password, 10);
           const newUser = new User({
                userName: userName,
                password: encryptedPassword,
                email: email,
+               userCity: userCity,
                eventPreferences: "dummy-preferences-id", // place holder for now
           });
           const savedUser = await newUser.save();
