@@ -10,10 +10,10 @@ router.use(authTokenCheck);
 
 // note that create preference is handled by the user route create user
 
-//POST update event preferences for user
-router.post("/update", eventPreferenceController.updatePreference);
+//PATCH update event preferences for user
+router.patch("/", eventPreferenceController.updatePreference);
 
 //GET display event preferenes for a user
-router.get("/current", eventPreferenceController.displayPreference);
+router.get("/", eventPreferenceController.displayPreference);
 
 module.exports = router;

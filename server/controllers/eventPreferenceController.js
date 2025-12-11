@@ -34,7 +34,6 @@ exports.updatePreference = async (req, res, next) => {
                     message: "User preferences not found",
                });
           }
-          console.log(updatedPreference);
           res.status(200).json({
                message: "Preferences updated successfully",
           });
@@ -51,7 +50,7 @@ exports.displayPreference = async (req, res, next) => {
                userId: req.user.id,
           });
           if (currentUserPreference === null) {
-               return res.send(404).json({
+               return res.status(404).json({
                     message: "Preferences not found for user",
                });
           }
