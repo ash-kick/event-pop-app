@@ -37,6 +37,7 @@ const eventPreferenceSchema = new mongoose.Schema({
      // FOR A FUTURE VERSION OF THE APP
      alertsOn: {
           type: Boolean,
+          default: false,
           required: true,
      },
      createdAt: {
