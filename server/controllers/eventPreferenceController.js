@@ -29,6 +29,11 @@ exports.updatePreference = async (req, res, next) => {
                     },
                }
           );
+          if (updatedPreference.matchedCount === 0) {
+               return res.status(404).json({
+                    message: "User preferences not found",
+               });
+          }
           console.log(updatedPreference);
           res.status(200).json({
                message: "Preferences updated successfully",
