@@ -7,3 +7,5 @@ const userController = require("../controllers/userController");
 
 //POST create an account (user)
 router.post("/register", userController.registerUser);
+
+module.exports = router;
