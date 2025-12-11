@@ -2,13 +2,14 @@
   "name": "event-pop-app",
   "version": "1.0.0",
   "description": "Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Sharing features allow you to include your friends and/or family in your plans for maximum group enjoyment!",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "nodemon server/index.js"
+    "server": "nodemon server/app.js",
+    "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
