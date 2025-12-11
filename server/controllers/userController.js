@@ -30,8 +30,8 @@ exports.registerUser = async (req, res, next) => {
 
 // jwt token generation variables, token will expire after 24 hrs
 const maxAgeToken = 1 * 24 * 60 * 60;
-const createToken = (id) => {
-     return jwt.sign({ id }, JWT_SECRET_DEV, {
+const createToken = (id, userName) => {
+     return jwt.sign({ id, userName }, JWT_SECRET_DEV, {
           expiresIn: maxAgeToken,
      });
 };
@@ -47,7 +47,7 @@ exports.loginUser = async (req, res, next) => {
           if (passwordMatch) {
                console.log("Log in was successful");
                // genearte jwt token on successful password match
-               const token = createToken(user._id);
+               const token = createToken(user._id, user.userName);
                // respond with the user id and token
                res.status(200).json({
                     user: user._id,
