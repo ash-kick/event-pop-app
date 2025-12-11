@@ -2,8 +2,9 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_DEV = process.env.JWT_SECRET_DEV;
+const { createPreferenceForUser } = require("./preferenceController");
 
-// create new user
+// create new user & event preferences
 exports.registerUser = async (req, res, next) => {
      try {
           const { userName, password, email, userCity } = req.body;
@@ -16,12 +17,13 @@ exports.registerUser = async (req, res, next) => {
                eventPreferencesId: "dummy-preferences-id", // place holder for now
           });
           const savedUser = await newUser.save();
+          const savedEventPreference = await createPreferenceForUser(savedUser);
+          console.log(savedEventPreference);
           res.status(201).json({
                _id: savedUser._id,
                userName: savedUser.userName,
                createdAt: savedUser.createdAt,
           });
-          // need to set default preferences here somehow
      } catch (err) {
           console.log("Registration was unsuccessful");
           next(err);
