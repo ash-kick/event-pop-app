@@ -29,7 +29,7 @@ exports.registerUser = async (req, res, next) => {
      }
 };
 
-// jwt token generation variables
+// jwt token generation variables, token will expire after 24 hrs
 const maxAgeToken = 1 * 24 * 60 * 60;
 const createToken = (id) => {
      return jwt.sign({ id }, JWT_SECRET_DEV, {
@@ -60,3 +60,5 @@ exports.loginUser = async (req, res, next) => {
           next(err);
      }
 };
+
+//
