@@ -23,8 +23,8 @@ const eventPreferenceSchema = new mongoose.Schema({
           default: [],
      },
      eventLocationPreference: {
-          type: [String],
-          default: [],
+          type: String,
+          required: true,
      },
      eventStartDatePreference: {
           type: Date,

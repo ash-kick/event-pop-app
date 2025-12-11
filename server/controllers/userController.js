@@ -6,8 +6,6 @@ const JWT_SECRET_DEV = process.env.JWT_SECRET_DEV;
 // create new user
 exports.registerUser = async (req, res, next) => {
      try {
-          // need to set default preferences here somehow
-          const eventPreferences = {};
           const { userName, password, email, userCity } = req.body;
           const encryptedPassword = await bcrypt.hash(password, 10);
           const newUser = new User({
@@ -23,6 +21,7 @@ exports.registerUser = async (req, res, next) => {
                userName: savedUser.userName,
                createdAt: savedUser.createdAt,
           });
+          // need to set default preferences here somehow
      } catch (err) {
           console.log("Registration was unsuccessful");
           next(err);
