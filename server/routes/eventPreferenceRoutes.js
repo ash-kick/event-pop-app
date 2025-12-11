@@ -5,6 +5,8 @@ const eventPreferenceController = require("../controllers/eventPreferenceControl
 
 // ALL ROUTES RELATED TO EVENT PREFERENCE DATA
 
+// note that create preference is handled by the user route create user
+
 //POST update event preferences for user
 router.post("/update", eventPreferenceController.updatePreference);
 
