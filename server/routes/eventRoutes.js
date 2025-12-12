@@ -3,9 +3,13 @@ const router = express.Router();
 const eventController = require("../controllers/eventController");
 const authTokenCheck = require("../middlewares/authTokenCheck");
 
+router.use(authTokenCheck);
+
 //SAVED EVENT ROUTES
 
 // add saved event
+router.post("/save-event", eventController.addSavedEvent);
+
 // delete saved event
 // display saved event
 
@@ -16,3 +20,5 @@ const authTokenCheck = require("../middlewares/authTokenCheck");
 // UPCOMING EVENT ROUTES
 
 // get upcoming events based on user location and current date
+
+module.exports = router;
