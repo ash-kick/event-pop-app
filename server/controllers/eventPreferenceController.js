@@ -1,5 +1,4 @@
 const EventPreference = require("../models/eventPreference");
-const User = require("../models/user");
 
 // create new preference during user registration (will all be set to default)
 const createPreferenceForUser = async (user) => {
