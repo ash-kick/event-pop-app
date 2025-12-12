@@ -12,7 +12,9 @@ router.post("/saved-event", eventController.addSavedEvent);
 
 // delete saved event
 router.delete("/saved-event", eventController.deleteSavedEvent);
+
 // display saved event
+router.get("/saved-event", eventController.getSavedEvents);
 
 //SEARCH EVENT ROUTES
 

@@ -47,7 +47,7 @@ exports.deleteSavedEvent = async (req, res, next) => {
           const updatedUser = await User.updateOne(
                { _id: req.user.id },
                {
-                    $pull: { savedEvents: eventToDelete.id },
+                    $pull: { savedEvents: req.body.eventId },
                }
           );
           if (updatedUser.matchedCount === 0) {
@@ -58,6 +58,25 @@ exports.deleteSavedEvent = async (req, res, next) => {
           });
      } catch (err) {
           console.log("Could not delete the event");
+          next(err);
+     }
+};
+
+// display saved event
+exports.getSavedEvents = async (req, res, next) => {
+     try {
+          const user = await User.findById(req.user.id);
+          const savedEvents = [];
+          for (const eventId of user.savedEvents) {
+               const savedEvent = await Event.findOne({ _id: eventId });
+               savedEvents.push(savedEvent);
+          }
+          if (!savedEvents) {
+               return res.status(404).json({ message: "No events found" });
+          }
+          res.status(200).json({ savedEvents });
+     } catch (err) {
+          console.log("Could not retrieve saved events");
           next(err);
      }
 };
