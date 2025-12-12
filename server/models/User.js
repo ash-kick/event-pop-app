@@ -21,7 +21,15 @@ const userSchema = new mongoose.Schema({
           required: true,
           default: "San Francisco",
      },
-
+     savedEvents: {
+          type: [
+               {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "Event",
+               },
+          ],
+          default: [],
+     },
      // FREINDS AND ALERTS FEATURES TO BE ADDED LATER, JUST FRIENDS PLACEHOLDER FOR NOW
 
      friends: {
