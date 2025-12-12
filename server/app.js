@@ -23,6 +23,7 @@ connectDB();
 // Use the following routes for the app
 app.use("/api/user", userRoutes);
 app.use("/api/event-preferences", eventPreferenceRoutes);
+// app.use("/api/events", eventRoutes);
 
 // Start server
 app.listen(PORT, () => {

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const EventPreference = require("../models/eventPreference");
 const eventPreferenceController = require("../controllers/eventPreferenceController");
 const authTokenCheck = require("../middlewares/authTokenCheck");
 
