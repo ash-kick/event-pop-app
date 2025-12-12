@@ -62,7 +62,7 @@ exports.deleteSavedEvent = async (req, res, next) => {
      }
 };
 
-// display saved event
+// display saved events
 exports.getSavedEvents = async (req, res, next) => {
      try {
           const user = await User.findById(req.user.id);
@@ -71,7 +71,7 @@ exports.getSavedEvents = async (req, res, next) => {
                const savedEvent = await Event.findOne({ _id: eventId });
                savedEvents.push(savedEvent);
           }
-          if (!savedEvents) {
+          if (savedEvents.length === 0) {
                return res.status(404).json({ message: "No events found" });
           }
           res.status(200).json({ savedEvents });
@@ -82,5 +82,32 @@ exports.getSavedEvents = async (req, res, next) => {
 };
 
 // DISPLAY SEARCH RESULT EVENTS
+
+exports.getSearchedEvents = async (req, res, next) => {
+     try {
+          const keyword = req.body.searchValue;
+          if (!keyword || keyword.trim() === "") {
+               return res.status(400).json({ message: "Search keyword is required" });
+          }
+          const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          const foundEvents = await Event.find({
+               $or: [
+                    { eventName: { $regex: escapedKeyword, $options: "i" } },
+                    { eventTypeName: { $regex: escapedKeyword, $options: "i" } },
+                    { venueName: { $regex: escapedKeyword, $options: "i" } },
+                    { cityName: { $regex: escapedKeyword, $options: "i" } },
+                    { genreName: { $regex: escapedKeyword, $options: "i" } },
+                    { subGenreName: { $regex: escapedKeyword, $options: "i" } },
+               ],
+          });
+          if (foundEvents.length === 0) {
+               return res.status(404).json({ message: "No events found for this keyword" });
+          }
+          res.status(200).json({ foundEvents });
+     } catch (err) {
+          console.log("No events found");
+          next(err);
+     }
+};
 
 // DISPLAY UPCOMING EVENTS BY LOCATION

@@ -18,7 +18,7 @@ router.get("/saved-event", eventController.getSavedEvents);
 
 //SEARCH EVENT ROUTES
 
-// get events based on search criteria
+router.get("/search", eventController.getSearchedEvents);
 
 // UPCOMING EVENT ROUTES
 
