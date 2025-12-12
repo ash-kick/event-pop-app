@@ -99,7 +99,7 @@ exports.getSearchedEvents = async (req, res, next) => {
                     { genreName: { $regex: escapedKeyword, $options: "i" } },
                     { subGenreName: { $regex: escapedKeyword, $options: "i" } },
                ],
-          });
+          }).limit(10);
           if (foundEvents.length === 0) {
                return res.status(404).json({ message: "No events found for this keyword" });
           }
