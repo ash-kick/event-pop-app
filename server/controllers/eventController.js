@@ -86,12 +86,18 @@ exports.getSavedEvents = async (req, res, next) => {
 exports.getSearchedEvents = async (req, res, next) => {
      try {
           const keyword = req.body.searchValue;
+          // cityNameValue will be a dropdown in the front end so no triming/modification required.
           const cityNameValue = req.body.cityNameValue;
+          // adding pages for results greater than 10 only want to load 10 at a time
+          const page = parseInt(req.body.page) || 1;
+          const limit = 10;
+          const skip = (page - 1) * limit;
+
           if (!keyword || keyword.trim() === "") {
                return res.status(400).json({ message: "Search keyword is required" });
           }
           const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-          const foundEvents = await Event.find({
+          const keywordQuery = {
                $or: [
                     { eventName: { $regex: escapedKeyword, $options: "i" } },
                     { eventTypeName: { $regex: escapedKeyword, $options: "i" } },
@@ -99,12 +105,16 @@ exports.getSearchedEvents = async (req, res, next) => {
                     { genreName: { $regex: escapedKeyword, $options: "i" } },
                     { subGenreName: { $regex: escapedKeyword, $options: "i" } },
                ],
-               $and: [{ cityName: cityName }],
-          }).limit(10); // limit temp for now
+               startDateTime: { $gte: Date.now() },
+          };
+          if (cityNameValue !== "any") {
+               keywordQuery.cityName = cityNameValue;
+          }
+          const foundEvents = await Event.find(keywordQuery).skip(skip).limit(limit); // limit temp for now
           if (foundEvents.length === 0) {
                return res.status(404).json({ message: "No events found for this keyword" });
           }
-          res.status(200).json({ foundEvents });
+          res.status(200).json({ foundEvents, hasMore: foundEvents.length === limit });
      } catch (err) {
           console.log("No events found");
           next(err);
