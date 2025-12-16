@@ -2,22 +2,17 @@ const mongoose = require("mongoose");
 const Event = require("../models/event");
 const axios = require("axios");
 const { zonedTimeToUtc } = require("date-fns-tz");
+const { CITY_TIMEZONES } = require("../constants/supportedCities");
 
 const TICKETMASTER_EVENTS_BASE_URL = "https://app.ticketmaster.com/discovery/v2/events.json?";
 const TICKETMASTER_API_KEY = process.env.TICKETMASTER_API_KEY;
 
-// names of cities currently supported by eventpop
-const cityNames = ["San Francisco", "Los Angeles"];
-const cityTimezones = {
-     "San Francisco": "America/Los_Angeles",
-     "Los Angeles": "America/Los_Angeles",
-};
 const today = new Date();
 
 // fetch events for a particular city filter
 const fetchEventsForCity = async (cityName) => {
      // pull the correct UTC version of today's date by timezone for the city
-     const cityTimezone = cityTimezones[cityName];
+     const cityTimezone = CITY_TIMEZONES[cityName];
      const cityDateStr = new Date().toLocaleDateString("en-CA", { timeZone: cityTimezone });
      const cityMidnight = new Date(`${cityDateStr}T00:00:00`);
      const cityTodayUTC = zonedTimeToUtc(cityMidnight, cityTimezone);
@@ -162,4 +157,4 @@ const fetchEventsForCity = async (cityName) => {
      }
 };
 
-module.exports = { fetchEventsForCity, cityNames };
+module.exports = { fetchEventsForCity };

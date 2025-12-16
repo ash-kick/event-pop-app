@@ -86,6 +86,7 @@ exports.getSavedEvents = async (req, res, next) => {
 exports.getSearchedEvents = async (req, res, next) => {
      try {
           const keyword = req.body.searchValue;
+          const cityNameValue = req.body.cityNameValue;
           if (!keyword || keyword.trim() === "") {
                return res.status(400).json({ message: "Search keyword is required" });
           }
@@ -95,11 +96,11 @@ exports.getSearchedEvents = async (req, res, next) => {
                     { eventName: { $regex: escapedKeyword, $options: "i" } },
                     { eventTypeName: { $regex: escapedKeyword, $options: "i" } },
                     { venueName: { $regex: escapedKeyword, $options: "i" } },
-                    { cityName: { $regex: escapedKeyword, $options: "i" } },
                     { genreName: { $regex: escapedKeyword, $options: "i" } },
                     { subGenreName: { $regex: escapedKeyword, $options: "i" } },
                ],
-          }).limit(10);
+               $and: [{ cityName: cityName }],
+          }).limit(10); // limit temp for now
           if (foundEvents.length === 0) {
                return res.status(404).json({ message: "No events found for this keyword" });
           }
