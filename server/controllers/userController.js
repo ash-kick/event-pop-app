@@ -52,6 +52,8 @@ exports.loginUser = async (req, res, next) => {
                res.status(200).json({
                     user: user._id,
                     token: token,
+                    // need this for searching upcoming events in your area later
+                    userCity: user.userCity,
                });
           } else return res.status(401).json({ message: "Invalid credentials" });
      } catch (err) {

@@ -22,6 +22,8 @@ router.get("/search", eventController.getSearchedEvents);
 
 // UPCOMING EVENT ROUTES
 
+router.get("/upcoming", eventController.getUpcomingEventsByCity);
+
 // get upcoming events based on user location and current date
 
 module.exports = router;

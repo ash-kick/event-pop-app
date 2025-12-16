@@ -121,4 +121,19 @@ exports.getSearchedEvents = async (req, res, next) => {
      }
 };
 
-// DISPLAY UPCOMING EVENTS BY LOCATION
+// DISPLAY UPCOMING EVENTS BY LOCATION OLDEST TO NEWEST
+
+exports.getUpcomingEventsByCity = async (req, res, next) => {
+     try {
+          const location = req.body.userCity;
+          const upcomingEvents = await Event.find({ cityName: location, startDateTime: { $gte: Date.now() } })
+               .limit(20)
+               .sort({ startDateTime: 1 });
+          if (upcomingEvents.length === 0) {
+               return res.status(404).json({ message: "No upcoming events found for this location" });
+          }
+          res.status(200).json({ upcomingEvents });
+     } catch (err) {
+          next(err);
+     }
+};
