@@ -7,13 +7,13 @@ router.use(authTokenCheck);
 
 //SAVED EVENT ROUTES
 
-// add saved event
+// ADD SAVED EVENTS
 router.post("/saved-event", eventController.addSavedEvent);
 
-// delete saved event
+// DELETE SAVED EVENTS
 router.delete("/saved-event", eventController.deleteSavedEvent);
 
-// display saved event
+// DISPLAY SAVED EVENTS
 router.get("/saved-event", eventController.getSavedEvents);
 
 //SEARCH EVENT ROUTES
@@ -23,7 +23,5 @@ router.get("/search", eventController.getSearchedEvents);
 // UPCOMING EVENT ROUTES
 
 router.get("/upcoming", eventController.getUpcomingEventsByCity);
-
-// get upcoming events based on user location and current date
 
 module.exports = router;
