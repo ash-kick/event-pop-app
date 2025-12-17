@@ -52,6 +52,7 @@ exports.loginUser = async (req, res, next) => {
                res.status(200).json({
                     user: user._id,
                     token: token,
+                    userName: user.userName,
                     // need this for searching upcoming events in your area later
                     userCity: user.userCity,
                });

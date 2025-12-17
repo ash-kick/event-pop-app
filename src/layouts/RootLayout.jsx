@@ -1,6 +1,24 @@
 import { Outlet, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+const logInButton = (
+     <NavLink
+          to="login"
+          id="log-in-button">
+          Log in
+     </NavLink>
+);
+
+const userName = localStorage.getItem("userName");
 
 export default function RootLayout() {
+     const [isAuthenticated, setIsAuthenticated] = useState(false);
+     useEffect(() => {
+          const token = localStorage.getItem("token");
+          if (token) {
+               setIsAuthenticated(true);
+          }
+     }, []);
      return (
           <div className="root-layout">
                <header>
@@ -13,11 +31,7 @@ export default function RootLayout() {
                               <NavLink to="events">Events</NavLink>
                               <NavLink to="preferences">Preferences</NavLink>
                          </div>
-                         <NavLink
-                              to="login"
-                              id="log-in-button">
-                              Log in
-                         </NavLink>
+                         {isAuthenticated ? userName : logInButton}
                     </nav>
                </header>
                <main>
