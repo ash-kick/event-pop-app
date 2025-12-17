@@ -5,6 +5,9 @@ const authTokenCheck = require("../middlewares/authTokenCheck");
 
 // ALL ROUTES RELATED TO EVENT PREFERENCE DATA
 
+// GET display all event preference options
+router.get("/options", eventPreferenceController.displayPreferenceOptions);
+
 router.use(authTokenCheck);
 
 // note that create preference is handled by the user route create user
@@ -14,8 +17,5 @@ router.patch("/", eventPreferenceController.updatePreference);
 
 //GET display event preferenes for a user
 router.get("/", eventPreferenceController.displayPreference);
-
-// GET display all event preference options
-router.get("/options", eventPreferenceController.displayPreferenceOptions);
 
 module.exports = router;
