@@ -1,14 +1,11 @@
 import axios from "axios";
 
 export default function Register() {
-     const currentCities = async () => {
-          await axios.get("api/event-preferences/options").then(response);
-     };
      return (
           <div>
                <p>this is the register page</p>
                <form
-                    action="api/user/register"
+                    action="/api/user/register"
                     method="POST">
                     <label>username</label>
                     <input

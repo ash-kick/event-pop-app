@@ -4,7 +4,7 @@ export default function LogIn() {
                <div className="login-container">
                     <h2>Login</h2>
                     <form
-                         action=""
+                         action="/api/user/login"
                          method="POST">
                          <label htmlFor="username">
                               username<br></br>
