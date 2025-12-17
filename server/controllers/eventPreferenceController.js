@@ -1,4 +1,5 @@
 const EventPreference = require("../models/eventPreference");
+const Event = require("../models/event");
 
 // create new preference during user registration (will all be set to default)
 const createPreferenceForUser = async (user) => {
@@ -56,6 +57,31 @@ exports.displayPreference = async (req, res, next) => {
           res.status(200).json(currentUserPreference);
      } catch (err) {
           console.log("Preference not found");
+          next(err);
+     }
+};
+
+// display all preference options
+
+exports.displayPreferenceOptions = async (req, res, next) => {
+     const currentType = req.body.currentType;
+     const currentGenre = req.body.currentGenre;
+     try {
+          const [locations, types, genres, subGenres] = await Promise.all([
+               Event.distinct("cityName"),
+               Event.distinct("eventTypeName"),
+               currentType ? Event.distinct("genreName", { eventTypeName: currentType }) : Event.distinct("genreName"),
+               currentType && currentGenre
+                    ? Event.distinct("subGenreName", { eventTypeName: currentType, genreName: currentGenre })
+                    : Event.distinct("subGenreName"),
+          ]);
+          res.status(200).json({
+               locations: locations.sort(),
+               types: types.sort(),
+               genres: genres.sort(),
+               subGenres: subGenres.sort(),
+          });
+     } catch (err) {
           next(err);
      }
 };

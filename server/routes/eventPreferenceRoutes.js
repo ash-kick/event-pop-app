@@ -15,4 +15,7 @@ router.patch("/", eventPreferenceController.updatePreference);
 //GET display event preferenes for a user
 router.get("/", eventPreferenceController.displayPreference);
 
+// GET display all event preference options
+router.get("/options", eventPreferenceController.displayPreferenceOptions);
+
 module.exports = router;
