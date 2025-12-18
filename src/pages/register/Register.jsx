@@ -1,18 +1,33 @@
 import { useContext } from "react";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
+import axios from "axios";
 
 export default function Register() {
      const { eventOptions, loading } = useContext(EventOptionsContext);
+     async function onSubmit(e) {
+          e.preventDefault();
+          try {
+               const formData = new FormData(e.target);
+               const response = await axios.post("/api/user/register", {
+                    userName: formData.get("username"),
+                    password: formData.get("password"),
+                    email: formData.get("email"),
+                    userCity: formData.get("usercity"),
+               });
+          } catch (err) {
+               if (err.response) {
+                    console.log("Registration unsuccessful!");
+               }
+          }
+     }
      return (
           <div>
-               <p>this is the register page</p>
-               <form
-                    action="/api/user/register"
-                    method="POST">
+               <h2>Register</h2>
+               <form onSubmit={onSubmit}>
                     <label>username</label>
                     <input
                          type="text"
-                         name="userName"
+                         name="username"
                          required></input>
                     <label>email</label>
                     <input
@@ -27,7 +42,7 @@ export default function Register() {
                     <label>city</label>
                     <select
                          type="text"
-                         name="userCity"
+                         name="usercity"
                          required>
                          {loading ? (
                               <option> Loading cities ...</option>
@@ -48,6 +63,10 @@ export default function Register() {
                               </>
                          )}
                     </select>
+                    <input
+                         type="submit"
+                         value="register"
+                         className="register-button"></input>
                </form>
           </div>
      );
