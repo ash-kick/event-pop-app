@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const logInButton = (
@@ -9,28 +9,46 @@ const logInButton = (
      </NavLink>
 );
 
-const userName = localStorage.getItem("userName");
-const firstLetterUser = userName[0].toUpperCase();
-
-const firstLetterLogoutButton = (
-     <div className="first-letter-logout-container">
-          <div className="first-letter">{firstLetterUser}</div>
-          <NavLink
-               to="login"
-               id="log-out-button">
-               Log out
-          </NavLink>
-     </div>
-);
-
 export default function RootLayout() {
      const [isAuthenticated, setIsAuthenticated] = useState(false);
+     const [userName, setUserName] = useState(null);
+     const navigate = useNavigate();
+     // using this to retrigger auth check
+     const location = useLocation();
      useEffect(() => {
           const token = localStorage.getItem("token");
+          const storedUserName = localStorage.getItem("userName");
           if (token) {
                setIsAuthenticated(true);
+               setUserName(storedUserName);
+          } else {
+               setIsAuthenticated(false);
+               setUserName(null);
           }
-     }, []);
+     }, [location]);
+
+     const handleLogout = () => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("userName");
+          localStorage.removeItem("userCity");
+          setIsAuthenticated(false);
+          setUserName(null);
+
+          navigate("/login");
+     };
+
+     const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
+
+     const firstLetterLogoutButton = (
+          <div className="first-letter-logout-container">
+               <div className="first-letter">{firstLetterUser}</div>
+               <button
+                    onClick={handleLogout}
+                    id="log-out-button">
+                    Log out
+               </button>
+          </div>
+     );
      return (
           <div className="root-layout">
                <header>
