@@ -9,7 +9,8 @@ export default function Register() {
      const [isSubmitting, setIsSubmitting] = useState(false);
      const [error, setError] = useState(null);
      const [success, setSuccess] = useState(false);
-     const successMessage = "You've successfully registered";
+     const navigate = useNavigate();
+     const successMessage = "You've successfully registered!";
      async function onSubmit(e) {
           e.preventDefault();
           // clearing any old error or success status
@@ -29,7 +30,7 @@ export default function Register() {
                console.log(response.data);
                setTimeout(() => {
                     navigate("/login");
-               }, 2000);
+               }, 1000);
           } catch (err) {
                setError(getErrorMessage(err));
           } finally {
@@ -65,20 +66,13 @@ export default function Register() {
                          {loading ? (
                               <option> Loading cities ...</option>
                          ) : (
-                              <>
+                              eventOptions?.locations.map((city) => (
                                    <option
-                                        key="any"
-                                        value="any">
-                                        Any
+                                        key={city}
+                                        value={city}>
+                                        {city}
                                    </option>
-                                   {eventOptions?.locations.map((city) => (
-                                        <option
-                                             key={city}
-                                             value={city}>
-                                             {city}
-                                        </option>
-                                   ))}
-                              </>
+                              ))
                          )}
                     </select>
                     <input
