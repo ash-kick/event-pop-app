@@ -1,12 +1,21 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
+import { getErrorMessage } from "../../utils/errorHandler";
 import axios from "axios";
 
 export default function Register() {
      const { eventOptions, loading } = useContext(EventOptionsContext);
      const [isSubmitting, setIsSubmitting] = useState(false);
+     const [error, setError] = useState(null);
+     const [success, setSuccess] = useState(false);
+     const successMessage = "You've successfully registered";
      async function onSubmit(e) {
           e.preventDefault();
+          // clearing any old error or success status
+          setError(null);
+          setSuccess(false);
+          // start of submit process
           setIsSubmitting(true);
           try {
                const formData = new FormData(e.target);
@@ -16,10 +25,13 @@ export default function Register() {
                     email: formData.get("email"),
                     userCity: formData.get("usercity"),
                });
+               setSuccess(true);
+               console.log(response.data);
+               setTimeout(() => {
+                    navigate("/login");
+               }, 2000);
           } catch (err) {
-               if (err.response) {
-                    console.log("Registration unsuccessful!");
-               }
+               setError(getErrorMessage(err));
           } finally {
                setIsSubmitting(false);
           }
@@ -27,6 +39,8 @@ export default function Register() {
      return (
           <div>
                <h2>Register</h2>
+               {error && <div className="register-error-message">{error}</div>}
+               {success && <div className="register-success-message">{successMessage}</div>}
                <form onSubmit={onSubmit}>
                     <label>username</label>
                     <input
