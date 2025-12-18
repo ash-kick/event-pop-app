@@ -1,6 +1,8 @@
-import axios from "axios";
+import { useContext } from "react";
+import { EventOptionsContext } from "../../contexts/EventOptionsContext";
 
 export default function Register() {
+     const { eventOptions, loading } = useContext(EventOptionsContext);
      return (
           <div>
                <p>this is the register page</p>
@@ -27,7 +29,17 @@ export default function Register() {
                          type="text"
                          name="userCity"
                          required>
-                         {}
+                         {loading ? (
+                              <option> Loading cities ...</option>
+                         ) : (
+                              eventOptions?.locations.map((city) => (
+                                   <option
+                                        key={city}
+                                        value={city}>
+                                        {city}
+                                   </option>
+                              ))
+                         )}
                     </select>
                </form>
           </div>
