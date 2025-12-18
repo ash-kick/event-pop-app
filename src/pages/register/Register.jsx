@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
 import axios from "axios";
 
 export default function Register() {
      const { eventOptions, loading } = useContext(EventOptionsContext);
+     const [isSubmitting, setIsSubmitting] = useState(false);
      async function onSubmit(e) {
           e.preventDefault();
+          setIsSubmitting(true);
           try {
                const formData = new FormData(e.target);
                const response = await axios.post("/api/user/register", {
@@ -18,6 +20,8 @@ export default function Register() {
                if (err.response) {
                     console.log("Registration unsuccessful!");
                }
+          } finally {
+               setIsSubmitting(false);
           }
      }
      return (
@@ -65,8 +69,9 @@ export default function Register() {
                     </select>
                     <input
                          type="submit"
-                         value="register"
-                         className="register-button"></input>
+                         value={isSubmitting ? "registering..." : "register"}
+                         className="register-button"
+                         disabled={isSubmitting}></input>
                </form>
           </div>
      );
