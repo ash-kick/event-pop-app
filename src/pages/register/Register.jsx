@@ -32,13 +32,20 @@ export default function Register() {
                          {loading ? (
                               <option> Loading cities ...</option>
                          ) : (
-                              eventOptions?.locations.map((city) => (
+                              <>
                                    <option
-                                        key={city}
-                                        value={city}>
-                                        {city}
+                                        key="any"
+                                        value="any">
+                                        Any
                                    </option>
-                              ))
+                                   {eventOptions?.locations.map((city) => (
+                                        <option
+                                             key={city}
+                                             value={city}>
+                                             {city}
+                                        </option>
+                                   ))}
+                              </>
                          )}
                     </select>
                </form>
