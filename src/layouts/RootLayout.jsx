@@ -10,6 +10,18 @@ const logInButton = (
 );
 
 const userName = localStorage.getItem("userName");
+const firstLetterUser = userName[0].toUpperCase();
+
+const firstLetterLogoutButton = (
+     <div className="first-letter-logout-container">
+          <div className="first-letter">{firstLetterUser}</div>
+          <NavLink
+               to="login"
+               id="log-out-button">
+               Log out
+          </NavLink>
+     </div>
+);
 
 export default function RootLayout() {
      const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,7 +43,7 @@ export default function RootLayout() {
                               <NavLink to="events">Events</NavLink>
                               <NavLink to="preferences">Preferences</NavLink>
                          </div>
-                         {isAuthenticated ? userName : logInButton}
+                         {isAuthenticated ? firstLetterLogoutButton : logInButton}
                     </nav>
                </header>
                <main>
