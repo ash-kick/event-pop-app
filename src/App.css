@@ -8,11 +8,11 @@
 
 /* root layout styling */
 nav {
-     background-color: rgb(111, 195, 226);
+     background-color: rgb(217, 228, 232);
      color: rgb(0, 42, 57);
      font-family: Arial, Helvetica, sans-serif;
      width: 100%;
-     height: 54px;
+     height: 56px;
      display: flex;
      align-items: center;
      position: relative;
@@ -21,7 +21,7 @@ nav {
 .nav-links-main {
      display: flex;
      align-items: center;
-     justify-content: center;
+     justify-content: flex-start;
      position: absolute;
      left: 50%;
      transform: translateX(-50%);
@@ -31,11 +31,11 @@ nav {
 #log-out-button {
      display: flex;
      align-items: center;
-     background-color: rgba(0, 42, 57, 0.5);
+     background-color: rgb(0, 42, 57);
      color: rgb(217, 228, 232);
-     border-radius: 15px;
+     border-radius: 8px;
      border: none;
-     padding: 10px 10px;
+     padding: 8px 16px;
      cursor: pointer;
      font-family: Arial, Helvetica, sans-serif;
      font-size: inherit;
@@ -44,13 +44,13 @@ nav {
 }
 
 #log-in-button {
-     width: 75px;
+     width: 80px;
      margin-left: auto;
-     margin-right: 5px;
+     margin-right: 8px;
 }
 
 #log-out-button {
-     width: 95px;
+     width: 96px;
 }
 
 .first-letter {
@@ -60,9 +60,9 @@ nav {
      border-radius: 50%;
      background-color: rgb(0, 42, 57);
      color: white;
-     min-width: 35px;
-     min-height: 35px;
-     margin: 5px;
+     min-width: 32px;
+     min-height: 32px;
+     margin: 8px;
      font-weight: bold;
      font-size: 16px;
      line-height: 1;
@@ -72,23 +72,23 @@ nav {
      display: flex;
      align-items: center;
      margin-left: auto;
-     margin-right: 5px;
+     margin-right: 8px;
      justify-content: center;
 }
 
 #log-out-button:hover,
 #log-in-button:hover {
-     background-color: rgba(0, 42, 57, 0.7);
+     background-color: rgba(0, 42, 57, 0.8);
 }
 a {
      color: rgb(0, 42, 57);
      text-decoration: none;
-     padding: 10px 10px;
+     padding: 8px 16px;
 }
 
 footer {
-     text-align: center;
-     padding: 20px;
+     text-align: left;
+     padding: 16px;
      color: rgb(0, 42, 57);
 }
 
@@ -96,63 +96,79 @@ footer {
 
 .landing-container {
      display: flex;
-     align-items: center;
-     justify-content: center;
-     padding: 40px;
+     align-items: flex-start;
+     justify-content: flex-start;
+     padding: 32px;
 }
 
 .landing-content-box {
      display: flex;
      flex-direction: column;
-     align-items: center;
-     justify-content: space-between;
+     align-items: flex-start;
+     justify-content: flex-start;
      background-color: rgb(217, 228, 232);
-     padding-bottom: 5%;
+     padding-bottom: 32px;
      width: 80vw;
      max-width: 1500px;
      min-height: 10rem;
      margin: 0 auto;
-     border-radius: 15px;
-     box-shadow: 0 0 15px rgba(0, 42, 57, 0.679);
+     border-radius: 8px;
+     box-shadow: 0 2px 8px rgba(0, 42, 57, 0.1);
 }
 
 .welcome {
      display: flex;
      color: rgb(0, 42, 57);
-     justify-content: center;
-     align-items: center;
+     justify-content: flex-start;
+     align-items: flex-start;
      width: 100%;
-     gap: 5px;
-     padding: 20px;
+     gap: 24px;
+     padding: 32px;
      flex-wrap: wrap;
-     white-space: nowrap;
      box-sizing: border-box;
 }
 
+.welcome-text-container {
+     display: flex;
+     flex-direction: column;
+     flex: 1;
+     min-width: 0;
+}
+
 .welcome-to-header-text {
-     font-family: "Damion", cursive;
-     width: auto;
-     font-size: clamp(1.75rem, 5.5vw, 50px);
-     flex-shrink: 1;
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     width: 100%;
+     font-size: 48px;
+     font-weight: 700;
+     margin: 0 0 16px 0;
+     line-height: 1.2;
+     letter-spacing: -0.02em;
+}
+
+.welcome-subhead {
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     font-size: 20px;
+     font-weight: 400;
+     margin: 0;
+     color: rgb(0, 42, 57);
+     line-height: 1.5;
+     opacity: 0.8;
 }
 
 .event-pop-logo {
-     height: clamp(20px, 12vw, 140px);
+     height: 80px;
      width: auto;
-     max-width: 100%;
+     max-width: 200px;
      object-fit: contain;
-     flex-shrink: 1;
-}
-
-.landing-blurb {
-     padding: 0 3vh 3vh 3vh;
+     flex-shrink: 0;
+     align-self: flex-start;
 }
 
 .landing-image-container {
      display: flex;
-     justify-content: center;
+     justify-content: flex-start;
      padding: 0;
-     margin-bottom: 60px;
+     margin-bottom: 56px;
 }
 
 .landing-photo {
@@ -163,20 +179,20 @@ footer {
 
 .landing-feature-cards {
      display: flex;
-     justify-content: space-evenly;
+     justify-content: flex-start;
      width: 100%;
-     gap: 10px;
-     padding: 0 5px 0 5px;
+     gap: 8px;
+     padding: 0 8px 0 8px;
      box-sizing: border-box;
      background-color: rgb(0, 42, 57);
 }
 
 .feature-card {
      color: rgb(217, 228, 232);
-     border-radius: 15px;
-     padding: 15px 10px;
+     border-radius: 8px;
+     padding: 16px;
      min-width: 25%;
-     min-height: 250px;
+     min-height: 256px;
 }
 
 .feature-card-header {
@@ -184,7 +200,7 @@ footer {
 }
 
 .feature-card-blurb {
-     color: rgb(111, 195, 226);
+     color: rgb(217, 228, 232);
      font-size: 14px;
 }
 
@@ -192,24 +208,24 @@ footer {
 
 .home-container {
      display: flex;
-     align-items: center;
-     justify-content: center;
-     padding: 40px;
+     align-items: flex-start;
+     justify-content: flex-start;
+     padding: 32px;
 }
 
 .home-content-box {
      display: flex;
      flex-direction: column;
-     align-items: center;
-     justify-content: space-between;
+     align-items: flex-start;
+     justify-content: flex-start;
      background-color: rgb(217, 228, 232);
-     padding: 0 20px 5% 20px;
+     padding: 0 16px 32px 16px;
      width: 80vw;
      max-width: 1500px;
      min-height: 10rem;
      margin: 0 auto;
-     border-radius: 15px;
-     box-shadow: 0 0 15px rgba(0, 42, 57, 0.679);
+     border-radius: 8px;
+     box-shadow: 0 2px 8px rgba(0, 42, 57, 0.1);
 }
 .home-welcome-message {
      color: rgb(0, 42, 57);
@@ -224,9 +240,9 @@ footer {
 .upcoming-event-feed {
      background-color: rgb(0, 42, 57);
      color: rgb(217, 228, 232);
-     border-radius: 15px;
-     margin: 15px 10px;
+     border-radius: 8px;
+     margin: 16px 8px;
      min-width: 25%;
-     min-height: 250px;
-     padding: 10px;
+     min-height: 256px;
+     padding: 16px;
 }

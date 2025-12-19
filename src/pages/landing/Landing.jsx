@@ -3,14 +3,16 @@ export default function Landing() {
           <div className="landing-container">
                <div className="landing-content-box">
                     <div className="welcome">
-                         <h1 className="welcome-to-header-text">Welcome to ...</h1>
+                         <div className="welcome-text-container">
+                              <h1 className="welcome-to-header-text">Find events you'll actually love</h1>
+                              <p className="welcome-subhead">Personalized picks based on your vibe, location, and schedule.</p>
+                         </div>
                          <img
                               src="../assets/event-pop-logo-cropped.png"
                               alt="event pop logo"
                               className="event-pop-logo"
                          />
                     </div>
-                    <p className="landing-blurb">Here to help you find events you'll love! Always have something fun to look forward to 😎.</p>
                     <div className="landing-image-container">
                          <img
                               src="../../assets/event-pop-landing-photo-concert.webp"
