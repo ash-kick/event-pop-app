@@ -1,11 +1,12 @@
 // need to add back in test data once in db
 
 export default function Home() {
+     const userName = localStorage.getItem("userName");
      return (
           <div className="home-container">
                <div className="home-content-box">
                     <div className="home-welcome-message">
-                         <h1>Welcome back [PLACE_HOLDER], let's see what's happening near you!</h1>
+                         <h1>Welcome back {userName}!</h1>
                     </div>
                     <div className="home-feeds-container">
                          <div className="saved-event-feed">
