@@ -4,6 +4,7 @@ import RootLayout from "./layouts/RootLayout";
 
 import { EventOptionsProvider } from "./contexts/EventOptionsContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AlreadyAuthed from "./components/AlreadyAuthed";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/home/Home";
 import Events from "./pages/events/Events";
@@ -47,10 +48,18 @@ function App() {
                                    }
                                    path="/preferences"></Route>
                               <Route
-                                   element={<LogIn />}
+                                   element={
+                                        <AlreadyAuthed>
+                                             <LogIn />
+                                        </AlreadyAuthed>
+                                   }
                                    path="/login"></Route>
                               <Route
-                                   element={<Register />}
+                                   element={
+                                        <AlreadyAuthed>
+                                             <Register />
+                                        </AlreadyAuthed>
+                                   }
                                    path="/register"></Route>
                          </Route>
                     </Routes>
