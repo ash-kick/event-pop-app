@@ -2,10 +2,10 @@ export default function Landing() {
      return (
           <div className="landing-container">
                <div className="landing-content-box">
-                    <div className="welcome">
-                         <div className="welcome-text-container">
-                              <h1 className="welcome-to-header-text">Find events you'll actually love</h1>
-                              <p className="welcome-subhead">Personalized picks based on your vibe, location, and schedule.</p>
+                    <div className="landing-text">
+                         <div className="landing-text-container">
+                              <h1 className="landing-header-text">Find events you'll actually love</h1>
+                              <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
                          </div>
                          <img
                               src="../assets/event-pop-logo-cropped.png"
