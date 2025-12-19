@@ -1,45 +1,38 @@
+import { Link } from "react-router-dom";
+
 export default function Landing() {
      return (
           <div className="landing-container">
-               <div className="landing-content-box">
-                    <div className="landing-text">
-                         <div className="landing-text-container">
-                              <h1 className="landing-header-text">Find events you'll actually love</h1>
-                              <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
-                         </div>
-                         <img
-                              src="../assets/event-pop-logo-cropped.png"
-                              alt="event pop logo"
-                              className="event-pop-logo"
-                         />
+               <div className="landing-hero">
+                    <div className="landing-hero-left">
+                         <h1 className="landing-header-text">Find events you'll actually love</h1>
+                         <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
+                         <Link
+                              to="/register"
+                              className="landing-cta-button">
+                              Get Started
+                         </Link>
                     </div>
-                    <div className="landing-image-container">
+                    <div className="landing-hero-right">
                          <img
                               src="../../assets/event-pop-landing-photo-concert.webp"
-                              className="landing-photo"
-                         />
-                         <img
-                              src="../../assets/event-pop-landing-photo-team-labs.webp"
-                              className="landing-photo"
-                         />
-                         <img
-                              src="../../assets/event-pop-landing-photo-colored-glass.webp"
-                              className="landing-photo"
+                              alt="Concert crowd"
+                              className="landing-hero-image"
                          />
                     </div>
-                    <div className="landing-feature-cards">
-                         <div className="feature-card">
-                              <h2 className="feature-card-header">Discover</h2>
-                              <p className="feature-card-blurb">Explore curated local events tailored to your interests.</p>
-                         </div>
-                         <div className="feature-card">
-                              <h2 className="feature-card-header">Personalize</h2>
-                              <p className="feature-card-blurb">Set your preferences and get smart recommendations.</p>
-                         </div>
-                         <div className="feature-card">
-                              <h2 className="feature-card-header">Connect</h2>
-                              <p className="feature-card-blurb">Invite friends to share your plans instantly.</p>
-                         </div>
+               </div>
+               <div className="landing-feature-cards">
+                    <div className="feature-card">
+                         <h2 className="feature-card-header">Discover</h2>
+                         <p className="feature-card-blurb">Explore curated local events tailored to your interests.</p>
+                    </div>
+                    <div className="feature-card">
+                         <h2 className="feature-card-header">Personalize</h2>
+                         <p className="feature-card-blurb">Set your preferences and get smart recommendations.</p>
+                    </div>
+                    <div className="feature-card">
+                         <h2 className="feature-card-header">Connect</h2>
+                         <p className="feature-card-blurb">Invite friends to share your plans instantly.</p>
                     </div>
                </div>
           </div>

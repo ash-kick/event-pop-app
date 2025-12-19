@@ -96,85 +96,106 @@ footer {
 
 .landing-container {
      display: flex;
-     align-items: flex-start;
-     justify-content: flex-start;
-     padding: 32px;
-}
-
-.landing-content-box {
-     display: flex;
      flex-direction: column;
      align-items: flex-start;
      justify-content: flex-start;
-     background-color: rgb(217, 228, 232);
-     padding-bottom: 32px;
-     width: 80vw;
-     max-width: 1500px;
-     min-height: 10rem;
-     margin: 0 auto;
-     border-radius: 8px;
-     box-shadow: 0 2px 8px rgba(0, 42, 57, 0.1);
-}
-
-.landing-text {
-     display: flex;
-     color: rgb(0, 42, 57);
-     justify-content: flex-start;
-     align-items: flex-start;
+     padding: 0;
      width: 100%;
-     gap: 24px;
-     padding: 32px;
-     flex-wrap: wrap;
-     box-sizing: border-box;
+     margin: 0;
 }
 
-.landing-text-container {
+.landing-hero {
+     display: flex;
+     align-items: stretch;
+     justify-content: space-between;
+     width: 100%;
+     gap: 48px;
+     margin-bottom: 0;
+     min-height: 600px;
+}
+
+.landing-hero-left {
      display: flex;
      flex-direction: column;
+     justify-content: center;
      flex: 1;
-     min-width: 0;
+     padding: 64px 32px;
 }
 
 .landing-header-text {
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
      width: 100%;
-     font-size: 48px;
+     font-size: 56px;
      font-weight: 700;
-     margin: 0 0 16px 0;
-     line-height: 1.2;
-     letter-spacing: -0.02em;
+     margin: 0 0 24px 0;
+     line-height: 1.1;
+     letter-spacing: -0.03em;
+     color: rgb(0, 42, 57);
 }
 
 .landing-subhead {
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
      font-size: 20px;
      font-weight: 400;
-     margin: 0;
+     margin: 0 0 32px 0;
      color: rgb(0, 42, 57);
-     line-height: 1.5;
-     opacity: 0.8;
+     line-height: 1.6;
+     opacity: 0.7;
 }
 
-.event-pop-logo {
-     height: 80px;
-     width: auto;
-     max-width: 200px;
-     object-fit: contain;
-     flex-shrink: 0;
-     align-self: flex-start;
+.landing-cta-button {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     background-color: rgb(0, 42, 57);
+     color: rgb(217, 228, 232);
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     font-size: 16px;
+     font-weight: 600;
+     padding: 16px 32px;
+     border-radius: 8px;
+     text-decoration: none;
+     width: fit-content;
+     transition: background-color 0.2s ease;
 }
 
-.landing-image-container {
+.landing-cta-button:hover {
+     background-color: rgba(0, 42, 57, 0.9);
+}
+
+.landing-hero-right {
+     flex: 1;
      display: flex;
-     justify-content: flex-start;
-     padding: 0;
-     margin-bottom: 56px;
+     align-items: stretch;
+     min-width: 0;
 }
 
-.landing-photo {
-     width: 33.3333%;
-     height: auto;
+.landing-hero-image {
+     width: 100%;
+     height: 100%;
      object-fit: cover;
+     border-radius: 0;
+}
+
+@media (max-width: 968px) {
+     .landing-hero {
+          flex-direction: column;
+          min-height: auto;
+          gap: 32px;
+     }
+
+     .landing-hero-left {
+          padding: 32px 24px;
+          max-width: 100%;
+     }
+
+     .landing-header-text {
+          font-size: 40px;
+     }
+
+     .landing-hero-right {
+          min-height: 400px;
+     }
 }
 
 .landing-feature-cards {
@@ -210,7 +231,7 @@ footer {
      display: flex;
      align-items: flex-start;
      justify-content: flex-start;
-     padding: 32px;
+     padding: 32px 0;
 }
 
 .home-content-box {
@@ -220,10 +241,9 @@ footer {
      justify-content: flex-start;
      background-color: rgb(217, 228, 232);
      padding: 0 16px 32px 16px;
-     width: 80vw;
-     max-width: 1500px;
+     width: 100%;
      min-height: 10rem;
-     margin: 0 auto;
+     margin: 0;
      border-radius: 8px;
      box-shadow: 0 2px 8px rgba(0, 42, 57, 0.1);
 }
