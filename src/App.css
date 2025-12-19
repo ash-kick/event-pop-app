@@ -268,7 +268,7 @@ footer {
 
 .home-feeds-container {
      display: flex;
-     flex-direction: row;
+     flex-direction: column;
 }
 
 .saved-event-feed,
