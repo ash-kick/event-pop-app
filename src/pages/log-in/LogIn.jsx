@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getErrorMessage } from "../../utils/errorHandler";
 import axios from "axios";
 
@@ -9,8 +9,6 @@ export default function LogIn() {
      const [success, setSuccess] = useState(false);
      const successMessage = "Login successful!";
      const navigate = useNavigate();
-     // using this to retrigger auth check
-     const location = useLocation();
      async function onSubmit(e) {
           e.preventDefault();
           // clearing any old error or success status
@@ -28,7 +26,6 @@ export default function LogIn() {
                localStorage.setItem("userName", response.data.userName);
                localStorage.setItem("userCity", response.data.userCity);
                setSuccess(true);
-               console.log(response.data);
                setTimeout(() => {
                     navigate("/home");
                }, 1000);
