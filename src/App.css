@@ -27,16 +27,59 @@ nav {
      transform: translateX(-50%);
 }
 
+#log-in-button,
+#log-out-button {
+     display: flex;
+     align-items: center;
+     background-color: rgba(0, 42, 57, 0.5);
+     color: rgb(217, 228, 232);
+     border-radius: 15px;
+     border: none;
+     padding: 10px 10px;
+     cursor: pointer;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: inherit;
+     text-decoration: none;
+     justify-content: center;
+}
+
 #log-in-button {
+     width: 75px;
+     margin-left: auto;
+     margin-right: 5px;
+}
+
+#log-out-button {
+     width: 95px;
+}
+
+.first-letter {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     background-color: rgb(0, 42, 57);
+     color: white;
+     min-width: 35px;
+     min-height: 35px;
+     margin: 5px;
+     font-weight: bold;
+     font-size: 16px;
+     line-height: 1;
+}
+
+.first-letter-logout-container {
      display: flex;
      align-items: center;
      margin-left: auto;
      margin-right: 5px;
-     background-color: rgba(0, 42, 57, 0.5);
-     color: rgb(217, 228, 232);
-     border-radius: 15px;
+     justify-content: center;
 }
 
+#log-out-button:hover,
+#log-in-button:hover {
+     background-color: rgba(0, 42, 57, 0.7);
+}
 a {
      color: rgb(0, 42, 57);
      text-decoration: none;
