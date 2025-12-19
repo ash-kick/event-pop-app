@@ -26,7 +26,7 @@ Future features:
 
 ### App Landing Page:
 
-![EventPop Landing Page Screenshot](assets/event-pop-app-landing-screenshot.png)
+![EventPop Landing Page Screenshot](assets/event-pop-app-landing.png)
 
 # Springboard Capstone Project Requirements & Details
 
