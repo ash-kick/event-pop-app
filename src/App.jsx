@@ -3,6 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, Routes } from "re
 import RootLayout from "./layouts/RootLayout";
 
 import { EventOptionsProvider } from "./contexts/EventOptionsContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/home/Home";
 import Events from "./pages/events/Events";
@@ -25,13 +26,25 @@ function App() {
                                    index
                                    element={<Landing />}></Route>
                               <Route
-                                   element={<Home />}
+                                   element={
+                                        <ProtectedRoute>
+                                             <Home />
+                                        </ProtectedRoute>
+                                   }
                                    path="/home"></Route>
                               <Route
-                                   element={<Events />}
+                                   element={
+                                        <ProtectedRoute>
+                                             <Events />
+                                        </ProtectedRoute>
+                                   }
                                    path="/events"></Route>
                               <Route
-                                   element={<Preferences />}
+                                   element={
+                                        <ProtectedRoute>
+                                             <Preferences />
+                                        </ProtectedRoute>
+                                   }
                                    path="/preferences"></Route>
                               <Route
                                    element={<LogIn />}
