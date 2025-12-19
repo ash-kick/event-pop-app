@@ -9,7 +9,7 @@ export default function Landing() {
                          <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
                          <Link
                               to="/register"
-                              className="landing-cta-button">
+                              className="landing-get-started-button">
                               Get Started
                          </Link>
                     </div>

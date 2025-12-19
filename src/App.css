@@ -16,7 +16,16 @@ nav {
      justify-content: flex-start;
      position: absolute;
      left: 50%;
-     transform: translateX(-50%);
+     translate: -50%;
+}
+
+@media (max-width: 600px) {
+     .nav-links-main {
+          display: flex;
+          align-items: left;
+          justify-content: left;
+          left: 35%;
+     }
 }
 
 #log-in-button,
@@ -82,6 +91,7 @@ footer {
      text-align: left;
      padding: 16px;
      color: rgb(0, 42, 57);
+     font-size: 10px;
 }
 
 /* landing styling */
@@ -135,7 +145,7 @@ footer {
      opacity: 0.7;
 }
 
-.landing-cta-button {
+.landing-get-started-button {
      display: inline-flex;
      align-items: center;
      justify-content: center;
@@ -144,14 +154,14 @@ footer {
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
      font-size: 16px;
      font-weight: 600;
-     padding: 16px 32px;
+     padding: 16px 24px;
      border-radius: 8px;
      text-decoration: none;
      width: fit-content;
      transition: background-color 0.2s ease;
 }
 
-.landing-cta-button:hover {
+.landing-get-started-button:hover {
      background-color: rgba(0, 42, 57, 0.9);
 }
 
