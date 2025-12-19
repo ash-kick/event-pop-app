@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EventSearchDisplay from "./EventsSearchDisplay";
+import EventSearchDisplay from "../../components/EventsSearchDisplay";
 
 export default function Events() {
      return (
