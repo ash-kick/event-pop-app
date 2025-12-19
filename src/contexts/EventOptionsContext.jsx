@@ -19,7 +19,6 @@ export function EventOptionsProvider({ children }) {
           const fetchEventOptions = async () => {
                try {
                     const response = await axios.get("/api/event-preferences/options");
-                    console.log(response.data);
                     setEventOptions(response.data);
                     setLoading(false);
                } catch (err) {
