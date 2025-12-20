@@ -22,45 +22,43 @@ export default function Home() {
                     <div className="home-welcome-message">
                          <h1>Welcome back {userName}!</h1>
                     </div>
-                    <div className="home-feeds-container">
-                         <div className="event-page-display">
-                              <div>
-                                   <form onSubmit={handleSubmit}>
-                                        <label>location</label>
-                                        <select
-                                             type="text"
-                                             name="usercity"
-                                             defaultValue={validCity || ""}
-                                             onChange={(event) => setSubmittedCity(event.target.value)}
-                                             required>
-                                             {loading ? (
-                                                  <option> Loading cities ...</option>
-                                             ) : (
-                                                  eventOptions?.locations.map((city) => (
-                                                       <option
-                                                            key={city}
-                                                            value={city}>
-                                                            {city}
-                                                       </option>
-                                                  ))
-                                             )}
-                                        </select>
-                                        <input
-                                             type="search"
-                                             placeholder="Artist, Venue, Keyword"
-                                             value={currentSearchBarValue}
-                                             onChange={(event) => setCurrentSearchBarValue(event.target.value)}></input>
-                                        <button type="submit">Search</button>
-                                   </form>
-                                   <EventSearchDisplay
-                                        submittedSearchTerm={submittedSearchTerm}
-                                        submittedCity={submittedCity}
-                                   />
-                              </div>
+                    <div className="event-page-display">
+                         <div>
+                              <form onSubmit={handleSubmit}>
+                                   <label>location</label>
+                                   <select
+                                        type="text"
+                                        name="usercity"
+                                        defaultValue={validCity || ""}
+                                        onChange={(event) => setSubmittedCity(event.target.value)}
+                                        required>
+                                        {loading ? (
+                                             <option> Loading cities ...</option>
+                                        ) : (
+                                             eventOptions?.locations.map((city) => (
+                                                  <option
+                                                       key={city}
+                                                       value={city}>
+                                                       {city}
+                                                  </option>
+                                             ))
+                                        )}
+                                   </select>
+                                   <input
+                                        type="search"
+                                        placeholder="Artist, Venue, Keyword"
+                                        value={currentSearchBarValue}
+                                        onChange={(event) => setCurrentSearchBarValue(event.target.value)}></input>
+                                   <button type="submit">Search</button>
+                              </form>
+                              <EventSearchDisplay
+                                   submittedSearchTerm={submittedSearchTerm}
+                                   submittedCity={submittedCity}
+                              />
                          </div>
-                         <div className="upcoming-event-feed">
-                              <h2>Upcoming Events in Your Area</h2>
-                         </div>
+                    </div>
+                    <div className="upcoming-event-feed">
+                         <h2>Upcoming Events in Your Area</h2>
                     </div>
                </div>
           </div>

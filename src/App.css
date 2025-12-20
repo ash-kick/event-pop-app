@@ -254,30 +254,19 @@ footer {
      flex-direction: column;
      align-items: flex-start;
      justify-content: flex-start;
-     background-color: rgb(217, 228, 232);
-     padding: 0 16px 32px 16px;
      width: 100%;
-     min-height: 10rem;
      margin: 0;
-     border-radius: 8px;
      box-shadow: 0 2px 8px rgba(0, 42, 57, 0.1);
 }
+
 .home-welcome-message {
      color: rgb(0, 42, 57);
 }
 
-.home-feeds-container {
-     display: flex;
-     flex-direction: column;
-}
-
-.saved-event-feed,
 .upcoming-event-feed {
      background-color: rgb(0, 42, 57);
      color: rgb(217, 228, 232);
-     border-radius: 8px;
-     margin: 16px 8px;
-     min-width: 25%;
+     width: 100%;
      min-height: 256px;
-     padding: 16px;
+     padding: 8px;
 }
