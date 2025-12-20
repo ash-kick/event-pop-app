@@ -14,13 +14,18 @@ export default function Home() {
 
      const handleSubmit = (e) => {
           e.preventDefault();
-          setSubmittedSearchTerm(currentSearchBarValue);
+          try {
+               setSubmittedSearchTerm(currentSearchBarValue);
+               setSubmittedCity(formData.get("usercity") || "");
+          } catch (err) {
+               console.log(err);
+          }
      };
      return (
           <div className="home-container">
                <div className="home-content-box">
                     <div className="home-welcome-message">
-                         <h1>Welcome back {userName}!</h1>
+                         <h1>Hi, {userName}!</h1>
                     </div>
                     <div className="event-page-display">
                          <div>
