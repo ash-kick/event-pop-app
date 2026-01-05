@@ -1,6 +1,6 @@
 import EventSearchDisplay from "../../components/EventsSearchDisplay";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 export default function Home() {
      const userName = localStorage.getItem("userName");
@@ -11,6 +11,11 @@ export default function Home() {
      const userCity = localStorage.getItem("userCity");
      // checking that user city exists in options list
      const validCity = eventOptions?.locations?.includes(userCity) ? userCity : null;
+     useEffect(() => {
+          if (!loading && validCity && !submittedCity) {
+               setSubmittedCity(validCity);
+          }
+     }, [loading, validCity, submittedCity]);
 
      const handleSubmit = (e) => {
           e.preventDefault();
