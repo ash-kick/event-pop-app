@@ -6,9 +6,9 @@ export default function Home() {
      const userName = localStorage.getItem("userName");
      const [currentSearchBarValue, setCurrentSearchBarValue] = useState("");
      const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
-     const [submittedCity, setSubmittedCity] = useState("");
      const { eventOptions, loading } = useContext(EventOptionsContext);
      const userCity = localStorage.getItem("userCity");
+     const [submittedCity, setSubmittedCity] = useState(userCity || "");
      // checking that user city exists in options list
      const validCity = eventOptions?.locations?.includes(userCity) ? userCity : null;
      useEffect(() => {
@@ -39,7 +39,7 @@ export default function Home() {
                                    <select
                                         type="text"
                                         name="usercity"
-                                        defaultValue={validCity || ""}
+                                        value={validCity || ""}
                                         onChange={(event) => setSubmittedCity(event.target.value)}
                                         required>
                                         {loading ? (
