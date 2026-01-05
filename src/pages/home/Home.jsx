@@ -1,6 +1,7 @@
 import EventSearchDisplay from "../../components/EventsSearchDisplay";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
 import { useState, useContext, useEffect } from "react";
+import axios from "axios";
 
 export default function Home() {
      const userName = localStorage.getItem("userName");
@@ -17,15 +18,32 @@ export default function Home() {
           }
      }, [loading, validCity, submittedCity]);
 
-     const handleSubmit = (e) => {
+     async function handleSubmit(e) {
+          // LEFT OFF HERE, need to add api call to this handle submit for the search values... unsure what this means for event display component
           e.preventDefault();
           try {
+               const formData = new FormData(e.target);
                setSubmittedSearchTerm(currentSearchBarValue);
-               setSubmittedCity(formData.get("usercity") || "");
+               setSubmittedCity(formData.get("usercity") || ""); // i think this is wrong
+               const token = localStorage.getItem("token");
+               console.log("Token exists:", !!token);
+               console.log("Token length:", token?.length);
+               console.log("Token preview:", token ? `${token.substring(0, 20)}...` : "null");
+               const response = await axios.get("/api/events/search", {
+                    params: {
+                         searchValue: currentSearchBarValue,
+                         cityNameValue: formData.get("usercity"), // changing this later
+                    },
+
+                    headers: {
+                         Authorization: `Bearer ${token}`,
+                    },
+               });
+               console.log(response);
           } catch (err) {
                console.log(err);
           }
-     };
+     }
      return (
           <div className="home-container">
                <div className="home-content-box">

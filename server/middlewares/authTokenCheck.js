@@ -6,10 +6,15 @@ const JWT_SECRET_DEV = process.env.JWT_SECRET_DEV;
 const authenticateToken = async (req, res, next) => {
      try {
           const token = req.headers["authorization"]?.split(" ")[1];
+          console.log("Extracted token:", token ? `${token.substring(0, 20)}...` : "null");
           if (!token) return res.status(401).json({ message: "Unauthorized" });
           req.user = jwt.verify(token, JWT_SECRET_DEV);
           next();
      } catch (err) {
+          console.log("JWT verification failed...");
+          console.log("Error name:", err.name);
+          console.log("Error message:", err.message);
+          console.log("Full error:", err);
           return res.status(401).json({ message: "Unauthorized" });
      }
 };

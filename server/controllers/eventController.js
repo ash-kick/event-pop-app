@@ -85,11 +85,11 @@ exports.getSavedEvents = async (req, res, next) => {
 
 exports.getSearchedEvents = async (req, res, next) => {
      try {
-          const keyword = req.body.searchValue;
+          const keyword = req.query.searchValue;
           // cityNameValue will be a dropdown in the front end so no triming/modification required.
-          const cityNameValue = req.body.cityNameValue;
+          const cityNameValue = req.query.cityNameValue;
           // adding pages for results greater than 10 only want to load 10 at a time
-          const page = parseInt(req.body.page) || 1;
+          const page = parseInt(req.query.page) || 1;
           const limit = 10;
           const skip = (page - 1) * limit;
 
