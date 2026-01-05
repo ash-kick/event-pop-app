@@ -26,9 +26,6 @@ export default function Home() {
                setSubmittedSearchTerm(currentSearchBarValue);
                setSubmittedCity(formData.get("usercity") || ""); // i think this is wrong
                const token = localStorage.getItem("token");
-               console.log("Token exists:", !!token);
-               console.log("Token length:", token?.length);
-               console.log("Token preview:", token ? `${token.substring(0, 20)}...` : "null");
                const response = await axios.get("/api/events/search", {
                     params: {
                          searchValue: currentSearchBarValue,
