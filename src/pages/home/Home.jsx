@@ -110,6 +110,10 @@ export default function Home() {
           }
      }
 
+     async function handleSaveEvent(eventId) {
+          console.log(eventId);
+     }
+
      return (
           <div className="home-container">
                <div className="home-content-box">
@@ -152,6 +156,7 @@ export default function Home() {
                                    handleNextPage={handleNextPage}
                                    handlePreviousPage={handlePreviousPage}
                                    currentPage={currentPage}
+                                   handleSaveEvent={handleSaveEvent}
                               />
                          </div>
                     </div>
