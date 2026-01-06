@@ -54,6 +54,7 @@ const fetchEventsForCity = async (cityName) => {
           const allEventIds = [];
 
           for (const dateRange of dateRanges) {
+               console.log(`Starting sync for city: ${cityName} for date range: ${dateRange.start} to ${dateRange.end}`);
                // create page related variables for looping through api response pages
                let pageNumber = 0;
                let hasMorePagesLeft = true;
