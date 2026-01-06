@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Event = require("../models/event");
+const ApiSyncLog = require("../models/apiSyncLog");
 const axios = require("axios");
 const { zonedTimeToUtc } = require("date-fns-tz");
 const { CITY_TIMEZONES } = require("../constants/supportedCities");
@@ -14,6 +15,16 @@ const today = new Date();
 
 // fetch events for a particular city filter
 const fetchEventsForCity = async (cityName) => {
+     // create sync log for this api call
+     const syncStartTime = new Date();
+     let apiCallCount = 0;
+     const syncLog = new ApiSyncLog({
+          cityName: cityName,
+          startTime: syncStartTime,
+          status: "success", // default value can update this later if it fails instead
+     });
+     await syncLog.save();
+
      // pull the correct UTC version of today's date by timezone for the city
      const cityTimezone = CITY_TIMEZONES[cityName];
      const cityDateStr = new Date().toLocaleDateString("en-CA", { timeZone: cityTimezone });
@@ -72,6 +83,8 @@ const fetchEventsForCity = async (cityName) => {
                     try {
                          let URL = `${TICKETMASTER_EVENTS_BASE_URL}apikey=${TICKETMASTER_API_KEY}&startDateTime=${dateRange.start}&endDateTime=${dateRange.end}&city=${cityName}&page=${pageNumber}&size=${PAGE_SIZE}`;
                          const response = await axios.get(URL);
+                         // track current api call, increment api call count value by one for sync log
+                         apiCallCount++;
                          console.log("Pagination info:", {
                               page: response.data.page.number,
                               size: response.data.page.size,
@@ -214,11 +227,34 @@ const fetchEventsForCity = async (cityName) => {
           // create constant to hold new event ids in the mongo db format
           const newEventIds = newEvents.map((e) => e._id);
           console.log(`New events created: ${newEventIds.length} out of ${allEventIds.length} total events`);
+
+          // update log post successful call
+          const syncEndTime = new Date();
+          await ApiSyncLog.findByIdAndUpdate(syncLog._id, {
+               endTime: syncEndTime,
+               duration: syncEndTime - syncStartTime,
+               apiCallCount: apiCallCount,
+               eventsProcessed: allEventIds.length,
+               newEventsCount: newEventIds.length,
+               status: "success",
+          });
+
           // return the new event IDs (MongoDB _ids) for notification matching
           return newEventIds;
      } catch (error) {
           console.log("Error fetching data...");
           console.log("Full error response:", error.response?.data || error);
+
+          // update sync log with error post call fail
+          await ApiSyncLog.findByIdAndUpdate(syncLog._id, {
+               endTime: new Date(),
+               duration: new Date() - syncStartTime,
+               apiCallCount: apiCallCount,
+               eventsProcessed: allEventIds?.length || 0,
+               status: "error",
+               errorMessage: error.message || "Unknown error",
+          });
+          // return empty array, no new events for notifications
           return [];
      }
 };
