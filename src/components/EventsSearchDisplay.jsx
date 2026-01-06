@@ -1,8 +1,51 @@
-export default function EventSearchDisplay({ submittedSearchTerm, submittedCity }) {
-     if (submittedSearchTerm && submittedCity) {
+export default function EventSearchDisplay({ currentSearchResponse, searchError }) {
+     if (searchError) {
           return (
                <div>
-                    Returning results for '{submittedSearchTerm}' in '{submittedCity}'
+                    <p>{searchError}</p>
+               </div>
+          );
+     }
+     if (currentSearchResponse?.foundEvents) {
+          return (
+               <div>
+                    <ul>
+                         {currentSearchResponse.foundEvents.map((foundEvent) => (
+                              <li key={foundEvent._id}>
+                                   <div>
+                                        <img src={foundEvent.eventImageUrl} />
+                                   </div>
+                                   <div>Event: {foundEvent.eventName}</div>
+                                   <div>City: {foundEvent.cityName}</div>
+                                   <div>Venue: {foundEvent.venueName}</div>
+                                   <div>Date: {foundEvent.startDateTime}</div>
+                                   {foundEvent.eventTypeName && foundEvent.eventTypeName !== "Undefined" ? (
+                                        <div>Event Type: {foundEvent.eventTypeName}</div>
+                                   ) : (
+                                        <></>
+                                   )}
+                                   {foundEvent.eventTypeName === "Music" ? (
+                                        <div>
+                                             <div>
+                                                  Genre: {foundEvent.genreName} / {foundEvent.subGenreName}
+                                             </div>
+                                        </div>
+                                   ) : (
+                                        <></>
+                                   )}
+                                   {foundEvent.ticketMasterUrl ? (
+                                        <a
+                                             href={foundEvent.ticketMasterUrl}
+                                             target="_blank">
+                                             Get tickets!{" "}
+                                        </a>
+                                   ) : (
+                                        <div>Tickets currently unavailable ... event {foundEvent.eventStatusCode}</div>
+                                   )}
+                              </li>
+                         ))}
+                    </ul>
+                    {currentSearchResponse.hasMore ? <button>Next</button> : <div>End of search results ...</div>}
                </div>
           );
      }

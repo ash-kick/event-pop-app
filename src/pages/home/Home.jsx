@@ -7,6 +7,8 @@ export default function Home() {
      const userName = localStorage.getItem("userName");
      const [currentSearchBarValue, setCurrentSearchBarValue] = useState("");
      const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
+     const [currentSearchResponse, setCurrentSearchResponse] = useState([]);
+     const [searchError, setSearchError] = useState(null);
      const { eventOptions, loading } = useContext(EventOptionsContext);
      const userCity = localStorage.getItem("userCity");
      const [submittedCity, setSubmittedCity] = useState(userCity || "");
@@ -19,28 +21,34 @@ export default function Home() {
      }, [loading, validCity, submittedCity]);
 
      async function handleSubmit(e) {
-          // LEFT OFF HERE, need to add api call to this handle submit for the search values... unsure what this means for event display component
           e.preventDefault();
           try {
                const formData = new FormData(e.target);
                setSubmittedSearchTerm(currentSearchBarValue);
-               setSubmittedCity(formData.get("usercity") || ""); // i think this is wrong
+               setSearchError(null);
                const token = localStorage.getItem("token");
                const response = await axios.get("/api/events/search", {
                     params: {
                          searchValue: currentSearchBarValue,
-                         cityNameValue: formData.get("usercity"), // changing this later
+                         cityNameValue: submittedCity, // changing this later
                     },
 
                     headers: {
                          Authorization: `Bearer ${token}`,
                     },
                });
-               console.log(response);
+               setCurrentSearchResponse(response.data);
           } catch (err) {
-               console.log(err);
+               if (err.response?.status === 404) {
+                    setCurrentSearchResponse(null);
+                    setSearchError(err.response.data.message || "No events found for this search.");
+               } else {
+                    console.log(err);
+                    setSearchError("An error occurred while searching. Please try again.");
+               }
           }
      }
+
      return (
           <div className="home-container">
                <div className="home-content-box">
@@ -54,7 +62,7 @@ export default function Home() {
                                    <select
                                         type="text"
                                         name="usercity"
-                                        value={validCity || ""}
+                                        value={submittedCity || ""}
                                         onChange={(event) => setSubmittedCity(event.target.value)}
                                         required>
                                         {loading ? (
@@ -77,8 +85,8 @@ export default function Home() {
                                    <button type="submit">Search</button>
                               </form>
                               <EventSearchDisplay
-                                   submittedSearchTerm={submittedSearchTerm}
-                                   submittedCity={submittedCity}
+                                   currentSearchResponse={currentSearchResponse}
+                                   searchError={searchError}
                               />
                          </div>
                     </div>
