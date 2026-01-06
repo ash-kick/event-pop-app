@@ -53,7 +53,6 @@ export default function Home() {
      }
 
      async function handleNextPage() {
-          console.log("You clicked next!");
           try {
                setSearchError(null);
                const token = localStorage.getItem("token");
@@ -83,7 +82,6 @@ export default function Home() {
      }
 
      async function handlePreviousPage() {
-          console.log("You clicked previous!");
           try {
                setSearchError(null);
                const token = localStorage.getItem("token");
