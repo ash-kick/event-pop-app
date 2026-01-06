@@ -59,7 +59,7 @@ export default function RootLayout() {
                               </NavLink>
                               <NavLink to="home">Home</NavLink>
                               <NavLink to="search">Search</NavLink>
-                              <NavLink to="events">Events</NavLink>
+                              <NavLink to="events">My Events</NavLink>
                               <NavLink to="preferences">Preferences</NavLink>
                          </div>
                          {isAuthenticated ? firstLetterLogoutButton : logInButton}

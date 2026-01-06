@@ -8,7 +8,7 @@ import AlreadyAuthed from "./components/AlreadyAuthed";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
-import Events from "./pages/events/Events";
+import MyEvents from "./pages/events/MyEvents";
 import Preferences from "./pages/preferences/Preferences";
 import LogIn from "./pages/log-in/LogIn";
 import Register from "./pages/register/Register";
@@ -44,7 +44,7 @@ function App() {
                               <Route
                                    element={
                                         <ProtectedRoute>
-                                             <Events />
+                                             <MyEvents />
                                         </ProtectedRoute>
                                    }
                                    path="/events"></Route>

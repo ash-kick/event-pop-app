@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EventSearchDisplay from "../../components/EventsSearchDisplay";
 
-export default function Events() {
+export default function MyEvents() {
      return (
           <div className="events-page-container">
                <div className="saved-event-feed">
