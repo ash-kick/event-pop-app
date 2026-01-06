@@ -156,7 +156,7 @@ export default function Home() {
                          </div>
                     </div>
                     <div className="upcoming-event-feed">
-                         <h2>Upcoming Events in Your Area</h2>
+                         <h2>Upcoming Events in For You</h2>
                     </div>
                </div>
           </div>
