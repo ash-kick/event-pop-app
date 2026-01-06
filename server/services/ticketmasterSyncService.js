@@ -188,14 +188,38 @@ const fetchEventsForCity = async (cityName) => {
                     },
                });
           }
+          // the following will be used for notificaitons
+          // query existing events to see which are new
+          const existingEvents = await Event.find({
+               ticketMasterEventId: { $in: allEventIds },
+          })
+               .select("ticketMasterEventId")
+               .lean();
+          // create a set with existing ids
+          const existingIdsSet = new Set(existingEvents.map((e) => e.ticketMasterEventId));
+          // filter down to anything not in the existing id set
+          const newTicketMasterEventIds = allEventIds.filter((id) => !existingIdsSet.has(id));
+
           // call bulk operations to run upserting and deleting
           await Event.bulkWrite(bulkOperations);
           console.log(`Sync complete for ${cityName}: ${allEventIds.length} events have been processed!`);
 
-          // catch any errors next
+          // get mongodb ids for the new events now that write is complete
+          const newEvents = await Event.find({
+               ticketMasterEventId: { $in: newTicketMasterEventIds },
+          })
+               .select("_id")
+               .lean();
+
+          // create constant to hold new event ids in the mongo db format
+          const newEventIds = newEvents.map((e) => e._id);
+          console.log(`New events created: ${newEventIds.length} out of ${allEventIds.length} total events`);
+          // return the new event IDs (MongoDB _ids) for notification matching
+          return newEventIds;
      } catch (error) {
           console.log("Error fetching data...");
           console.log("Full error response:", error.response?.data || error);
+          return [];
      }
 };
 
