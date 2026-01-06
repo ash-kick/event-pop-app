@@ -58,6 +58,7 @@ export default function RootLayout() {
                                    <img src="../assets/event-pop-icon-small.png" />
                               </NavLink>
                               <NavLink to="home">Home</NavLink>
+                              <NavLink to="search">Search</NavLink>
                               <NavLink to="events">Events</NavLink>
                               <NavLink to="preferences">Preferences</NavLink>
                          </div>

@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AlreadyAuthed from "./components/AlreadyAuthed";
 import Landing from "./pages/landing/Landing";
 import Home from "./pages/home/Home";
+import Search from "./pages/search/Search";
 import Events from "./pages/events/Events";
 import Preferences from "./pages/preferences/Preferences";
 import LogIn from "./pages/log-in/LogIn";
@@ -33,6 +34,13 @@ function App() {
                                         </ProtectedRoute>
                                    }
                                    path="/home"></Route>
+                              <Route
+                                   element={
+                                        <ProtectedRoute>
+                                             <Search />
+                                        </ProtectedRoute>
+                                   }
+                                   path="/search"></Route>
                               <Route
                                    element={
                                         <ProtectedRoute>
