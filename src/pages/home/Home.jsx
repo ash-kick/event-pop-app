@@ -13,7 +13,7 @@ export default function Home() {
                     <h1>Hi, {userName}!</h1>
                </div>
                <div className="upcoming-event-feed">
-                    <h2>Upcoming Events in For You</h2>
+                    <h2>Upcoming Events For You</h2>
                </div>
           </div>
      );
