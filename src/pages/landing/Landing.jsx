@@ -5,7 +5,7 @@ export default function Landing() {
           <div className="landing-container">
                <div className="landing-hero">
                     <div className="landing-hero-left">
-                         <h1 className="landing-header-text">Find events you'll actually love</h1>
+                         <h1 className="landing-header-text">Find events you'll love</h1>
                          <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
                          <Link
                               to="/register"
