@@ -1,4 +1,4 @@
-export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage }) {
+export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage, handlePreviousPage, currentPage }) {
      if (searchError) {
           return (
                <div>
@@ -45,6 +45,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                               </li>
                          ))}
                     </ul>
+                    {currentPage > 1 ? <button onClick={handlePreviousPage}>Previous</button> : <></>}
                     {currentSearchResponse.hasMore ? <button onClick={handleNextPage}>Next</button> : <div>End of search results ...</div>}
                </div>
           );

@@ -52,7 +52,7 @@ export default function Home() {
           }
      }
 
-     async function handleNextClick() {
+     async function handleNextPage() {
           console.log("You clicked next!");
           try {
                setSearchError(null);
@@ -69,6 +69,36 @@ export default function Home() {
                     },
                });
                setCurrentPage(currentPage + 1);
+               setCurrentSearchResponse(response.data);
+               window.scrollTo(0, 0);
+          } catch (err) {
+               if (err.response?.status === 404) {
+                    setCurrentSearchResponse(null);
+                    setSearchError(err.response.data.message || "No events found for this search.");
+               } else {
+                    console.log(err);
+                    setSearchError("An error occurred while searching. Please try again.");
+               }
+          }
+     }
+
+     async function handlePreviousPage() {
+          console.log("You clicked previous!");
+          try {
+               setSearchError(null);
+               const token = localStorage.getItem("token");
+               const response = await axios.get("/api/events/search", {
+                    params: {
+                         searchValue: submittedSearchTerm,
+                         cityNameValue: submittedCity,
+                         page: currentPage - 1,
+                    },
+
+                    headers: {
+                         Authorization: `Bearer ${token}`,
+                    },
+               });
+               setCurrentPage(currentPage - 1);
                setCurrentSearchResponse(response.data);
                window.scrollTo(0, 0);
           } catch (err) {
@@ -121,7 +151,9 @@ export default function Home() {
                               <EventSearchDisplay
                                    currentSearchResponse={currentSearchResponse}
                                    searchError={searchError}
-                                   handleNextPage={handleNextClick}
+                                   handleNextPage={handleNextPage}
+                                   handlePreviousPage={handlePreviousPage}
+                                   currentPage={currentPage}
                               />
                          </div>
                     </div>
