@@ -42,6 +42,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                    ) : (
                                         <div>Tickets currently unavailable ... event {foundEvent.eventStatusCode}</div>
                                    )}
+                                   <button>Save</button>
                               </li>
                          ))}
                     </ul>
