@@ -27,7 +27,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError 
                                    {foundEvent.eventTypeName === "Music" ? (
                                         <div>
                                              <div>
-                                                  Genre: {foundEvent.genreName} / {foundEvent.subGenreName}
+                                                  Genre: {foundEvent.genreName} - {foundEvent.subGenreName}
                                              </div>
                                         </div>
                                    ) : (

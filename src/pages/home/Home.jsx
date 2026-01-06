@@ -56,8 +56,9 @@ export default function Home() {
                          <h1>Hi, {userName}!</h1>
                     </div>
                     <div className="event-page-display">
-                         <div>
+                         <div className="search-bar-display">
                               <form onSubmit={handleSubmit}>
+                                   <h2>Search for events: </h2>
                                    <label>location</label>
                                    <select
                                         type="text"
