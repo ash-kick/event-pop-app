@@ -8,6 +8,7 @@ export default function Home() {
      const [currentSearchBarValue, setCurrentSearchBarValue] = useState("");
      const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
      const [currentSearchResponse, setCurrentSearchResponse] = useState([]);
+     const [currentPage, setCurrentPage] = useState(1);
      const [searchError, setSearchError] = useState(null);
      const { eventOptions, loading } = useContext(EventOptionsContext);
      const userCity = localStorage.getItem("userCity");
@@ -25,12 +26,14 @@ export default function Home() {
           try {
                const formData = new FormData(e.target);
                setSubmittedSearchTerm(currentSearchBarValue);
+               setCurrentPage(1);
                setSearchError(null);
                const token = localStorage.getItem("token");
                const response = await axios.get("/api/events/search", {
                     params: {
                          searchValue: currentSearchBarValue,
-                         cityNameValue: submittedCity, // changing this later
+                         cityNameValue: submittedCity,
+                         page: 1,
                     },
 
                     headers: {
@@ -38,6 +41,36 @@ export default function Home() {
                     },
                });
                setCurrentSearchResponse(response.data);
+          } catch (err) {
+               if (err.response?.status === 404) {
+                    setCurrentSearchResponse(null);
+                    setSearchError(err.response.data.message || "No events found for this search.");
+               } else {
+                    console.log(err);
+                    setSearchError("An error occurred while searching. Please try again.");
+               }
+          }
+     }
+
+     async function handleNextClick() {
+          console.log("You clicked next!");
+          try {
+               setSearchError(null);
+               const token = localStorage.getItem("token");
+               const response = await axios.get("/api/events/search", {
+                    params: {
+                         searchValue: submittedSearchTerm,
+                         cityNameValue: submittedCity,
+                         page: currentPage + 1,
+                    },
+
+                    headers: {
+                         Authorization: `Bearer ${token}`,
+                    },
+               });
+               setCurrentPage(currentPage + 1);
+               setCurrentSearchResponse(response.data);
+               window.scrollTo(0, 0);
           } catch (err) {
                if (err.response?.status === 404) {
                     setCurrentSearchResponse(null);
@@ -88,6 +121,7 @@ export default function Home() {
                               <EventSearchDisplay
                                    currentSearchResponse={currentSearchResponse}
                                    searchError={searchError}
+                                   handleNextPage={handleNextClick}
                               />
                          </div>
                     </div>
