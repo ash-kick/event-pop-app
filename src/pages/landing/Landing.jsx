@@ -32,7 +32,7 @@ export default function Landing() {
                     </div>
                     <div className="feature-card">
                          <h2 className="feature-card-header">Connect</h2>
-                         <p className="feature-card-blurb">Invite friends to share your plans instantly.</p>
+                         <p className="feature-card-blurb">Share events with your friends.</p>
                     </div>
                </div>
           </div>
