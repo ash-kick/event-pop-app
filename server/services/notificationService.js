@@ -35,7 +35,7 @@ const matchEventsToPreferences = async (newEventIds) => {
                     if (doesEventMatchPreferences(event, preference)) {
                          notificationsToCreate.push({
                               userId: userId,
-                              eventId: event._id,
+                              event: event._id,
                          });
                          userHasMatches = true;
                     }

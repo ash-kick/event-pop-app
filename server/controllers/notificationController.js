@@ -4,7 +4,7 @@ const Notification = require("../models/notifications");
 exports.getNotifications = async (req, res, next) => {
      try {
           // get notifications for user and populate event info -- note: planning to filter on the front end for read vs unread
-          const userNotifications = await Notification.find({ userId: req.user.id }).populate("eventId").sort({ createdAt: -1 });
+          const userNotifications = await Notification.find({ userId: req.user.id }).populate("event").sort({ createdAt: -1 });
           // if there are no notifications return empty notifications and message stating this
           if (userNotifications.length === 0) {
                return res.status(200).json({
