@@ -34,7 +34,7 @@ exports.markOneNotificationRead = async (req, res, next) => {
                return res.status(404).json({ message: "Notification not found" });
           }
 
-          res.status(200).json({ message: "Notification marked as read" }, targetNotification);
+          res.status(200).json({ message: "Notification marked as read", notification: targetNotification });
      } catch (err) {
           next(err);
      }
@@ -43,10 +43,10 @@ exports.markOneNotificationRead = async (req, res, next) => {
 exports.markAllNotificationsRead = async (req, res, next) => {
      try {
           const allNotifications = await Notification.updateMany({ userId: req.user.id, read: false }, { read: true, updatedAt: new Date() });
-          if (!allNotifications) {
-               return res.status(404).json({ message: "Notifications not found" });
-          }
-          res.status(200).json({ message: "All notifications marked as read" });
+          res.status(200).json({
+               message: "All notifications marked as read",
+               updatedCount: allNotifications.modifiedCount,
+          });
      } catch (err) {
           next(err);
      }

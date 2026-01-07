@@ -7,6 +7,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const eventPreferenceRoutes = require("./routes/eventPreferenceRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const syncRoutes = require("./routes/syncRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 // Define port usring .env file
 const PORT = process.env.PORT || 3000;
@@ -27,6 +28,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/event-preferences", eventPreferenceRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/sync", syncRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 // Start server
 app.listen(PORT, () => {
