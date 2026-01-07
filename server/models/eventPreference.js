@@ -7,7 +7,7 @@ const getEightWeeksOut = () => {
      return eightWeeksOut;
 };
 
-// THIS SCHEMA WILL STORE ALL EVENT TYPES CALLED SEGMENTS BY TM (concerts, sprots, arts-theatre, family)
+// THIS SCHEMA WILL STORE USER PREFERENCES FOR EVENTS
 const eventPreferenceSchema = new mongoose.Schema({
      userId: {
           type: mongoose.Schema.Types.ObjectId,
