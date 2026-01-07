@@ -3,7 +3,7 @@ const Notification = require("../models/notifications");
 // GET NOTIFICATIONS FOR A PARTICULAR USER
 exports.getNotifications = async (req, res, next) => {
      try {
-          // get notifications for user and populate event info
+          // get notifications for user and populate event info -- note: planning to filter on the front end for read vs unread
           const userNotifications = await Notification.find({ userId: req.user.id }).populate("eventId").sort({ createdAt: -1 });
           // if there are no notifications return empty notifications and message stating this
           if (userNotifications.length === 0) {
