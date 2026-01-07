@@ -13,6 +13,7 @@ const eventPreferenceSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "User",
           required: true,
+          index: true,
      },
      eventTypePreference: {
           type: [String],
@@ -39,6 +40,7 @@ const eventPreferenceSchema = new mongoose.Schema({
           type: Boolean,
           default: false,
           required: true,
+          index: true,
      },
      createdAt: {
           type: Date,
