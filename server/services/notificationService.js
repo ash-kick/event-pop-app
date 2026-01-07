@@ -2,8 +2,6 @@ const Notification = require("../models/notifications");
 const EventPreference = require("../models/eventPreference");
 const Event = require("../models/event");
 
-// LEFT OFF HERE, NEED TO ADD NOTIFICATION SERVICE LOGIC
-
 const matchEventsToPreferences = async (newEventIds) => {
      if (!newEventIds || newEventIds.length === 0) {
           console.log("No new events to match for notifications.");
@@ -12,7 +10,9 @@ const matchEventsToPreferences = async (newEventIds) => {
 
      try {
           // FIND ALL USERS WHO HAVE ALERTS SET TO TRUE IN THEIR EVENT PREFERENCES
-          const usersWithAlerts = await EventPreference.find({ alertsOn: true }).populate("userId");
+
+          // create const usersWithAlerts with preference document
+          const usersWithAlerts = await EventPreference.find({ alertsOn: true });
           if (usersWithAlerts.length === 0) {
                console.log("No users have alerts enabled!");
                return { notificationsCreated: 0, usersNotified: 0 };
@@ -55,7 +55,40 @@ const matchEventsToPreferences = async (newEventIds) => {
                usersNotified: usersNotifiedCount,
           };
      } catch (err) {
-          console.error("Error matchnig events to preferences", err);
+          console.error("Error matching events to preferences", err);
           throw err;
      }
 };
+
+// function for checking if the preferences actually match the evnets
+const doesEventMatchPreferences = (event, preference) => {
+     // check location match
+     if (event.cityName !== preference.eventLocationPreference) {
+          return false;
+     }
+     // check date range match
+     const eventDate = new Date(event.startDateTime);
+     const startDatePref = new Date(preference.eventStartDatePreference);
+     const endDatePref = new Date(preference.eventEndDatePreference);
+
+     if (eventDate < startDatePref || eventDate > endDatePref) {
+          return false;
+     }
+
+     // check event type match
+     if (preference.eventTypePreference.length > 0) {
+          if (!preference.eventTypePreference.includes(event.eventTypeName)) {
+               return false;
+          }
+     }
+     // check genre match
+     if (preference.eventTypeGenrePreference.length > 0) {
+          if (!preference.eventTypeGenrePreference.includes(event.genreName)) {
+               return false;
+          }
+     }
+     // if it passed everything above, event matches, return true
+     return true;
+};
+
+module.exports = { matchEventsToPreferences };
