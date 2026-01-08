@@ -65,16 +65,14 @@ exports.deleteSavedEvent = async (req, res, next) => {
 // display saved events
 exports.getSavedEvents = async (req, res, next) => {
      try {
-          const user = await User.findById(req.user.id);
-          const savedEvents = [];
-          for (const eventId of user.savedEvents) {
-               const savedEvent = await Event.findOne({ _id: eventId });
-               savedEvents.push(savedEvent);
+          const user = await User.findById(req.user.id).populate("savedEvents");
+          if (!user) {
+               return res.status(404).json({ message: "User not found" });
           }
-          if (savedEvents.length === 0) {
+          if (user.savedEvents.length === 0) {
                return res.status(404).json({ message: "No events found" });
           }
-          res.status(200).json({ savedEvents });
+          res.status(200).json({ savedEvents: user.savedEvents });
      } catch (err) {
           console.log("Could not retrieve saved events");
           next(err);
