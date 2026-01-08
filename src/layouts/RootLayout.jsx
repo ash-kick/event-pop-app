@@ -1,6 +1,7 @@
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FaBell } from "react-icons/fa";
+import { NotificationsContext } from "../contexts/NotificationsContext";
 
 const logInButton = (
      <NavLink
@@ -11,6 +12,8 @@ const logInButton = (
 );
 
 export default function RootLayout() {
+     const { unreadCount, notifications } = useContext(NotificationsContext);
+
      const [isAuthenticated, setIsAuthenticated] = useState(false);
      const [userName, setUserName] = useState(null);
      const navigate = useNavigate();
@@ -40,12 +43,22 @@ export default function RootLayout() {
 
      const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
 
+     const handleClick = () => {
+          console.log("Notification clicked");
+          console.log(unreadCount);
+          return;
+     };
+
      const firstLetterLogoutButton = (
           <div className="first-letter-logout-container">
-               <FaBell
-                    size={24}
-                    className="notification-bell"
-               />
+               <div className="notification-bell-container">
+                    <FaBell
+                         size={28}
+                         className="notification-bell"
+                         onClick={handleClick}
+                    />
+                    <div className="notification-unread-count">{unreadCount}</div>
+               </div>
                <div className="first-letter">{firstLetterUser}</div>
                <button
                     onClick={handleLogout}
