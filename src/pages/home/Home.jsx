@@ -10,7 +10,7 @@ export default function Home() {
      return (
           <div className="home-content-box">
                <div className="home-welcome-message">
-                    <h1>Hi, {userName}!</h1>
+                    <h2>Hi, {userName}!</h2>
                </div>
                <div className="upcoming-event-feed">
                     <h2>Upcoming Events In Your Area</h2>
