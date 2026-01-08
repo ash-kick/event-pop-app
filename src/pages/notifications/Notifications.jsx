@@ -5,10 +5,8 @@ import axios from "axios";
 export default function Notifications() {
      // fetch all notifications for user
      const { unreadCount, notifications, fetchNotifications } = useContext(NotificationsContext);
+     console.log(notifications[0]);
 
-     useEffect(() => {
-          fetchNotifications();
-     }, [fetchNotifications]);
      // surface and dispaly unread notifications first
      // list read notifications after unread
      // allow for clicking on an unread notification to make it as read
@@ -22,7 +20,13 @@ export default function Notifications() {
                     ) : (
                          <p className="unread-count-message">You have {unreadCount} unread notifications.</p>
                     )}
-                    <div>NOTIFICATION DISPLAY GOES HERE.</div>
+                    <div className="unread-notification-display">
+                         {notifications.length > 0
+                              ? notifications
+                                     .filter((notification) => notification.read === false)
+                                     .map((notification) => <div key={notification._id}>{notification.event?.eventName}</div>)
+                              : null}
+                    </div>
                </div>
           </div>
      );
