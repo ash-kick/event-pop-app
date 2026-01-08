@@ -43,6 +43,7 @@ export default function RootLayout() {
 
      const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
 
+     // LEFT OFF HERE WILL NEED TO HANDLE CLICK DIFFERENTLY & CREATE A NOTIFICATIONS PAGE
      const handleClick = () => {
           console.log("Notification clicked");
           console.log(unreadCount);
