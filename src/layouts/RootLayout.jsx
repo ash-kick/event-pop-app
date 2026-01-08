@@ -56,7 +56,7 @@ export default function RootLayout() {
                          className="notification-bell"
                          onClick={handleNotificationClick}
                     />
-                    {unreadCount > 0 ? <div className="notification-unread-count"></div> : null}
+                    {unreadCount > 0 ? <div className="notification-unread-count">{unreadCount}</div> : null}
                </div>
                <button
                     onClick={handleLogout}
