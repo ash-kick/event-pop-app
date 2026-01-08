@@ -3,7 +3,7 @@ import { SavedEventContext } from "../contexts/SavedEventsContext";
 import { useContext } from "react";
 
 export default function SaveEventButton({ eventId }) {
-     const { savedEvents } = useContext(SavedEventContext);
+     const { savedEvents, fetchSavedEvents } = useContext(SavedEventContext);
      async function handleClick(e) {
           e.preventDefault();
           try {
@@ -20,6 +20,7 @@ export default function SaveEventButton({ eventId }) {
                     }
                );
                console.log(response.data.message);
+               await fetchSavedEvents();
           } catch (err) {
                console.log(eventId);
                console.log("Unable to save event", err);
@@ -37,7 +38,3 @@ export default function SaveEventButton({ eventId }) {
           </div>
      );
 }
-
-// {savedEvents.filter((event) => event._id === notification.event._id).length === 0 ? (
-//     <SaveEventButton eventId={notification.event._id} />
-// ) : null}

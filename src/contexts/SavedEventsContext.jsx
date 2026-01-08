@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 export const SavedEventContext = createContext();
@@ -10,7 +10,7 @@ export function SavedEventProvider({ children }) {
 
      const token = localStorage.getItem("token");
      // fetch list of saved events
-     const fetchSavedEvents = async () => {
+     const fetchSavedEvents = useCallback(async () => {
           try {
                const response = await axios.get("/api/events/saved-event", {
                     headers: {
@@ -21,11 +21,16 @@ export function SavedEventProvider({ children }) {
                setError(null);
                setLoading(false);
           } catch (err) {
-               console.log("Error fetching saved events.");
-               setError(err.message);
+               if (err.response?.status === 404) {
+                    setSavedEvents([]);
+                    setError(null);
+               } else {
+                    console.log("Error fetching saved events.");
+                    setError(err.message);
+               }
                setLoading(false);
           }
-     };
+     });
 
      useEffect(() => {
           const token = localStorage.getItem("token");
@@ -43,6 +48,7 @@ export function SavedEventProvider({ children }) {
                     savedEvents,
                     loading,
                     error,
+                    fetchSavedEvents,
                }}>
                {children}
           </SavedEventContext.Provider>
