@@ -1,5 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import { NotificationsContext } from "../../contexts/NotificationsContext";
+import SaveEventButton from "../../components/SaveEventButton";
 import axios from "axios";
 
 export default function Notifications() {
@@ -23,14 +24,16 @@ export default function Notifications() {
                               ? notifications
                                      .filter((notification) => notification.read === false)
                                      .map((notification) => (
-                                          <div className="unread-notification">
+                                          <div
+                                               className="unread-notification"
+                                               key={notification._id}>
                                                <button onClick={() => markNotificationRead(notification._id)}>Mark Read</button>
-                                               <ul key={notification._id}>
+                                               <ul>
                                                     <li>Event: {notification.event?.eventName}</li>
                                                     <li>Date: {notification.event?.startDateTime}</li>
                                                     <li>Venue: {notification.event?.venueName}</li>
                                                </ul>
-                                               <button>Save</button>
+                                               <SaveEventButton eventId={notification.event._id} />
                                           </div>
                                      ))
                               : null}
@@ -43,13 +46,15 @@ export default function Notifications() {
                               ? notifications
                                      .filter((notification) => notification.read === true)
                                      .map((notification) => (
-                                          <div className="read-notification">
-                                               <ul key={notification._id}>
+                                          <div
+                                               className="read-notification"
+                                               key={notification._id}>
+                                               <ul>
                                                     <li>Event: {notification.event?.eventName}</li>
                                                     <li>Date: {notification.event?.startDateTime}</li>
                                                     <li>Venue: {notification.event?.venueName}</li>
                                                </ul>
-                                               <button>Save</button>
+                                               <SaveEventButton eventId={notification.event._id} />
                                           </div>
                                      ))
                               : null}
