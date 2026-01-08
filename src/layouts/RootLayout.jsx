@@ -38,6 +38,7 @@ export default function RootLayout() {
      };
 
      const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
+     const notificationBell = <img />;
 
      const firstLetterLogoutButton = (
           <div className="first-letter-logout-container">
