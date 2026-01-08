@@ -54,6 +54,10 @@ nav {
      width: 96px;
 }
 
+.notification-bell {
+     color: rgb(0, 42, 57);
+}
+
 .first-letter {
      display: flex;
      align-items: center;

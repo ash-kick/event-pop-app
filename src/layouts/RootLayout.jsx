@@ -1,5 +1,6 @@
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { FaBell } from "react-icons/fa";
 
 const logInButton = (
      <NavLink
@@ -38,10 +39,13 @@ export default function RootLayout() {
      };
 
      const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
-     const notificationBell = <img />;
 
      const firstLetterLogoutButton = (
           <div className="first-letter-logout-container">
+               <FaBell
+                    size={24}
+                    className="notification-bell"
+               />
                <div className="first-letter">{firstLetterUser}</div>
                <button
                     onClick={handleLogout}
