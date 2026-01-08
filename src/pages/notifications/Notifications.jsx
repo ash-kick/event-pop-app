@@ -1,11 +1,13 @@
 import { useEffect, useContext, useState } from "react";
 import { NotificationsContext } from "../../contexts/NotificationsContext";
+import { SavedEventContext } from "../../contexts/SavedEventsContext";
 import SaveEventButton from "../../components/SaveEventButton";
 import axios from "axios";
 
 export default function Notifications() {
      // fetch all notifications for user
      const { unreadCount, notifications, markNotificationRead } = useContext(NotificationsContext);
+     const { savedEvents } = useContext(SavedEventContext);
      // list read notifications after unread
      // allow for clicking on an unread notification to make it as read
      // allow for saving events on your my events page from notifications page -- this might need to be it's own component... it will need to happen many places
@@ -33,7 +35,9 @@ export default function Notifications() {
                                                     <li>Date: {notification.event?.startDateTime}</li>
                                                     <li>Venue: {notification.event?.venueName}</li>
                                                </ul>
-                                               <SaveEventButton eventId={notification.event._id} />
+                                               {savedEvents.filter((event) => event._id === notification.event._id).length === 0 ? (
+                                                    <SaveEventButton eventId={notification.event._id} />
+                                               ) : null}
                                           </div>
                                      ))
                               : null}
@@ -54,7 +58,10 @@ export default function Notifications() {
                                                     <li>Date: {notification.event?.startDateTime}</li>
                                                     <li>Venue: {notification.event?.venueName}</li>
                                                </ul>
-                                               <SaveEventButton eventId={notification.event._id} />
+                                               {}
+                                               {savedEvents.filter((event) => event._id === notification.event._id).length === 0 ? (
+                                                    <SaveEventButton eventId={notification.event._id} />
+                                               ) : null}
                                           </div>
                                      ))
                               : null}
