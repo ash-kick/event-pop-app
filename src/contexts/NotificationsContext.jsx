@@ -1,6 +1,6 @@
 /* @refresh reset */
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 export const NotificationsContext = createContext();
@@ -14,7 +14,7 @@ export function NotificationsProvider({ children }) {
      const unreadCount = notifications.filter((notification) => !notification.read).length;
 
      // fetching notifications
-     const fetchNotifications = async () => {
+     const fetchNotifications = useCallback(async () => {
           try {
                // double checking token existence for safety before fetching
                const token = localStorage.getItem("token");
@@ -36,7 +36,7 @@ export function NotificationsProvider({ children }) {
                setError(err.message);
                setLoading(false);
           }
-     };
+     }, []);
      // mark a single notification as read
      const markNotificationRead = async (notificationId) => {
           try {
