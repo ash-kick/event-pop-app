@@ -21,47 +21,42 @@ export default function Notifications() {
                     ) : (
                          <p className="unread-count-message">You have {unreadCount} unread notifications.</p>
                     )}
-                    <div className="unread-notification-display">
+                    <ul className="unread-notification-display">
                          {notifications.length > 0
                               ? notifications
                                      .filter((notification) => notification.read === false)
                                      .map((notification) => (
-                                          <div
+                                          <li
                                                className="unread-notification"
                                                key={notification._id}>
                                                <button onClick={() => markNotificationRead(notification._id)}>Mark Read</button>
-                                               <ul>
-                                                    <li>Event: {notification.event?.eventName}</li>
-                                                    <li>Date: {notification.event?.startDateTime}</li>
-                                                    <li>Venue: {notification.event?.venueName}</li>
-                                               </ul>
+                                               <p>Event: {notification.event?.eventName}</p>
+                                               <p>Date: {notification.event?.startDateTime}</p>
+                                               <p>Venue: {notification.event?.venueName}</p>
                                                <SaveEventButton eventId={notification.event._id} />
-                                          </div>
+                                          </li>
                                      ))
                               : null}
-                    </div>
+                    </ul>
                </div>
                <div className="read-notification-display-container">
                     <h3>Read</h3>
-                    <div className="read-notification-display">
+                    <ul className="read-notification-display">
                          {notifications.length > 0
                               ? notifications
                                      .filter((notification) => notification.read === true)
                                      .map((notification) => (
-                                          <div
+                                          <li
                                                className="read-notification"
                                                key={notification._id}>
-                                               <ul>
-                                                    <li>Event: {notification.event?.eventName}</li>
-                                                    <li>Date: {notification.event?.startDateTime}</li>
-                                                    <li>Venue: {notification.event?.venueName}</li>
-                                               </ul>
-                                               {}
+                                               <p>Event: {notification.event?.eventName}</p>
+                                               <p>Date: {notification.event?.startDateTime}</p>
+                                               <p>Venue: {notification.event?.venueName}</p>
                                                <SaveEventButton eventId={notification.event._id} />
-                                          </div>
+                                          </li>
                                      ))
                               : null}
-                    </div>
+                    </ul>
                </div>
           </div>
      );
