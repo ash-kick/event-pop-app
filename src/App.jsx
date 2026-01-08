@@ -13,6 +13,7 @@ import MyEvents from "./pages/events/MyEvents";
 import Preferences from "./pages/preferences/Preferences";
 import LogIn from "./pages/log-in/LogIn";
 import Register from "./pages/register/Register";
+import Notifications from "./pages/notifications/Notifications";
 
 const router = createBrowserRouter(createRoutesFromElements(<Route element={<RootLayout />}></Route>));
 
@@ -57,6 +58,13 @@ function App() {
                                              </ProtectedRoute>
                                         }
                                         path="/preferences"></Route>
+                                   <Route
+                                        element={
+                                             <ProtectedRoute>
+                                                  <Notifications />
+                                             </ProtectedRoute>
+                                        }
+                                        path="/notifications"></Route>
                                    <Route
                                         element={
                                              <AlreadyAuthed>

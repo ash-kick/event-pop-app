@@ -57,11 +57,17 @@ nav {
 .notification-bell-container {
      position: relative;
      display: inline-block;
+     padding-right: 8px;
 }
 
 .notification-bell {
      color: rgb(0, 42, 57);
      position: relative;
+}
+
+.notification-bell:hover {
+     cursor: pointer;
+     color: rgba(0, 42, 57, 0.8);
 }
 
 .notification-unread-count {
@@ -77,7 +83,7 @@ nav {
      justify-content: center;
      position: absolute;
      top: 0px;
-     right: 0px;
+     right: 6px;
 }
 
 .first-letter {

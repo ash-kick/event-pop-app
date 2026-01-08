@@ -43,24 +43,21 @@ export default function RootLayout() {
 
      const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
 
-     // LEFT OFF HERE WILL NEED TO HANDLE CLICK DIFFERENTLY & CREATE A NOTIFICATIONS PAGE
-     const handleClick = () => {
-          console.log("Notification clicked");
-          console.log(unreadCount);
-          return;
+     const handleNotificationClick = () => {
+          navigate("/notifications");
      };
 
      const firstLetterLogoutButton = (
           <div className="first-letter-logout-container">
+               <div className="first-letter">{firstLetterUser}</div>
                <div className="notification-bell-container">
                     <FaBell
                          size={28}
                          className="notification-bell"
-                         onClick={handleClick}
+                         onClick={handleNotificationClick}
                     />
                     <div className="notification-unread-count">{unreadCount}</div>
                </div>
-               <div className="first-letter">{firstLetterUser}</div>
                <button
                     onClick={handleLogout}
                     id="log-out-button">
