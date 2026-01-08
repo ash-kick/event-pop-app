@@ -35,9 +35,7 @@ export default function Notifications() {
                                                     <li>Date: {notification.event?.startDateTime}</li>
                                                     <li>Venue: {notification.event?.venueName}</li>
                                                </ul>
-                                               {savedEvents.filter((event) => event._id === notification.event._id).length === 0 ? (
-                                                    <SaveEventButton eventId={notification.event._id} />
-                                               ) : null}
+                                               <SaveEventButton eventId={notification.event._id} />
                                           </div>
                                      ))
                               : null}
@@ -59,9 +57,7 @@ export default function Notifications() {
                                                     <li>Venue: {notification.event?.venueName}</li>
                                                </ul>
                                                {}
-                                               {savedEvents.filter((event) => event._id === notification.event._id).length === 0 ? (
-                                                    <SaveEventButton eventId={notification.event._id} />
-                                               ) : null}
+                                               <SaveEventButton eventId={notification.event._id} />
                                           </div>
                                      ))
                               : null}
