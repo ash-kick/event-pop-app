@@ -81,7 +81,7 @@ export default function RootLayout() {
                          {isAuthenticated ? firstLetterLogoutButton : logInButton}
                     </nav>
                </header>
-               <main>
+               <main className="root-layout-main">
                     <Outlet />
                </main>
                <footer>Powered by ticketmaster API - Made with ❤️ using React.</footer>
