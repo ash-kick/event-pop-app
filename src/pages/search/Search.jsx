@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 export default function Search() {
+     // search bar related consts
      const [currentSearchBarValue, setCurrentSearchBarValue] = useState("");
      const [submittedSearchTerm, setSubmittedSearchTerm] = useState("");
      const [currentSearchResponse, setCurrentSearchResponse] = useState([]);
@@ -12,6 +13,7 @@ export default function Search() {
      const { eventOptions, loading } = useContext(EventOptionsContext);
      const userCity = localStorage.getItem("userCity");
      const [submittedCity, setSubmittedCity] = useState(userCity || "");
+
      // checking that user city exists in options list
      const validCity = eventOptions?.locations?.includes(userCity) ? userCity : null;
      useEffect(() => {
@@ -109,10 +111,6 @@ export default function Search() {
           }
      }
 
-     async function handleSaveEvent(eventId) {
-          console.log(eventId);
-     }
-
      return (
           <div className="search-container">
                <div className="search-content-box">
@@ -151,7 +149,6 @@ export default function Search() {
                               handleNextPage={handleNextPage}
                               handlePreviousPage={handlePreviousPage}
                               currentPage={currentPage}
-                              handleSaveEvent={handleSaveEvent}
                          />
                     </div>
                </div>

@@ -34,7 +34,9 @@ export default function SaveEventButton({ eventId }) {
                          onClick={handleClick}>
                          Save
                     </button>
-               ) : null}
+               ) : (
+                    <p className="saved-event-message">✅ Saved</p>
+               )}
           </div>
      );
 }

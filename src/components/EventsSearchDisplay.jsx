@@ -1,4 +1,6 @@
-export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage, handlePreviousPage, currentPage, handleSaveEvent }) {
+import SaveEventButton from "../components/SaveEventButton";
+
+export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage, handlePreviousPage, currentPage }) {
      if (searchError) {
           return (
                <div>
@@ -42,7 +44,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                    ) : (
                                         <div>Tickets currently unavailable ... event {foundEvent.eventStatusCode}</div>
                                    )}
-                                   <button onClick={() => handleSaveEvent(foundEvent._id)}>Save</button>
+                                   <SaveEventButton eventId={foundEvent._id} />
                               </li>
                          ))}
                     </ul>
