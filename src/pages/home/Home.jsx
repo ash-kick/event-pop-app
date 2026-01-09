@@ -33,7 +33,7 @@ export default function Home() {
                     <h2>Hi, {userName}!</h2>
                </div>
                <div className="upcoming-event-feed">
-                    <h2>Upcoming Events In Your Area</h2>
+                    <h2>Upcoming Events In {userCity}</h2>
                     <ul>
                          {upcomingEvents?.map((upcomingEvent) => (
                               <li key={upcomingEvent._id}>
@@ -43,6 +43,8 @@ export default function Home() {
                                         className="upcoming-event-image"
                                    />
                                    <p>{upcomingEvent.eventName}</p>
+                                   <p>{upcomingEvent.startDateTime}</p>
+                                   <p>{upcomingEvent.venueName}</p>
                                    <SaveEventButton eventId={upcomingEvent._id} />
                               </li>
                          ))}
