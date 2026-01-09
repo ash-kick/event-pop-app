@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import dayjs from "dayjs";
 
 export default function Preferences() {
      const [preferences, setPreferences] = useState(null);
@@ -23,7 +24,6 @@ export default function Preferences() {
           };
           getPreferences();
      }, []);
-
      // LEFT OFF HERE NEED TO FINISH FORM
      return (
           <div className="preferences-container">
@@ -42,6 +42,15 @@ export default function Preferences() {
                          <option value="false">False</option>
                     </select>
                     <label>Location</label>
+                    <select></select>
+                    <label htmlFor="events-through">Events Through</label>
+                    <input
+                         type="date"
+                         id="events-through"
+                         name="events-through"
+                         value={dayjs().add(3, "month").format("YYYY-MM-DD")}
+                         onChange={(e) => {}}
+                    />
                </form>
           </div>
      );

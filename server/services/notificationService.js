@@ -66,12 +66,13 @@ const doesEventMatchPreferences = (event, preference) => {
      if (event.cityName !== preference.eventLocationPreference) {
           return false;
      }
-     // check date range match
+     // check date range match - always use today as start date
      const eventDate = new Date(event.startDateTime);
-     const startDatePref = new Date(preference.eventStartDatePreference);
-     const endDatePref = new Date(preference.eventEndDatePreference);
+     const today = new Date();
+     today.setHours(0, 0, 0, 0); // Set to midnight for consistent comparison
+     const eventThroughPreference = new Date(preference.eventThroughPreference);
 
-     if (eventDate < startDatePref || eventDate > endDatePref) {
+     if (eventDate < today || eventDate > eventThroughPreference) {
           return false;
      }
 

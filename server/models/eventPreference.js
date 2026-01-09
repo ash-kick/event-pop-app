@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
+const dayjs = require("dayjs");
 
-const getEightWeeksOut = () => {
-     let today = new Date();
-     let eightWeeksOut = new Date(today);
-     eightWeeksOut.setDate(today.getDate() + 56);
-     return eightWeeksOut;
+const getThreeMonthsOut = () => {
+     return dayjs().add(3, "month").startOf("day").toDate();
 };
 
 // THIS SCHEMA WILL STORE USER PREFERENCES FOR EVENTS
@@ -27,15 +25,10 @@ const eventPreferenceSchema = new mongoose.Schema({
           type: String,
           required: true,
      },
-     eventStartDatePreference: {
+     eventThroughPreference: {
           type: Date,
-          default: Date.now,
+          default: getThreeMonthsOut,
      },
-     eventEndDatePreference: {
-          type: Date,
-          default: getEightWeeksOut,
-     },
-     // FOR A FUTURE VERSION OF THE APP
      alertsOn: {
           type: Boolean,
           default: false,
