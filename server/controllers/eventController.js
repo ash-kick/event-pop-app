@@ -123,9 +123,9 @@ exports.getSearchedEvents = async (req, res, next) => {
 
 exports.getUpcomingEventsByCity = async (req, res, next) => {
      try {
-          const location = req.body.userCity;
+          const location = req.query.userCity;
           const upcomingEvents = await Event.find({ cityName: location, startDateTime: { $gte: Date.now() } })
-               .limit(20)
+               .limit(3)
                .sort({ startDateTime: 1 });
           if (upcomingEvents.length === 0) {
                return res.status(404).json({ message: "No upcoming events found for this location" });
