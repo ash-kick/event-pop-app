@@ -38,7 +38,7 @@ export default function RootLayout() {
           setIsAuthenticated(false);
           setUserName(null);
 
-          navigate("/login");
+          window.location.href = "/login";
      };
 
      const firstLetterUser = userName ? userName[0].toUpperCase() : "?";
