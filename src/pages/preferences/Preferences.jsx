@@ -28,7 +28,7 @@ export default function Preferences() {
      return (
           <div className="preferences-container">
                <h2>Preferences</h2>
-               <form>
+               <form className="preferences-form">
                     <label htmlFor="alerts-on">Alerts On</label>
                     <select
                          name="alerts-on"

@@ -308,3 +308,8 @@ footer {
 .preferences-container {
      padding-left: 20px;
 }
+
+.preferences-form {
+     display: flex;
+     flex-direction: column;
+}
