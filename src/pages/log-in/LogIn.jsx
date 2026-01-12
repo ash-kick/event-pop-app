@@ -27,8 +27,8 @@ export default function LogIn() {
                localStorage.setItem("userCity", response.data.userCity);
                setSuccess(true);
                setTimeout(() => {
-                    navigate("/home");
-               }, 1000);
+                    window.location.href = "/home";
+               }, 500);
           } catch (err) {
                setError(getErrorMessage(err));
           } finally {
