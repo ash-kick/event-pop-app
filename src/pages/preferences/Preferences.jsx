@@ -25,7 +25,6 @@ export default function Preferences() {
                     setPreferences(response.data);
                     setAlertsOn(response.data?.alertsOn);
                     setLocation(response.data?.eventLocationPreference);
-                    console.log(response.data?.eventTypeGenrePreference);
                     setGenres(response.data?.eventTypeGenrePreference);
                     console.log("Retrieved preferences!");
                } catch (err) {
@@ -74,21 +73,7 @@ export default function Preferences() {
                          }}
                     />
 
-                    <fieldset
-                         onChange={(e) => {
-                              // console.log(genres);
-                              // console.log(e.target.value);
-                              // LEFT OFF HERE ... NEED TO FIGURE OUT HOW TO ADD WHAT HAS ALREADY BEEN SELECTED
-                              const genre = e.target.value;
-                              const isChecked = e.target.checked;
-
-                              // if the checkbox for the genre is checked, check if it exists in the list and add it if not
-                              if (isChecked) {
-                                   setGenres((previousGenres) => (previousGenres?.includes(genre) ? previousGenres : [...previousGenres, genre]));
-                              }
-                              // if the checkbox is unchecked make sure the genre is removed from the list
-                              else setGenres((previousGenres) => previousGenres.filter((oldGenre) => oldGenre !== genre));
-                         }}>
+                    <fieldset>
                          <legend htmlFor="genres">Select Your Favorite Genres:</legend>
                          {eventOptions.genres
                               .filter((genre) => genre !== "Undefined")
@@ -99,6 +84,20 @@ export default function Preferences() {
                                              id={genre}
                                              name="genres"
                                              value={genre}
+                                             checked={genres?.includes(genre) || false}
+                                             onChange={(e) => {
+                                                  const genre = e.target.value;
+                                                  const isChecked = e.target.checked;
+
+                                                  // if the checkbox for the genre is checked, check if it exists in the list and add it if not
+                                                  if (isChecked) {
+                                                       setGenres((previousGenres) =>
+                                                            previousGenres?.includes(genre) ? previousGenres : [...(previousGenres || []), genre]
+                                                       );
+                                                  }
+                                                  // if the checkbox is unchecked make sure the genre is removed from the list
+                                                  else setGenres((previousGenres) => (previousGenres || []).filter((oldGenre) => oldGenre !== genre));
+                                             }}
                                         />
                                         <label htmlFor={genre}>{genre}</label>
                                    </div>
