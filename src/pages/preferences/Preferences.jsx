@@ -37,6 +37,7 @@ export default function Preferences() {
      return (
           <div className="preferences-container">
                <h2>Preferences</h2>
+               <p>Update and set preferences for alerts using the form below.</p>
                <form className="preferences-form">
                     <label htmlFor="alerts-on">Alerts On</label>
                     <select
