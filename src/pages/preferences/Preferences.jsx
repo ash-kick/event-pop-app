@@ -1,13 +1,18 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import dayjs from "dayjs";
+import { EventOptionsContext } from "../../contexts/EventOptionsContext";
 
 export default function Preferences() {
      const [preferences, setPreferences] = useState(null);
      const [alertsOn, setAlertsOn] = useState(null);
+     const [location, setLocation] = useState(null);
      const token = localStorage.getItem("token");
+     // will use event options context to populate drop down options for each field in the form
+     const { eventOptions, loading } = useContext(EventOptionsContext);
 
      useEffect(() => {
+          // on page load, get preferences for a particular user, set those as the defaults for the form
           const getPreferences = async () => {
                try {
                     const response = await axios.get("/api/event-preferences", {
@@ -17,6 +22,7 @@ export default function Preferences() {
                     });
                     setPreferences(response.data);
                     setAlertsOn(response.data?.alertsOn);
+                    setLocation(response.data?.location);
                     console.log("Retrieved preferences!");
                } catch (err) {
                     console.log(err.message);
@@ -24,7 +30,6 @@ export default function Preferences() {
           };
           getPreferences();
      }, []);
-     // LEFT OFF HERE NEED TO FINISH FORM
      return (
           <div className="preferences-container">
                <h2>Preferences</h2>
@@ -41,8 +46,18 @@ export default function Preferences() {
                          <option value="true">True</option>
                          <option value="false">False</option>
                     </select>
-                    <label>Location</label>
-                    <select></select>
+                    <label htmlFor="location">Location</label>
+                    <select
+                         name="location"
+                         id="location"
+                         value={location === null ? "" : location}
+                         onChange={(e) => {
+                              setLocation(e.target.value);
+                         }}>
+                         {eventOptions.locations.map((loc) => (
+                              <option key={loc}>{loc}</option>
+                         ))}
+                    </select>
                     <label htmlFor="events-through">Events Through</label>
                     <input
                          type="date"
