@@ -7,6 +7,7 @@ export default function Preferences() {
      const [preferences, setPreferences] = useState(null);
      const [alertsOn, setAlertsOn] = useState(null);
      const [location, setLocation] = useState(null);
+     const [eventsThrough, setEventsThrough] = useState(dayjs().add(3, "month").format("YYYY-MM-DD"));
      const token = localStorage.getItem("token");
      // will use event options context to populate drop down options for each field in the form
      const { eventOptions, loading } = useContext(EventOptionsContext);
@@ -63,8 +64,10 @@ export default function Preferences() {
                          type="date"
                          id="events-through"
                          name="events-through"
-                         value={dayjs().add(3, "month").format("YYYY-MM-DD")}
-                         onChange={(e) => {}}
+                         value={eventsThrough}
+                         onChange={(e) => {
+                              setEventsThrough(e.target.value);
+                         }}
                     />
                </form>
           </div>
