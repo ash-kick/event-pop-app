@@ -90,13 +90,13 @@ export default function Preferences() {
                                                   const type = e.target.value;
                                                   const isChecked = e.target.checked;
 
-                                                  // if the checkbox for the genre is checked, check if it exists in the list and add it if not
+                                                  // if the checkbox for the type is checked, check if it exists in the list and add it if not
                                                   if (isChecked) {
                                                        setTypes((previousTypes) =>
                                                             previousTypes?.includes(type) ? previousTypes : [...(previousTypes || []), type]
                                                        );
                                                   }
-                                                  // if the checkbox is unchecked make sure the genre is removed from the list
+                                                  // if the checkbox is unchecked make sure the type is removed from the list
                                                   else setTypes((previousTypes) => (previousTypes || []).filter((oldType) => oldType !== type));
                                              }}
                                         />
