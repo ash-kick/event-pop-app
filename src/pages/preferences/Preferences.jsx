@@ -89,7 +89,6 @@ export default function Preferences() {
                                              onChange={(e) => {
                                                   const type = e.target.value;
                                                   const isChecked = e.target.checked;
-                                                  console.log("Something changed");
 
                                                   // if the checkbox for the genre is checked, check if it exists in the list and add it if not
                                                   if (isChecked) {
