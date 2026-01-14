@@ -313,6 +313,21 @@ footer {
 
 /* Loading */
 
+.loading-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     padding: 32px;
+     gap: 16px;
+}
+
+.loading-message {
+     color: rgb(0, 42, 57);
+     font-size: 16px;
+     margin: 0;
+}
+
 .loading-spinner {
      width: 40px;
      height: 40px;
