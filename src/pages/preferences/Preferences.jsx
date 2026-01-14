@@ -8,6 +8,7 @@ export default function Preferences() {
      const [alertsOn, setAlertsOn] = useState(null);
      const [location, setLocation] = useState(null);
      const [eventsThrough, setEventsThrough] = useState(dayjs().add(3, "month").format("YYYY-MM-DD"));
+     const [types, setTypes] = useState(null);
      const [genres, setGenres] = useState(null);
      const token = localStorage.getItem("token");
      // will use event options context to populate drop down options for each field in the form
@@ -25,6 +26,7 @@ export default function Preferences() {
                     setPreferences(response.data);
                     setAlertsOn(response.data?.alertsOn);
                     setLocation(response.data?.eventLocationPreference);
+                    setTypes(response.data?.eventTypePreference);
                     setGenres(response.data?.eventTypeGenrePreference);
                     console.log("Retrieved preferences!");
                } catch (err) {
@@ -72,7 +74,37 @@ export default function Preferences() {
                               setEventsThrough(e.target.value);
                          }}
                     />
+                    <fieldset>
+                         <legend htmlFor="types">Select Your Favorite Event Types:</legend>
+                         {eventOptions.types
+                              .filter((type) => type !== "Undefined")
+                              .map((type) => (
+                                   <div key={type}>
+                                        <input
+                                             type="checkbox"
+                                             id={type}
+                                             name="types"
+                                             value={type}
+                                             checked={types?.includes(type) || false}
+                                             onChange={(e) => {
+                                                  const type = e.target.value;
+                                                  const isChecked = e.target.checked;
+                                                  console.log("Something changed");
 
+                                                  // if the checkbox for the genre is checked, check if it exists in the list and add it if not
+                                                  if (isChecked) {
+                                                       setTypes((previousTypes) =>
+                                                            previousTypes?.includes(type) ? previousTypes : [...(previousTypes || []), type]
+                                                       );
+                                                  }
+                                                  // if the checkbox is unchecked make sure the genre is removed from the list
+                                                  else setTypes((previousTypes) => (previousTypes || []).filter((oldType) => oldType !== type));
+                                             }}
+                                        />
+                                        <label htmlFor={type}>{type}</label>
+                                   </div>
+                              ))}
+                    </fieldset>
                     <fieldset>
                          <legend htmlFor="genres">Select Your Favorite Genres:</legend>
                          {eventOptions.genres
