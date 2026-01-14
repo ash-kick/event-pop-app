@@ -11,7 +11,11 @@ export default function Preferences() {
      const [types, setTypes] = useState(null);
      const [genres, setGenres] = useState(null);
      const [successMessage, setSuccessMessage] = useState(null);
+     const [errors, setErrors] = useState({});
      const token = localStorage.getItem("token");
+     const minDate = dayjs().format("YYYY-MM-DD");
+     const maxDate = dayjs().add(1, "year").format("YYYY-MM-DD");
+
      // will use event options context to populate drop down options for each field in the form
      const { eventOptions, loading } = useContext(EventOptionsContext);
 
@@ -30,6 +34,7 @@ export default function Preferences() {
                     setTypes(response.data?.eventTypePreference);
                     setGenres(response.data?.eventTypeGenrePreference);
                     setSuccessMessage(null);
+                    setErrors({});
                     console.log("Retrieved preferences!");
                } catch (err) {
                     console.log(err.message);
@@ -37,9 +42,44 @@ export default function Preferences() {
           };
           getPreferences();
      }, []);
+     // creating validation form function for catching errors with preferences form
+     function validateForm() {
+          const newErrors = {};
+          if (eventsThrough) {
+               const selectedDate = dayjs(eventsThrough);
+               const today = dayjs();
+               const oneYearFromNow = dayjs().add(1, "year");
+
+               if (selectedDate.isBefore(today, "day")) {
+                    newErrors.eventsThrough = "Events through date cannot be in the past.";
+               }
+               if (selectedDate.isAfter(oneYearFromNow, "day")) {
+                    newErrors.eventsThrough = "Events through date cannot exceed one year from today";
+               }
+          } else {
+               newErrors.eventsThrough = "Events through date is required";
+          }
+          if (!location || location === "") {
+               newErrors.location = "Please select a location.";
+          }
+          if (alertsOn === null) {
+               newErrors.alertsOn = "Please select an alerts setting.";
+          }
+
+          setErrors(newErrors);
+          // return true if there are errors and false if there are none
+          return Object.keys(newErrors).length === 0;
+     }
 
      async function handleOnSubmit(e) {
           e.preventDefault();
+          setSuccessMessage(null);
+
+          // adding validation check at submit
+          if (!validateForm()) {
+               window.scrollTo({ top: 0, behavior: "smooth" });
+               return;
+          }
           const newPreferences = {
                eventTypePreference: types,
                eventTypeGenrePreference: genres,
@@ -55,9 +95,11 @@ export default function Preferences() {
                });
                console.log("Preferences updated successfully!");
                setSuccessMessage("Successfully saved preferences!");
+               setErrors({});
                window.scrollTo({ top: 0, behavior: "smooth" });
           } catch (err) {
                console.log("Error updating preferences:", err.message);
+               setErrors({ submit: "Failed to save preferences." });
           }
      }
 
@@ -65,10 +107,12 @@ export default function Preferences() {
           <div className="preferences-container">
                <h2>Preferences</h2>
                {successMessage ? <p className="preference-save-success-message">{successMessage}</p> : null}
+               {errors.submit ? <p className="preference-error-message">{errors.submit}</p> : null}
                <p>Update and set preferences for alerts using the form below.</p>
                <form
                     className="preferences-form"
                     onSubmit={handleOnSubmit}>
+                    {/* ALERTS */}
                     <label htmlFor="alerts-on">Alerts On</label>
                     <select
                          name="alerts-on"
@@ -77,10 +121,15 @@ export default function Preferences() {
                          onChange={(e) => {
                               // if the target value is true set alerts on to true (otherwise it will set alerts on to false)
                               setAlertsOn(e.target.value === "true");
+                              if (errors.alertsOn) {
+                                   setErrors({ ...errors, alertsOn: null });
+                              }
                          }}>
                          <option value="true">True</option>
                          <option value="false">False</option>
                     </select>
+                    {errors.alertsOn && <p className="preference-field-error">{errors.alertsOn}</p>}
+                    {/* LOCATIONS */}
                     <label htmlFor="location">Location</label>
                     <select
                          name="location"
@@ -88,21 +137,33 @@ export default function Preferences() {
                          value={location === null ? "" : location}
                          onChange={(e) => {
                               setLocation(e.target.value);
+                              if (errors.location) {
+                                   setErrors({ ...errors, location: null });
+                              }
                          }}>
                          {eventOptions.locations.map((loc) => (
                               <option key={loc}>{loc}</option>
                          ))}
                     </select>
+                    {errors.location && <p className="preference-field-error">{errors.location}</p>}
+                    {/* EVENTS THROUGH DATE */}
                     <label htmlFor="events-through">Events Through</label>
                     <input
                          type="date"
                          id="events-through"
                          name="events-through"
+                         min={minDate}
+                         max={maxDate}
                          value={eventsThrough}
                          onChange={(e) => {
                               setEventsThrough(e.target.value);
+                              if (errors.eventsThrough) {
+                                   setErrors({ ...errors, eventsThrough: null });
+                              }
                          }}
                     />
+                    {errors.eventsThrough && <p className="preference-field-error">{errors.eventsThrough}</p>}
+                    {/* EVENT TYPES */}
                     <fieldset>
                          <legend htmlFor="types">Select Your Favorite Event Types:</legend>
                          {eventOptions.types
@@ -133,6 +194,7 @@ export default function Preferences() {
                                    </div>
                               ))}
                     </fieldset>
+                    {/* GENRES */}
                     <fieldset>
                          <legend htmlFor="genres">Select Your Favorite Genres:</legend>
                          {eventOptions.genres
@@ -163,6 +225,7 @@ export default function Preferences() {
                                    </div>
                               ))}
                     </fieldset>
+                    {/* SUBMIT BUTTON */}
                     <button type="submit">Save Preferences</button>
                </form>
           </div>
