@@ -67,7 +67,7 @@ export default function Preferences() {
           }
 
           setErrors(newErrors);
-          // return true if there are errors and false if there are none
+          // return false if there are errors and true if there are none
           return Object.keys(newErrors).length === 0;
      }
 
