@@ -24,6 +24,7 @@ exports.updatePreference = async (req, res, next) => {
                          eventTypeGenrePreference: req.body.eventTypeGenrePreference,
                          eventLocationPreference: req.body.eventLocationPreference,
                          eventThroughPreference: req.body.eventThroughPreference,
+                         alertsOn: req.body.alertsOn,
                          editedAt: Date.now(),
                     },
                }

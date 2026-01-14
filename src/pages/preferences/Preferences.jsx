@@ -10,6 +10,7 @@ export default function Preferences() {
      const [eventsThrough, setEventsThrough] = useState(dayjs().add(3, "month").format("YYYY-MM-DD"));
      const [types, setTypes] = useState(null);
      const [genres, setGenres] = useState(null);
+     const [successMessage, setSuccessMessage] = useState(null);
      const token = localStorage.getItem("token");
      // will use event options context to populate drop down options for each field in the form
      const { eventOptions, loading } = useContext(EventOptionsContext);
@@ -28,6 +29,7 @@ export default function Preferences() {
                     setLocation(response.data?.eventLocationPreference);
                     setTypes(response.data?.eventTypePreference);
                     setGenres(response.data?.eventTypeGenrePreference);
+                    setSuccessMessage(null);
                     console.log("Retrieved preferences!");
                } catch (err) {
                     console.log(err.message);
@@ -35,11 +37,38 @@ export default function Preferences() {
           };
           getPreferences();
      }, []);
+
+     async function handleOnSubmit(e) {
+          e.preventDefault();
+          const newPreferences = {
+               eventTypePreference: types,
+               eventTypeGenrePreference: genres,
+               eventLocationPreference: location,
+               eventThroughPreference: new Date(eventsThrough),
+               alertsOn: alertsOn,
+          };
+          try {
+               await axios.patch("/api/event-preferences", newPreferences, {
+                    headers: {
+                         Authorization: `Bearer ${token}`,
+                    },
+               });
+               console.log("Preferences updated successfully!");
+               setSuccessMessage("Successfully saved preferences!");
+               window.scrollTo({ top: 0, behavior: "smooth" });
+          } catch (err) {
+               console.log("Error updating preferences:", err.message);
+          }
+     }
+
      return (
           <div className="preferences-container">
                <h2>Preferences</h2>
+               {successMessage ? <p className="preference-save-success-message">{successMessage}</p> : null}
                <p>Update and set preferences for alerts using the form below.</p>
-               <form className="preferences-form">
+               <form
+                    className="preferences-form"
+                    onSubmit={handleOnSubmit}>
                     <label htmlFor="alerts-on">Alerts On</label>
                     <select
                          name="alerts-on"
@@ -134,6 +163,7 @@ export default function Preferences() {
                                    </div>
                               ))}
                     </fieldset>
+                    <button type="submit">Save Preferences</button>
                </form>
           </div>
      );
