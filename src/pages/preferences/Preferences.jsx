@@ -2,9 +2,11 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import dayjs from "dayjs";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
+import Loading from "../../components/Loading";
 
 export default function Preferences() {
      const [preferences, setPreferences] = useState(null);
+     const [preferencesLoading, setPreferencesLoading] = useState(true);
      const [alertsOn, setAlertsOn] = useState(null);
      const [location, setLocation] = useState(null);
      const [eventsThrough, setEventsThrough] = useState(dayjs().add(3, "month").format("YYYY-MM-DD"));
@@ -36,8 +38,10 @@ export default function Preferences() {
                     setSuccessMessage(null);
                     setErrors({});
                     console.log("Retrieved preferences!");
+                    setPreferencesLoading(false);
                } catch (err) {
                     console.log(err.message);
+                    setPreferencesLoading(false);
                }
           };
           getPreferences();
@@ -109,125 +113,132 @@ export default function Preferences() {
                {successMessage ? <p className="preference-save-success-message">{successMessage}</p> : null}
                {errors.submit ? <p className="preference-error-message">{errors.submit}</p> : null}
                <p>Update and set preferences for alerts using the form below.</p>
-               <form
-                    className="preferences-form"
-                    onSubmit={handleOnSubmit}>
-                    {/* ALERTS */}
-                    <label htmlFor="alerts-on">Alerts On</label>
-                    <select
-                         name="alerts-on"
-                         id="alerts-on"
-                         value={alertsOn === null ? "" : alertsOn.toString()}
-                         onChange={(e) => {
-                              // if the target value is true set alerts on to true (otherwise it will set alerts on to false)
-                              setAlertsOn(e.target.value === "true");
-                              if (errors.alertsOn) {
-                                   setErrors({ ...errors, alertsOn: null });
-                              }
-                         }}>
-                         <option value="true">True</option>
-                         <option value="false">False</option>
-                    </select>
-                    {errors.alertsOn && <p className="preference-field-error">{errors.alertsOn}</p>}
-                    {/* LOCATIONS */}
-                    <label htmlFor="location">Location</label>
-                    <select
-                         name="location"
-                         id="location"
-                         value={location === null ? "" : location}
-                         onChange={(e) => {
-                              setLocation(e.target.value);
-                              if (errors.location) {
-                                   setErrors({ ...errors, location: null });
-                              }
-                         }}>
-                         {eventOptions.locations.map((loc) => (
-                              <option key={loc}>{loc}</option>
-                         ))}
-                    </select>
-                    {errors.location && <p className="preference-field-error">{errors.location}</p>}
-                    {/* EVENTS THROUGH DATE */}
-                    <label htmlFor="events-through">Events Through</label>
-                    <input
-                         type="date"
-                         id="events-through"
-                         name="events-through"
-                         min={minDate}
-                         max={maxDate}
-                         value={eventsThrough}
-                         onChange={(e) => {
-                              setEventsThrough(e.target.value);
-                              if (errors.eventsThrough) {
-                                   setErrors({ ...errors, eventsThrough: null });
-                              }
-                         }}
-                    />
-                    {errors.eventsThrough && <p className="preference-field-error">{errors.eventsThrough}</p>}
-                    {/* EVENT TYPES */}
-                    <fieldset>
-                         <legend htmlFor="types">Select Your Favorite Event Types:</legend>
-                         {eventOptions.types
-                              .filter((type) => type !== "Undefined")
-                              .map((type) => (
-                                   <div key={type}>
-                                        <input
-                                             type="checkbox"
-                                             id={type}
-                                             name="types"
-                                             value={type}
-                                             checked={types?.includes(type) || false}
-                                             onChange={(e) => {
-                                                  const type = e.target.value;
-                                                  const isChecked = e.target.checked;
-
-                                                  // if the checkbox for the type is checked, check if it exists in the list and add it if not
-                                                  if (isChecked) {
-                                                       setTypes((previousTypes) =>
-                                                            previousTypes?.includes(type) ? previousTypes : [...(previousTypes || []), type]
-                                                       );
-                                                  }
-                                                  // if the checkbox is unchecked make sure the type is removed from the list
-                                                  else setTypes((previousTypes) => (previousTypes || []).filter((oldType) => oldType !== type));
-                                             }}
-                                        />
-                                        <label htmlFor={type}>{type}</label>
-                                   </div>
+               {loading ? (
+                    <Loading message="Preferences loading ..."></Loading>
+               ) : (
+                    <form
+                         className="preferences-form"
+                         onSubmit={handleOnSubmit}>
+                         {/* ALERTS */}
+                         <label htmlFor="alerts-on">Alerts On</label>
+                         <select
+                              name="alerts-on"
+                              id="alerts-on"
+                              value={alertsOn === null ? "" : alertsOn.toString()}
+                              onChange={(e) => {
+                                   // if the target value is true set alerts on to true (otherwise it will set alerts on to false)
+                                   setAlertsOn(e.target.value === "true");
+                                   if (errors.alertsOn) {
+                                        setErrors({ ...errors, alertsOn: null });
+                                   }
+                              }}>
+                              <option value="true">True</option>
+                              <option value="false">False</option>
+                         </select>
+                         {errors.alertsOn && <p className="preference-field-error">{errors.alertsOn}</p>}
+                         {/* LOCATIONS */}
+                         <label htmlFor="location">Location</label>
+                         <select
+                              name="location"
+                              id="location"
+                              value={location === null ? "" : location}
+                              onChange={(e) => {
+                                   setLocation(e.target.value);
+                                   if (errors.location) {
+                                        setErrors({ ...errors, location: null });
+                                   }
+                              }}>
+                              {eventOptions.locations.map((loc) => (
+                                   <option key={loc}>{loc}</option>
                               ))}
-                    </fieldset>
-                    {/* GENRES */}
-                    <fieldset>
-                         <legend htmlFor="genres">Select Your Favorite Genres:</legend>
-                         {eventOptions.genres
-                              .filter((genre) => genre !== "Undefined")
-                              .map((genre) => (
-                                   <div key={genre}>
-                                        <input
-                                             type="checkbox"
-                                             id={genre}
-                                             name="genres"
-                                             value={genre}
-                                             checked={genres?.includes(genre) || false}
-                                             onChange={(e) => {
-                                                  const genre = e.target.value;
-                                                  const isChecked = e.target.checked;
+                         </select>
+                         {errors.location && <p className="preference-field-error">{errors.location}</p>}
+                         {/* EVENTS THROUGH DATE */}
+                         <label htmlFor="events-through">Events Through</label>
+                         <input
+                              type="date"
+                              id="events-through"
+                              name="events-through"
+                              min={minDate}
+                              max={maxDate}
+                              value={eventsThrough}
+                              onChange={(e) => {
+                                   setEventsThrough(e.target.value);
+                                   if (errors.eventsThrough) {
+                                        setErrors({ ...errors, eventsThrough: null });
+                                   }
+                              }}
+                         />
+                         {errors.eventsThrough && <p className="preference-field-error">{errors.eventsThrough}</p>}
+                         {/* EVENT TYPES */}
+                         <fieldset>
+                              <legend htmlFor="types">Select Your Favorite Event Types:</legend>
+                              {eventOptions.types
+                                   .filter((type) => type !== "Undefined")
+                                   .map((type) => (
+                                        <div key={type}>
+                                             <input
+                                                  type="checkbox"
+                                                  id={type}
+                                                  name="types"
+                                                  value={type}
+                                                  checked={types?.includes(type) || false}
+                                                  onChange={(e) => {
+                                                       const type = e.target.value;
+                                                       const isChecked = e.target.checked;
 
-                                                  // if the checkbox for the genre is checked, check if it exists in the list and add it if not
-                                                  if (isChecked) {
-                                                       setGenres((previousGenres) =>
-                                                            previousGenres?.includes(genre) ? previousGenres : [...(previousGenres || []), genre]
-                                                       );
-                                                  }
-                                                  // if the checkbox is unchecked make sure the genre is removed from the list
-                                                  else setGenres((previousGenres) => (previousGenres || []).filter((oldGenre) => oldGenre !== genre));
-                                             }}
-                                        />
-                                        <label htmlFor={genre}>{genre}</label>
-                                   </div>
-                              ))}
-                    </fieldset>
-                    {/* SUBMIT BUTTON */}
-                    <button type="submit">Save Preferences</button>
-               </form>
+                                                       // if the checkbox for the type is checked, check if it exists in the list and add it if not
+                                                       if (isChecked) {
+                                                            setTypes((previousTypes) =>
+                                                                 previousTypes?.includes(type) ? previousTypes : [...(previousTypes || []), type]
+                                                            );
+                                                       }
+                                                       // if the checkbox is unchecked make sure the type is removed from the list
+                                                       else setTypes((previousTypes) => (previousTypes || []).filter((oldType) => oldType !== type));
+                                                  }}
+                                             />
+                                             <label htmlFor={type}>{type}</label>
+                                        </div>
+                                   ))}
+                         </fieldset>
+                         {/* GENRES */}
+                         <fieldset>
+                              <legend htmlFor="genres">Select Your Favorite Genres:</legend>
+                              {eventOptions.genres
+                                   .filter((genre) => genre !== "Undefined")
+                                   .map((genre) => (
+                                        <div key={genre}>
+                                             <input
+                                                  type="checkbox"
+                                                  id={genre}
+                                                  name="genres"
+                                                  value={genre}
+                                                  checked={genres?.includes(genre) || false}
+                                                  onChange={(e) => {
+                                                       const genre = e.target.value;
+                                                       const isChecked = e.target.checked;
+
+                                                       // if the checkbox for the genre is checked, check if it exists in the list and add it if not
+                                                       if (isChecked) {
+                                                            setGenres((previousGenres) =>
+                                                                 previousGenres?.includes(genre) ? previousGenres : [...(previousGenres || []), genre]
+                                                            );
+                                                       }
+                                                       // if the checkbox is unchecked make sure the genre is removed from the list
+                                                       else
+                                                            setGenres((previousGenres) =>
+                                                                 (previousGenres || []).filter((oldGenre) => oldGenre !== genre)
+                                                            );
+                                                  }}
+                                             />
+                                             <label htmlFor={genre}>{genre}</label>
+                                        </div>
+                                   ))}
+                         </fieldset>
+                         {/* SUBMIT BUTTON */}
+                         <button type="submit">Save Preferences</button>
+                    </form>
+               )}
           </div>
      );
 }

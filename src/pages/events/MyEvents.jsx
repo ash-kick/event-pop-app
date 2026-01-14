@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { SavedEventContext } from "../../contexts/SavedEventsContext";
 import axios from "axios";
+import Loading from "../../components/Loading";
 
 export default function MyEvents() {
-     const { savedEvents, fetchSavedEvents } = useContext(SavedEventContext);
+     const { savedEvents, loading, fetchSavedEvents } = useContext(SavedEventContext);
      const token = localStorage.getItem("token");
      async function handleClick(savedEvent) {
           try {
@@ -26,6 +27,7 @@ export default function MyEvents() {
           <div className="events-page-container">
                <div className="saved-event-feed">
                     <h2>View Your Saved Events</h2>
+                    {loading ? <Loading message="Loading saved events ..."></Loading> : null}
                     <ul>
                          {savedEvents?.map((savedEvent) => (
                               <li key={savedEvent._id}>
