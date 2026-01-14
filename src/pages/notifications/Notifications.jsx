@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function Notifications() {
      // fetch all notifications for user
-     const { unreadCount, notifications, markNotificationRead } = useContext(NotificationsContext);
+     const { unreadCount, notifications, markNotificationRead, markAllNotificationsRead } = useContext(NotificationsContext);
      const { savedEvents } = useContext(SavedEventContext);
      // list read notifications after unread
      // allow for clicking on an unread notification to make it as read
@@ -21,6 +21,12 @@ export default function Notifications() {
                     ) : (
                          <p className="unread-count-message">You have {unreadCount} unread notifications.</p>
                     )}
+                    <button
+                         onClick={() => {
+                              markAllNotificationsRead();
+                         }}>
+                         Mark all as read!
+                    </button>
                     <ul className="unread-notification-display">
                          {notifications.length > 0
                               ? notifications
