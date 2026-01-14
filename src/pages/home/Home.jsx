@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SaveEventButton from "../../components/SaveEventButton";
+import Loading from "../../components/Loading";
 
 export default function Home() {
      const [upcomingEvents, setUpcomingEvents] = useState([]);
      const userName = localStorage.getItem("userName");
      const userCity = localStorage.getItem("userCity");
      const token = localStorage.getItem("token");
+     const [loading, setLoading] = useState(true);
 
      useEffect(() => {
           const getUpcomingEvents = async () => {
@@ -20,8 +22,10 @@ export default function Home() {
                          },
                     });
                     setUpcomingEvents(response.data.upcomingEvents);
+                    setLoading(false);
                } catch (err) {
                     console.log(err.message);
+                    setLoading(false);
                }
           };
           getUpcomingEvents();
@@ -34,21 +38,25 @@ export default function Home() {
                </div>
                <div className="upcoming-event-feed">
                     <h2>Upcoming Events In {userCity}</h2>
-                    <ul>
-                         {upcomingEvents?.map((upcomingEvent) => (
-                              <li key={upcomingEvent._id}>
-                                   <img
-                                        src={upcomingEvent.eventImageUrl}
-                                        alt="event-image"
-                                        className="upcoming-event-image"
-                                   />
-                                   <p>{upcomingEvent.eventName}</p>
-                                   <p>{upcomingEvent.startDateTime}</p>
-                                   <p>{upcomingEvent.venueName}</p>
-                                   <SaveEventButton eventId={upcomingEvent._id} />
-                              </li>
-                         ))}
-                    </ul>
+                    {loading ? (
+                         <Loading message="Loading upcoming events ..."></Loading>
+                    ) : (
+                         <ul>
+                              {upcomingEvents?.map((upcomingEvent) => (
+                                   <li key={upcomingEvent._id}>
+                                        <img
+                                             src={upcomingEvent.eventImageUrl}
+                                             alt="event-image"
+                                             className="upcoming-event-image"
+                                        />
+                                        <p>{upcomingEvent.eventName}</p>
+                                        <p>{upcomingEvent.startDateTime}</p>
+                                        <p>{upcomingEvent.venueName}</p>
+                                        <SaveEventButton eventId={upcomingEvent._id} />
+                                   </li>
+                              ))}
+                         </ul>
+                    )}
                </div>
           </div>
      );

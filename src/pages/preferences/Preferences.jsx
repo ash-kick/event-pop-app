@@ -113,7 +113,7 @@ export default function Preferences() {
                {successMessage ? <p className="preference-save-success-message">{successMessage}</p> : null}
                {errors.submit ? <p className="preference-error-message">{errors.submit}</p> : null}
                <p>Update and set preferences for alerts using the form below.</p>
-               {loading ? (
+               {loading || preferencesLoading ? (
                     <Loading message="Preferences loading ..."></Loading>
                ) : (
                     <form

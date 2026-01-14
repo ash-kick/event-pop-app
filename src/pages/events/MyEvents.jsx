@@ -27,17 +27,20 @@ export default function MyEvents() {
           <div className="events-page-container">
                <div className="saved-event-feed">
                     <h2>View Your Saved Events</h2>
-                    {loading ? <Loading message="Loading saved events ..."></Loading> : null}
-                    <ul>
-                         {savedEvents?.map((savedEvent) => (
-                              <li key={savedEvent._id}>
-                                   <p>Event: {savedEvent.eventName}</p>
-                                   <p>Date: {savedEvent.startDateTime}</p>
-                                   <p>Venue: {savedEvent.venueName}</p>
-                                   <button onClick={() => handleClick(savedEvent)}>Remove</button>
-                              </li>
-                         ))}
-                    </ul>
+                    {loading ? (
+                         <Loading message="Loading saved events ..."></Loading>
+                    ) : (
+                         <ul>
+                              {savedEvents?.map((savedEvent) => (
+                                   <li key={savedEvent._id}>
+                                        <p>Event: {savedEvent.eventName}</p>
+                                        <p>Date: {savedEvent.startDateTime}</p>
+                                        <p>Venue: {savedEvent.venueName}</p>
+                                        <button onClick={() => handleClick(savedEvent)}>Remove</button>
+                                   </li>
+                              ))}
+                         </ul>
+                    )}
                </div>
           </div>
      );
