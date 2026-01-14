@@ -317,3 +317,23 @@ footer {
 .preference-save-success-message {
      color: red;
 }
+
+/* Loading */
+
+.loading-spinner {
+     width: 40px;
+     height: 40px;
+     border: 4px solid rgb(217, 228, 232);
+     border-top: 4px solid rgb(0, 42, 57);
+     border-radius: 50%;
+     animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+     0% {
+          transform: rotate(0deg);
+     }
+     100% {
+          transform: rotate(360deg);
+     }
+}
