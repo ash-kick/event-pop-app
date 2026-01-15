@@ -30,16 +30,25 @@
      --light-hot-pink-color: rgb(255, 84, 215);
 }
 
+.root-layout {
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+}
+
 main {
      display: flex;
      justify-content: center;
+     flex: 1;
 }
 
 footer {
-     text-align: left;
+     text-align: center;
      padding: 16px;
      color: var(--text-color);
      font-size: 10px;
+     opacity: 0.6;
+     margin-top: 24px;
 }
 
 /* Loading */
