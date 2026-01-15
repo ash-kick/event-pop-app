@@ -1,7 +1,7 @@
 /* home page */
 
 .home-container {
-     background: linear-gradient(var(--fun-bright-color), var(--fun-bright-color), var(--highlight-hover-color), var(--secondary-color));
+     background: linear-gradient(var(--darkest-purple-color), var(--darkest-purple-color), var(--medium-purple-color), var(--palest-purple-color));
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -9,7 +9,7 @@
      width: 90%;
      margin: 0;
      padding: 16px;
-     color: var(--secondary-color);
+     color: var(--palest-purple-color);
      border-radius: 24px 24px 0px 0px;
 }
 
@@ -17,13 +17,13 @@
      padding: 8px;
      margin: 8px;
      height: 16px;
-     color: var(--secondary-color);
+     color: var(--palest-purple-color);
 }
 
 /* upcoming events */
 
 .upcoming-event-container {
-     color: var(--secondary-color);
+     color: var(--palest-purple-color);
      width: 100%;
      min-height: 200px;
      display: flex;
@@ -68,7 +68,7 @@
 }
 
 .upcoming-event-list-item:hover {
-     background-color: var(--dark-color-transparency);
+     background-color: var(--darkest-blue-transparency-color);
 }
 
 .upcoming-event-image-save-container {
