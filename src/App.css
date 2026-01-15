@@ -9,7 +9,7 @@
 
 /* global styling */
 
-:root {
+/* :root {
      --primary-color: rgb(0, 42, 57);
      --secondary-color: rgb(217, 228, 232);
      --app-background-color: #ffffff;
@@ -20,6 +20,23 @@
      --notification-color: rgb(200, 41, 41);
      --drop-down-menu-color: rgb(235, 246, 250);
      --drop-box-shadow-color: rgba(0, 42, 57, 0.1);
+} */
+
+:root {
+     --primary-color: rgb(0, 4, 23);
+     --secondary-color: rgba(239, 242, 254, 1);
+     --app-background-color: #ffffff;
+     --heading-text-color: rgba(147, 173, 255, 1);
+     --white-color: white;
+     --button-background-color: rgb(0, 4, 23);
+     --button-text-color: white;
+     --text-color: rgb(0, 4, 23);
+     --highlight-hover-color: rgb(116, 137, 241);
+     --success-message-color: rgba(99, 102, 241, 1);
+     --fun-bright-color: rgb(75, 78, 232);
+     --notification-color: rgb(225, 16, 200);
+     --drop-down-menu-color: rgba(239, 242, 254, 1);
+     --drop-box-shadow-color: rgba(0, 4, 23, 0.1);
 }
 
 footer {

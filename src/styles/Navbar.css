@@ -32,6 +32,10 @@ nav {
           font-size: 28px;
      }
 
+     .io-menu-icon:hover {
+          color: var(--fun-bright-color);
+     }
+
      .nav-links-main-large-screen {
           display: none;
      }
@@ -47,32 +51,6 @@ nav {
           border-bottom-right-radius: 4px;
           z-index: 1000;
      }
-}
-
-#log-in-button,
-#log-out-button {
-     display: flex;
-     align-items: center;
-     background-color: var(--primary-color);
-     color: var(--secondary-color);
-     border-radius: 8px;
-     border: none;
-     padding: 8px 16px;
-     cursor: pointer;
-     font-family: Arial, Helvetica, sans-serif;
-     font-size: inherit;
-     text-decoration: none;
-     justify-content: center;
-}
-
-#log-in-button {
-     width: 80px;
-     margin-left: auto;
-     margin-right: 8px;
-}
-
-#log-out-button {
-     width: 96px;
 }
 
 .notification-bell-container {
@@ -128,6 +106,32 @@ nav {
      margin-left: auto;
      margin-right: 8px;
      justify-content: center;
+}
+
+#log-in-button,
+#log-out-button {
+     display: flex;
+     align-items: center;
+     background-color: var(--button-background-color);
+     color: var(--button-text-color);
+     border-radius: 8px;
+     border: none;
+     padding: 8px 16px;
+     cursor: pointer;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: inherit;
+     text-decoration: none;
+     justify-content: center;
+}
+
+#log-in-button {
+     width: 80px;
+     margin-left: auto;
+     margin-right: 8px;
+}
+
+#log-out-button {
+     width: 96px;
 }
 
 #log-out-button:hover,
