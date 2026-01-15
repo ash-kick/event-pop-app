@@ -83,6 +83,9 @@ export default function RootLayout() {
           <div className="root-layout">
                <header>
                     <nav>
+                         <NavLink to="/">
+                              <img src="../assets/event-pop-icon-small.png" />
+                         </NavLink>
                          <button
                               className="drop-down-menu-button"
                               onClick={() => {
@@ -90,9 +93,6 @@ export default function RootLayout() {
                               }}>
                               <IoMenu className="io-menu-icon"></IoMenu>
                          </button>
-                         <NavLink to="/">
-                              <img src="../assets/event-pop-icon-small.png" />
-                         </NavLink>
                          {menuOpen ? <div className="nav-links-small-screen">{navLinks("small-screen")}</div> : null}
                          <div className="nav-links-large-screen">{navLinks("large-screen")}</div>
                          {isAuthenticated ? firstLetterLogoutButton : logInButton}
