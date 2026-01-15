@@ -6,7 +6,6 @@
 @import "./styles/Search.css";
 @import "./styles/MyEvents.css";
 @import "./styles/Preferences.css";
-@import "./styles/EventCard.css";
 
 /* global styling */
 
@@ -91,7 +90,6 @@ footer {
      font-size: 16px;
      padding: 4px;
      margin: 8px 8px 0px 0px;
-     font-weight: 400px;
 }
 
 .get-tickets-button:hover {
