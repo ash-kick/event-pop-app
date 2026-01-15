@@ -38,7 +38,7 @@ export default function Home() {
                     <h2>Hi, {userName}!</h2>
                </div>
                <div className="upcoming-event-container">
-                    <h2>Upcoming Events In {userCity}</h2>
+                    <h2 className="upcoming-event-header">Upcoming Events in {userCity}</h2>
                     {loading ? (
                          <Loading message="Loading upcoming events ..."></Loading>
                     ) : (
