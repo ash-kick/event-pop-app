@@ -1,0 +1,141 @@
+/* nav bar */
+
+nav {
+     background-color: var(--secondary-color);
+     color: var(--primary-color);
+     font-family: Arial, Helvetica, sans-serif;
+     width: 100%;
+     height: 56px;
+     display: flex;
+     align-items: center;
+     position: relative;
+}
+
+.nav-links-main-large-screen {
+     display: flex;
+     align-items: center;
+     justify-self: center;
+}
+.nav-links-main-small-screen {
+     display: none;
+}
+.drop-down-menu-button {
+     display: none;
+}
+@media (max-width: 700px) {
+     .drop-down-menu-button {
+          display: flex;
+          border: none;
+          background: none;
+     }
+     .io-menu-icon {
+          font-size: 28px;
+     }
+
+     .nav-links-main-large-screen {
+          display: none;
+     }
+     .nav-links-main-small-screen {
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          justify-content: left;
+          position: absolute;
+          top: 56px;
+          left: 0px;
+          background-color: var(--drop-down-menu-color);
+          border-bottom-right-radius: 4px;
+          z-index: 1000;
+     }
+}
+
+#log-in-button,
+#log-out-button {
+     display: flex;
+     align-items: center;
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+     border-radius: 8px;
+     border: none;
+     padding: 8px 16px;
+     cursor: pointer;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: inherit;
+     text-decoration: none;
+     justify-content: center;
+}
+
+#log-in-button {
+     width: 80px;
+     margin-left: auto;
+     margin-right: 8px;
+}
+
+#log-out-button {
+     width: 96px;
+}
+
+.notification-bell-container {
+     position: relative;
+     display: inline-block;
+     padding-right: 8px;
+}
+
+.notification-bell {
+     color: var(--primary-color);
+     position: relative;
+}
+
+.notification-bell:hover {
+     cursor: pointer;
+     color: var(--highlight-hover-color);
+}
+
+.notification-unread-count {
+     background-color: var(--notification-color);
+     color: --white-color;
+     font-size: 10px;
+     width: 14px;
+     height: 14px;
+     text-align: center;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     top: 0px;
+     right: 6px;
+}
+
+.first-letter {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     background-color: var(--primary-color);
+     color: white;
+     min-width: 32px;
+     min-height: 32px;
+     margin: 8px;
+     font-weight: bold;
+     font-size: 16px;
+     line-height: 1;
+}
+
+.first-letter-logout-container {
+     display: flex;
+     align-items: center;
+     margin-left: auto;
+     margin-right: 8px;
+     justify-content: center;
+}
+
+#log-out-button:hover,
+#log-in-button:hover {
+     background-color: var(--highlight-hover-color);
+}
+a {
+     color: var(--text-color);
+     text-decoration: none;
+     padding: 8px 16px;
+}

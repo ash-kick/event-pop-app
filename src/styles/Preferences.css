@@ -1,0 +1,14 @@
+/* Preferences */
+
+.preferences-container {
+     padding-left: 24px;
+}
+
+.preferences-form {
+     display: flex;
+     flex-direction: column;
+}
+
+.preference-save-success-message {
+     color: var(--success-message-color);
+}
