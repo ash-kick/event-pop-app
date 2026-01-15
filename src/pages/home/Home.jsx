@@ -47,22 +47,28 @@ export default function Home() {
                                    <li
                                         key={upcomingEvent._id}
                                         className="upcoming-event-list-item">
-                                        <img
-                                             src={upcomingEvent.eventImageUrl}
-                                             alt="image of event"
-                                             className="upcoming-event-image"
-                                        />
-                                        <div className="display-event-name">{upcomingEvent.eventName}</div>
+                                        <div className="upcoming-event-image-save-container">
+                                             <img
+                                                  src={upcomingEvent.eventImageUrl}
+                                                  alt="image of event"
+                                                  className="upcoming-event-image"
+                                             />
+                                             <SaveEventButton
+                                                  eventId={upcomingEvent._id}
+                                                  className="upcoming-event-save-button"
+                                             />
+                                        </div>
+                                        <div className="upcoming-event-name">{upcomingEvent.eventName}</div>
                                         {upcomingEvent.eventTypeName && upcomingEvent.eventTypeName !== "Undefined" ? (
-                                             <div className="display-event-genre-sub-genre">
+                                             <div className="upcoming-event-genre-sub-genre">
                                                   {upcomingEvent.eventTypeName} {upcomingEvent.genreName ? `• ${upcomingEvent.genreName}` : null}{" "}
                                                   {upcomingEvent.subGenreName ? `• ${upcomingEvent.subGenreName}` : null}
                                              </div>
                                         ) : null}
-                                        <div className="display-event-city-venue">
+                                        <div className="upcoming-event-city-venue">
                                              {upcomingEvent.cityName} • {upcomingEvent.venueName}
                                         </div>
-                                        <div className="display-event-date-time">
+                                        <div className="upcoming-event-date-time">
                                              {dayjs(upcomingEvent.startDateTime).format("ddd, MMM D • h:mm A")}
                                         </div>
                                         {upcomingEvent.ticketMasterUrl ? (
@@ -72,11 +78,10 @@ export default function Home() {
                                                   Get tickets!
                                              </button>
                                         ) : (
-                                             <div className="display-event-tickets-unavailable">
+                                             <div className="upcoming-event-tickets-unavailable">
                                                   Tickets currently unavailable ... event {upcomingEvent.eventStatusCode}
                                              </div>
                                         )}
-                                        <SaveEventButton eventId={upcomingEvent._id} />
                                    </li>
                               ))}
                          </ul>

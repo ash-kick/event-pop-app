@@ -1,6 +1,7 @@
 import axios from "axios";
 import { SavedEventContext } from "../contexts/SavedEventsContext";
 import { useContext } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function SaveEventButton({ eventId }) {
      const { savedEvents, fetchSavedEvents } = useContext(SavedEventContext);
@@ -29,13 +30,12 @@ export default function SaveEventButton({ eventId }) {
      return (
           <div className="saved-event-button-container">
                {savedEvents.filter((event) => event._id === eventId).length === 0 ? (
-                    <button
+                    <FaRegHeart
                          className="save-event-button"
-                         onClick={handleClick}>
-                         Save
-                    </button>
+                         onClick={handleClick}
+                    />
                ) : (
-                    <p className="saved-event-message">✅ Saved</p>
+                    <FaHeart className="saved-event-icon" />
                )}
           </div>
      );
