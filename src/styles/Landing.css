@@ -66,6 +66,7 @@
 
 .landing-get-started-button:hover {
      background-color: var(--highlight-hover-color);
+     color: var(--text-color);
 }
 
 .landing-hero-right {

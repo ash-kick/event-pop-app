@@ -138,9 +138,14 @@ nav {
 #log-out-button:hover,
 #log-in-button:hover {
      background-color: var(--highlight-hover-color);
+     color: var(--text-color);
 }
 a {
      color: var(--text-color);
      text-decoration: none;
      padding: 8px 16px;
+}
+
+a:hover {
+     color: var(--highlight-hover-color);
 }

@@ -9,6 +9,8 @@
 
 /* global styling */
 
+/* old color theme */
+
 /* :root {
      --primary-color: rgb(0, 42, 57);
      --secondary-color: rgb(217, 228, 232);
@@ -25,7 +27,7 @@
 :root {
      --primary-color: rgb(0, 4, 23);
      --secondary-color: rgba(239, 242, 254, 1);
-     --app-background-color: #ffffff;
+     --app-background-color: rgba(239, 242, 254, 1);
      --heading-text-color: rgba(147, 173, 255, 1);
      --white-color: white;
      --button-background-color: rgb(0, 4, 23);
