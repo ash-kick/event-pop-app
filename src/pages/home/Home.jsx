@@ -37,20 +37,20 @@ export default function Home() {
                <div className="home-welcome-message">
                     <h2>Hi, {userName}!</h2>
                </div>
-               <div className="upcoming-event-feed">
+               <div className="upcoming-event-container">
                     <h2>Upcoming Events In {userCity}</h2>
                     {loading ? (
                          <Loading message="Loading upcoming events ..."></Loading>
                     ) : (
-                         <ul>
+                         <ul className="upcoming-event-list">
                               {upcomingEvents?.map((upcomingEvent) => (
                                    <li
                                         key={upcomingEvent._id}
-                                        className="event-list-item">
+                                        className="upcoming-event-list-item">
                                         <img
                                              src={upcomingEvent.eventImageUrl}
                                              alt="image of event"
-                                             className="display-event-image"
+                                             className="upcoming-event-image"
                                         />
                                         <div className="display-event-name">{upcomingEvent.eventName}</div>
                                         {upcomingEvent.eventTypeName && upcomingEvent.eventTypeName !== "Undefined" ? (

@@ -18,9 +18,27 @@
      color: var();
 }
 
-.upcoming-event-feed {
+.upcoming-event-container {
      color: var(--secondary-color);
      width: 100%;
      min-height: 256px;
      padding: 8px;
+}
+
+.upcoming-event-list {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: flex-start;
+}
+
+.upcoming-event-list-item {
+     list-style-type: none;
+     margin: 8px;
+}
+
+.upcoming-event-image {
+     width: 300px;
+     height: 100px;
+     object-fit: cover;
+     object-position: center;
 }
