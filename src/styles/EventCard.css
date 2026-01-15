@@ -7,6 +7,10 @@
      font-size: 24px;
 }
 
+.display-event-image {
+     max-width: 300px;
+}
+
 .get-tickets-button {
      background-color: rgb(255, 84, 215);
      color: var(--text-color);

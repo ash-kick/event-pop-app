@@ -19,7 +19,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                    className="event-list-item">
                                    <div className="display-event-image-container">
                                         <img
-                                             className="diplay-event-image"
+                                             className="display-event-image"
                                              alt="image of event"
                                              src={foundEvent.eventImageUrl}
                                         />
