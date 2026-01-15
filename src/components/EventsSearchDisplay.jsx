@@ -36,12 +36,11 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                    </div>
                                    <div className="diplay-event-date-time">{dayjs(foundEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
                                    {foundEvent.ticketMasterUrl ? (
-                                        <a
-                                             href={foundEvent.ticketMasterUrl}
-                                             target="_blank"
-                                             className="diplay-event-tickets-link">
-                                             Get tickets!{" "}
-                                        </a>
+                                        <button
+                                             onClick={() => window.open(foundEvent.ticketMasterUrl, "_blank")}
+                                             className="get-tickets-button">
+                                             Get tickets!
+                                        </button>
                                    ) : (
                                         <div className="diplay-event-tickets-unavailable">
                                              Tickets currently unavailable ... event {foundEvent.eventStatusCode}

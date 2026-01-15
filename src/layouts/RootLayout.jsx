@@ -72,10 +72,26 @@ export default function RootLayout() {
      const navLinks = (menuStyle) => {
           return (
                <div className={`nav-links-main-${menuStyle}`}>
-                    <NavLink to="home">Home</NavLink>
-                    <NavLink to="search">Search</NavLink>
-                    <NavLink to="events">My Events</NavLink>
-                    <NavLink to="preferences">Preferences</NavLink>
+                    <NavLink
+                         to="home"
+                         className="main-nav-link">
+                         Home
+                    </NavLink>
+                    <NavLink
+                         to="search"
+                         className="main-nav-link">
+                         Search
+                    </NavLink>
+                    <NavLink
+                         to="events"
+                         className="main-nav-link">
+                         My Events
+                    </NavLink>
+                    <NavLink
+                         to="preferences"
+                         className="main-nav-link">
+                         Preferences
+                    </NavLink>
                </div>
           );
      };

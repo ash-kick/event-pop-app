@@ -66,12 +66,11 @@ export default function Home() {
                                              {dayjs(upcomingEvent.startDateTime).format("ddd, MMM D • h:mm A")}
                                         </div>
                                         {upcomingEvent.ticketMasterUrl ? (
-                                             <a
-                                                  href={upcomingEvent.ticketMasterUrl}
-                                                  target="_blank"
-                                                  className="diplay-event-tickets-link">
-                                                  Get tickets!{" "}
-                                             </a>
+                                             <button
+                                                  onClick={() => window.open(upcomingEvent.ticketMasterUrl, "_blank")}
+                                                  className="get-tickets-button">
+                                                  Get tickets!
+                                             </button>
                                         ) : (
                                              <div className="diplay-event-tickets-unavailable">
                                                   Tickets currently unavailable ... event {upcomingEvent.eventStatusCode}

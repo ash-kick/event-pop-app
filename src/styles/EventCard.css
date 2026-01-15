@@ -1,3 +1,23 @@
 .event-list-item {
      list-style-type: none;
 }
+
+.display-event-name {
+     font-weight: 800;
+     font-size: 24px;
+}
+
+.get-tickets-button {
+     background-color: rgb(255, 84, 215);
+     color: var(--text-color);
+     border: none;
+     border-radius: 16px;
+     font-size: 16px;
+     margin: 8px 8px 0px 0px;
+     font-weight: 400px;
+}
+
+.get-tickets-button:hover {
+     cursor: pointer;
+     background-color: rgb(251, 30, 185);
+}

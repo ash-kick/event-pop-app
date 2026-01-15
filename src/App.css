@@ -28,6 +28,11 @@
      --drop-box-shadow-color: rgba(0, 4, 23, 0.1);
 }
 
+main {
+     display: flex;
+     justify-content: center;
+}
+
 footer {
      text-align: left;
      padding: 16px;

@@ -1,22 +1,24 @@
 /* home page */
 
 .home-container {
+     background-color: var(--fun-bright-color);
      display: flex;
      flex-direction: column;
-     align-items: flex-start;
+     align-items: center;
      justify-content: flex-start;
-     width: 100%;
+     width: 90%;
      margin: 0;
-     box-shadow: 0 2px 8px --drop-box-shadow-color;
+     box-shadow: 0 2px 8px var(--drop-box-shadow-color);
      padding: 24px;
+     color: var(--secondary-color);
+     border-radius: 24px 24px 0px 0px;
 }
 
 .home-welcome-message {
-     color: var(--text-color);
+     color: var();
 }
 
 .upcoming-event-feed {
-     background-color: var(--primary-color);
      color: var(--secondary-color);
      width: 100%;
      min-height: 256px;
