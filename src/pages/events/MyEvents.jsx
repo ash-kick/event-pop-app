@@ -24,7 +24,7 @@ export default function MyEvents() {
      }
 
      return (
-          <div className="events-page-container">
+          <div className="my-events-container">
                <div className="saved-event-feed">
                     <h2>View Your Saved Events</h2>
                     {loading ? (

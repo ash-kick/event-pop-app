@@ -302,6 +302,7 @@ footer {
      width: 100%;
      margin: 0;
      box-shadow: 0 2px 8px rgba(0, 42, 57, 0.1);
+     padding: 24px;
 }
 
 .home-welcome-message {
@@ -316,10 +317,22 @@ footer {
      padding: 8px;
 }
 
+/* Search */
+
+.search-container {
+     padding: 24px;
+}
+
+/* My Events */
+
+.my-events-container {
+     padding: 24px;
+}
+
 /* Preferences */
 
 .preferences-container {
-     padding-left: 20px;
+     padding-left: 24px;
 }
 
 .preferences-form {
