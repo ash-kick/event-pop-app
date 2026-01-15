@@ -34,7 +34,8 @@
      --highlight-hover-color: rgb(116, 137, 241);
      --success-message-color: rgba(99, 102, 241, 1);
      --fun-bright-color: rgb(75, 78, 232);
-     --notification-color: rgb(225, 16, 200);
+     --notification-color: rgb(200, 41, 41);
+     --notification-text-color: white;
      --drop-down-menu-color: rgba(239, 242, 254, 1);
      --drop-box-shadow-color: rgba(0, 4, 23, 0.1);
 }
