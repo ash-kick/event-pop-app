@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import SaveEventButton from "../../components/SaveEventButton";
 import Loading from "../../components/Loading";
+import dayjs from "dayjs";
 
 export default function Home() {
      const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -48,12 +49,34 @@ export default function Home() {
                                         className="event-list-item">
                                         <img
                                              src={upcomingEvent.eventImageUrl}
-                                             alt="event-image"
-                                             className="upcoming-event-image"
+                                             alt="image of event"
+                                             className="display-event-image"
                                         />
-                                        <p>{upcomingEvent.eventName}</p>
-                                        <p>{upcomingEvent.startDateTime}</p>
-                                        <p>{upcomingEvent.venueName}</p>
+                                        <div className="display-event-name">{upcomingEvent.eventName}</div>
+                                        {upcomingEvent.eventTypeName && upcomingEvent.eventTypeName !== "Undefined" ? (
+                                             <div className="diplay-event-genre-sub-genre">
+                                                  {upcomingEvent.eventTypeName} {upcomingEvent.genreName ? `• ${upcomingEvent.genreName}` : null}{" "}
+                                                  {upcomingEvent.subGenreName ? `• ${upcomingEvent.subGenreName}` : null}
+                                             </div>
+                                        ) : null}
+                                        <div className="diplay-event-city-venue">
+                                             {upcomingEvent.cityName} • {upcomingEvent.venueName}
+                                        </div>
+                                        <div className="diplay-event-date-time">
+                                             {dayjs(upcomingEvent.startDateTime).format("ddd, MMM D • h:mm A")}
+                                        </div>
+                                        {upcomingEvent.ticketMasterUrl ? (
+                                             <a
+                                                  href={upcomingEvent.ticketMasterUrl}
+                                                  target="_blank"
+                                                  className="diplay-event-tickets-link">
+                                                  Get tickets!{" "}
+                                             </a>
+                                        ) : (
+                                             <div className="diplay-event-tickets-unavailable">
+                                                  Tickets currently unavailable ... event {upcomingEvent.eventStatusCode}
+                                             </div>
+                                        )}
                                         <SaveEventButton eventId={upcomingEvent._id} />
                                    </li>
                               ))}

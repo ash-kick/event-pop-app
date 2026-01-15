@@ -14,11 +14,13 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                <div className="search-events-display">
                     <ul className="search-events-list">
                          {currentSearchResponse.foundEvents.map((foundEvent) => (
-                              <li key={foundEvent._id}>
+                              <li
+                                   key={foundEvent._id}
+                                   className="event-list-item">
                                    <div className="display-event-image-container">
                                         <img
                                              className="diplay-event-image"
-                                             alt="image advertising event"
+                                             alt="image of event"
                                              src={foundEvent.eventImageUrl}
                                         />
                                    </div>
