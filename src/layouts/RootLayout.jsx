@@ -1,6 +1,8 @@
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { FaBell } from "react-icons/fa";
+
+import { IoMenu } from "react-icons/io5";
 import { NotificationsContext } from "../contexts/NotificationsContext";
 
 const logInButton = (
@@ -17,6 +19,7 @@ export default function RootLayout() {
      const [isAuthenticated, setIsAuthenticated] = useState(false);
      const [userName, setUserName] = useState(null);
      const navigate = useNavigate();
+     const [menuOpen, setMenuOpen] = useState(false);
      // using this to retrigger auth check
      const location = useLocation();
      useEffect(() => {
@@ -65,19 +68,33 @@ export default function RootLayout() {
                </button>
           </div>
      );
+
+     const navLinks = (menuStyle) => {
+          return (
+               <div className={`nav-links-main-${menuStyle}`}>
+                    <NavLink to="home">Home</NavLink>
+                    <NavLink to="search">Search</NavLink>
+                    <NavLink to="events">My Events</NavLink>
+                    <NavLink to="preferences">Preferences</NavLink>
+               </div>
+          );
+     };
      return (
           <div className="root-layout">
                <header>
                     <nav>
-                         <div className="nav-links-main">
-                              <NavLink to="/">
-                                   <img src="../assets/event-pop-icon-small.png" />
-                              </NavLink>
-                              <NavLink to="home">Home</NavLink>
-                              <NavLink to="search">Search</NavLink>
-                              <NavLink to="events">My Events</NavLink>
-                              <NavLink to="preferences">Preferences</NavLink>
-                         </div>
+                         <button
+                              className="drop-down-menu-button"
+                              onClick={() => {
+                                   setMenuOpen(!menuOpen);
+                              }}>
+                              <IoMenu className="io-menu-icon"></IoMenu>
+                         </button>
+                         <NavLink to="/">
+                              <img src="../assets/event-pop-icon-small.png" />
+                         </NavLink>
+                         {menuOpen ? <div className="nav-links-small-screen">{navLinks("small-screen")}</div> : null}
+                         <div className="nav-links-large-screen">{navLinks("large-screen")}</div>
                          {isAuthenticated ? firstLetterLogoutButton : logInButton}
                     </nav>
                </header>
