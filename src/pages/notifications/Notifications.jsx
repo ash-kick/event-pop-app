@@ -12,7 +12,7 @@ export default function Notifications() {
      // allow for clicking on an unread notification to make it as read
      // allow for saving events on your my events page from notifications page -- this might need to be it's own component... it will need to happen many places
      return (
-          <div>
+          <div className="notifications-container">
                <h2>Notifications</h2>
                {loading ? (
                     <Loading message="Loading notifications ..."></Loading>

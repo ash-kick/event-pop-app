@@ -113,44 +113,42 @@ export default function Search() {
 
      return (
           <div className="search-container">
-               <div className="search-content-box">
-                    <div className="search-bar-display">
-                         <form onSubmit={handleSubmit}>
-                              <h2>Search for events: </h2>
-                              <label>location</label>
-                              <select
-                                   type="text"
-                                   name="usercity"
-                                   value={submittedCity || ""}
-                                   onChange={(event) => setSubmittedCity(event.target.value)}
-                                   required>
-                                   {loading ? (
-                                        <option> Loading cities ...</option>
-                                   ) : (
-                                        eventOptions?.locations.map((city) => (
-                                             <option
-                                                  key={city}
-                                                  value={city}>
-                                                  {city}
-                                             </option>
-                                        ))
-                                   )}
-                              </select>
-                              <input
-                                   type="search"
-                                   placeholder="Artist, Venue, Keyword"
-                                   value={currentSearchBarValue}
-                                   onChange={(event) => setCurrentSearchBarValue(event.target.value)}></input>
-                              <button type="submit">Search</button>
-                         </form>
-                         <EventSearchDisplay
-                              currentSearchResponse={currentSearchResponse}
-                              searchError={searchError}
-                              handleNextPage={handleNextPage}
-                              handlePreviousPage={handlePreviousPage}
-                              currentPage={currentPage}
-                         />
-                    </div>
+               <div className="search-bar-display">
+                    <form onSubmit={handleSubmit}>
+                         <h2>Search for events: </h2>
+                         <label>location</label>
+                         <select
+                              type="text"
+                              name="usercity"
+                              value={submittedCity || ""}
+                              onChange={(event) => setSubmittedCity(event.target.value)}
+                              required>
+                              {loading ? (
+                                   <option> Loading cities ...</option>
+                              ) : (
+                                   eventOptions?.locations.map((city) => (
+                                        <option
+                                             key={city}
+                                             value={city}>
+                                             {city}
+                                        </option>
+                                   ))
+                              )}
+                         </select>
+                         <input
+                              type="search"
+                              placeholder="Artist, Venue, Keyword"
+                              value={currentSearchBarValue}
+                              onChange={(event) => setCurrentSearchBarValue(event.target.value)}></input>
+                         <button type="submit">Search</button>
+                    </form>
+                    <EventSearchDisplay
+                         currentSearchResponse={currentSearchResponse}
+                         searchError={searchError}
+                         handleNextPage={handleNextPage}
+                         handlePreviousPage={handlePreviousPage}
+                         currentPage={currentPage}
+                    />
                </div>
           </div>
      );

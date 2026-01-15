@@ -43,6 +43,8 @@ nav {
           top: 56px;
           left: 0px;
           background-color: rgb(235, 246, 250);
+          border-bottom-right-radius: 4px;
+          z-index: 1000;
      }
 }
 
@@ -292,7 +294,7 @@ footer {
 
 /* home page */
 
-.home-content-box {
+.home-container {
      display: flex;
      flex-direction: column;
      align-items: flex-start;

@@ -32,7 +32,7 @@ export default function Home() {
      }, []);
 
      return (
-          <div className="home-content-box">
+          <div className="home-container">
                <div className="home-welcome-message">
                     <h2>Hi, {userName}!</h2>
                </div>

@@ -38,7 +38,7 @@ export default function Register() {
           }
      }
      return (
-          <div>
+          <div className="register-container">
                <h2>Register</h2>
                {error && <div className="register-error-message">{error}</div>}
                {success && <div className="register-success-message">{successMessage}</div>}
