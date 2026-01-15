@@ -1,4 +1,5 @@
 import SaveEventButton from "../components/SaveEventButton";
+import dayjs from "dayjs";
 
 export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage, handlePreviousPage, currentPage }) {
      if (searchError) {
@@ -17,24 +18,17 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                    <div>
                                         <img src={foundEvent.eventImageUrl} />
                                    </div>
-                                   <div>Event: {foundEvent.eventName}</div>
-                                   <div>City: {foundEvent.cityName}</div>
-                                   <div>Venue: {foundEvent.venueName}</div>
-                                   <div>Date: {foundEvent.startDateTime}</div>
+                                   <div>{foundEvent.eventName}</div>
                                    {foundEvent.eventTypeName && foundEvent.eventTypeName !== "Undefined" ? (
-                                        <div>Event Type: {foundEvent.eventTypeName}</div>
-                                   ) : (
-                                        <></>
-                                   )}
-                                   {foundEvent.eventTypeName === "Music" ? (
                                         <div>
-                                             <div>
-                                                  Genre: {foundEvent.genreName} - {foundEvent.subGenreName}
-                                             </div>
+                                             {foundEvent.eventTypeName} {foundEvent.genreName ? `• ${foundEvent.genreName}` : null}{" "}
+                                             {foundEvent.subGenreName ? `• ${foundEvent.subGenreName}` : null}
                                         </div>
-                                   ) : (
-                                        <></>
-                                   )}
+                                   ) : null}
+                                   <div>
+                                        {foundEvent.cityName} • {foundEvent.venueName}
+                                   </div>
+                                   <div>{dayjs(foundEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
                                    {foundEvent.ticketMasterUrl ? (
                                         <a
                                              href={foundEvent.ticketMasterUrl}
