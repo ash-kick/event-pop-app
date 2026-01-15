@@ -9,21 +9,6 @@
 
 /* global styling */
 
-/* old color theme */
-
-/* :root {
-     --primary-color: rgb(0, 42, 57);
-     --secondary-color: rgb(217, 228, 232);
-     --app-background-color: #ffffff;
-     --white-color: white;
-     --text-color: rgb(0, 42, 57);
-     --highlight-hover-color: rgba(0, 42, 57, 0.8);
-     --success-message-color: rgb(67, 153, 67);
-     --notification-color: rgb(200, 41, 41);
-     --drop-down-menu-color: rgb(235, 246, 250);
-     --drop-box-shadow-color: rgba(0, 42, 57, 0.1);
-} */
-
 :root {
      --primary-color: rgb(0, 4, 23);
      --secondary-color: rgba(239, 242, 254, 1);
