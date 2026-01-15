@@ -31,10 +31,10 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                              {foundEvent.subGenreName ? `• ${foundEvent.subGenreName}` : null}
                                         </div>
                                    ) : null}
-                                   <div className="diplay-event-city-venue">
+                                   <div className="display-event-city-venue">
                                         {foundEvent.cityName} • {foundEvent.venueName}
                                    </div>
-                                   <div className="diplay-event-date-time">{dayjs(foundEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
+                                   <div className="display-event-date-time">{dayjs(foundEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
                                    {foundEvent.ticketMasterUrl ? (
                                         <button
                                              onClick={() => window.open(foundEvent.ticketMasterUrl, "_blank")}
@@ -42,7 +42,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                              Get tickets!
                                         </button>
                                    ) : (
-                                        <div className="diplay-event-tickets-unavailable">
+                                        <div className="display-event-tickets-unavailable">
                                              Tickets currently unavailable ... event {foundEvent.eventStatusCode}
                                         </div>
                                    )}

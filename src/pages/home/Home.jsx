@@ -54,15 +54,15 @@ export default function Home() {
                                         />
                                         <div className="display-event-name">{upcomingEvent.eventName}</div>
                                         {upcomingEvent.eventTypeName && upcomingEvent.eventTypeName !== "Undefined" ? (
-                                             <div className="diplay-event-genre-sub-genre">
+                                             <div className="display-event-genre-sub-genre">
                                                   {upcomingEvent.eventTypeName} {upcomingEvent.genreName ? `• ${upcomingEvent.genreName}` : null}{" "}
                                                   {upcomingEvent.subGenreName ? `• ${upcomingEvent.subGenreName}` : null}
                                              </div>
                                         ) : null}
-                                        <div className="diplay-event-city-venue">
+                                        <div className="display-event-city-venue">
                                              {upcomingEvent.cityName} • {upcomingEvent.venueName}
                                         </div>
-                                        <div className="diplay-event-date-time">
+                                        <div className="display-event-date-time">
                                              {dayjs(upcomingEvent.startDateTime).format("ddd, MMM D • h:mm A")}
                                         </div>
                                         {upcomingEvent.ticketMasterUrl ? (
@@ -72,7 +72,7 @@ export default function Home() {
                                                   Get tickets!
                                              </button>
                                         ) : (
-                                             <div className="diplay-event-tickets-unavailable">
+                                             <div className="display-event-tickets-unavailable">
                                                   Tickets currently unavailable ... event {upcomingEvent.eventStatusCode}
                                              </div>
                                         )}
