@@ -43,7 +43,9 @@ export default function Home() {
                     ) : (
                          <ul>
                               {upcomingEvents?.map((upcomingEvent) => (
-                                   <li key={upcomingEvent._id}>
+                                   <li
+                                        key={upcomingEvent._id}
+                                        className="event-list-item">
                                         <img
                                              src={upcomingEvent.eventImageUrl}
                                              alt="event-image"
