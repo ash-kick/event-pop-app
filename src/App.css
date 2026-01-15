@@ -21,7 +21,7 @@ nav {
 .drop-down-menu-button {
      display: none;
 }
-@media (max-width: 768px) {
+@media (max-width: 700px) {
      .drop-down-menu-button {
           display: flex;
           border: none;
@@ -244,7 +244,7 @@ footer {
      border-radius: 0;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 900px) {
      .landing-hero {
           flex-direction: column;
           min-height: auto;
