@@ -84,10 +84,11 @@ footer {
 /* Buttons */
 
 .get-tickets-button {
-     background-color: var(--light-hot-pink-color);
-     color: var(--white-text-color);
-     border: none;
-     border-radius: 16px;
+     background: transparent;
+     border: solid var(--darkest-blue-color);
+     border-radius: 8px;
+     color: var(--darkest-blue-color);
+     min-width: fit-content;
      font-size: 16px;
      padding: 4px;
      margin: 8px 8px 0px 0px;
@@ -95,7 +96,7 @@ footer {
 
 .get-tickets-button:hover {
      cursor: pointer;
-     background-color: var(--hot-pink-color);
+     background-color: rgba(255, 255, 255, 0.25);
 }
 
 .save-event-button,

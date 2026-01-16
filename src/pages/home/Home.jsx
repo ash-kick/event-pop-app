@@ -83,9 +83,7 @@ export default function Home() {
                                                   Get tickets!
                                              </button>
                                         ) : (
-                                             <div className="upcoming-event-tickets-unavailable">
-                                                  Tickets currently unavailable ... event {upcomingEvent.eventStatusCode}
-                                             </div>
+                                             <div className="upcoming-event-tickets-unavailable">{upcomingEvent.eventStatusCode}</div>
                                         )}
                                    </li>
                               ))}

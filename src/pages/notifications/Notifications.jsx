@@ -33,7 +33,7 @@ export default function Notifications() {
                                    Mark all as read!
                               </button>
 
-                              <h3>Unread</h3>
+                              <h3 className="notification-title">Unread</h3>
                               <ul className="unread-notification-display">
                                    {notifications.length > 0
                                         ? notifications
@@ -65,7 +65,7 @@ export default function Notifications() {
                               </ul>
                          </div>
                          <div className="read-notification-display-container">
-                              <h3>Read</h3>
+                              <h3 className="notification-title">Read</h3>
                               <ul className="read-notification-display">
                                    {notifications.length > 0
                                         ? notifications

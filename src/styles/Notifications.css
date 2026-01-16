@@ -21,8 +21,16 @@
      align-items: center;
 }
 
+.notification-title {
+     font-weight: 200;
+}
+
 .unread-notification-display-container {
      width: 300px;
+}
+
+.unread-count-message {
+     font-weight: 600;
 }
 
 .read-notification-display-container {
