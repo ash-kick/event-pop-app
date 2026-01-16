@@ -82,6 +82,12 @@
 
 /* event search display */
 
+.search-events-display {
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+}
+
 .search-events-list {
      display: flex;
      flex-direction: column;
@@ -132,4 +138,24 @@
      top: 8px;
      right: 8px;
      z-index: 10;
+}
+
+/* buttons */
+
+.previous-button {
+     background-color: transparent;
+     border: none;
+     font-size: 48px;
+}
+
+.next-button {
+     background-color: transparent;
+     border: none;
+     font-size: 48px;
+}
+
+.previous-button:hover,
+.next-button:hover {
+     cursor: pointer;
+     color: var(--darkest-purple-color);
 }

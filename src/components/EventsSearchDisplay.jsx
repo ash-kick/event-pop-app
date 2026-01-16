@@ -1,5 +1,6 @@
 import SaveEventButton from "../components/SaveEventButton";
 import dayjs from "dayjs";
+import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
 export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage, handlePreviousPage, currentPage }) {
      if (searchError) {
@@ -56,24 +57,24 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                               </li>
                          ))}
                     </ul>
-                    {currentPage > 1 ? (
-                         <button
-                              onClick={handlePreviousPage}
-                              className="previous-button">
-                              Previous
-                         </button>
-                    ) : (
-                         <></>
-                    )}
-                    {currentSearchResponse.hasMore ? (
-                         <button
-                              onClick={handleNextPage}
-                              className="next-button">
-                              Next
-                         </button>
-                    ) : (
-                         <div className="end-results-message">End of search results ...</div>
-                    )}
+                    <div className="next-previous-button-container">
+                         {currentPage > 1 ? (
+                              <button
+                                   onClick={handlePreviousPage}
+                                   className="previous-button">
+                                   <GrFormPreviousLink />
+                              </button>
+                         ) : null}
+                         {currentSearchResponse.hasMore ? (
+                              <button
+                                   onClick={handleNextPage}
+                                   className="next-button">
+                                   <GrFormNextLink />
+                              </button>
+                         ) : (
+                              <div className="end-results-message">End of search results ...</div>
+                         )}
+                    </div>
                </div>
           );
      }
