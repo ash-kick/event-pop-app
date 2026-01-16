@@ -3,6 +3,7 @@ import { NotificationsContext } from "../../contexts/NotificationsContext";
 import { SavedEventContext } from "../../contexts/SavedEventsContext";
 import SaveEventButton from "../../components/SaveEventButton";
 import Loading from "../../components/Loading";
+import dayjs from "dayjs";
 
 export default function Notifications() {
      // fetch all notifications for user
@@ -13,13 +14,12 @@ export default function Notifications() {
      // allow for saving events on your my events page from notifications page -- this might need to be it's own component... it will need to happen many places
      return (
           <div className="notifications-container">
-               <h2>Notifications</h2>
+               <h2 className="notification-header">Notifications</h2>
                {loading ? (
                     <Loading message="Loading notifications ..."></Loading>
                ) : (
                     <div className="notification-display-container">
                          <div className="unread-notification-display-container">
-                              <h3>Unread</h3>
                               {unreadCount === 1 ? (
                                    <p className="unread-count-message">You have {unreadCount} unread notification.</p>
                               ) : (
@@ -28,9 +28,12 @@ export default function Notifications() {
                               <button
                                    onClick={() => {
                                         markAllNotificationsRead();
-                                   }}>
+                                   }}
+                                   className="mark-all-read-button">
                                    Mark all as read!
                               </button>
+
+                              <h3>Unread</h3>
                               <ul className="unread-notification-display">
                                    {notifications.length > 0
                                         ? notifications
@@ -39,11 +42,23 @@ export default function Notifications() {
                                                     <li
                                                          className="unread-notification"
                                                          key={notification._id}>
-                                                         <button onClick={() => markNotificationRead(notification._id)}>Mark Read</button>
-                                                         <p>Event: {notification.event?.eventName}</p>
-                                                         <p>Date: {notification.event?.startDateTime}</p>
-                                                         <p>Venue: {notification.event?.venueName}</p>
-                                                         <SaveEventButton eventId={notification.event._id} />
+                                                         <div className="notification-event-details">
+                                                              <div className="notificatoin-event-name-venue">
+                                                                   {notification.event?.eventName} @ {notification.event?.venueName}
+                                                              </div>
+                                                              <break></break>
+                                                              <div className="notification-event-date-time">
+                                                                   {dayjs(notification.event?.startDateTime).format("ddd, MMM D • h:mm A")}
+                                                              </div>
+                                                         </div>
+                                                         <div className="save-mark-read-container">
+                                                              <SaveEventButton eventId={notification.event._id} />
+                                                              <button
+                                                                   onClick={() => markNotificationRead(notification._id)}
+                                                                   className="mark-read-button">
+                                                                   Mark Read
+                                                              </button>
+                                                         </div>
                                                     </li>
                                                ))
                                         : null}
@@ -59,9 +74,15 @@ export default function Notifications() {
                                                     <li
                                                          className="read-notification"
                                                          key={notification._id}>
-                                                         <p>Event: {notification.event?.eventName}</p>
-                                                         <p>Date: {notification.event?.startDateTime}</p>
-                                                         <p>Venue: {notification.event?.venueName}</p>
+                                                         <div className="notification-event-details">
+                                                              <div className="notificatoin-event-name-venue">
+                                                                   {notification.event?.eventName} @ {notification.event?.venueName}
+                                                              </div>
+                                                              <break></break>
+                                                              <div className="notification-event-date-time">
+                                                                   {dayjs(notification.event?.startDateTime).format("ddd, MMM D • h:mm A")}
+                                                              </div>
+                                                         </div>
                                                          <SaveEventButton eventId={notification.event._id} />
                                                     </li>
                                                ))
