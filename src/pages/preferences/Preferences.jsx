@@ -109,7 +109,7 @@ export default function Preferences() {
 
      return (
           <div className="preferences-container">
-               <h2>Preferences</h2>
+               <h2 className="preferences-header">Your Preferences</h2>
                {successMessage ? <p className="preference-save-success-message">{successMessage}</p> : null}
                {errors.submit ? <p className="preference-error-message">{errors.submit}</p> : null}
                <p>Update and set preferences for alerts using the form below.</p>
@@ -120,11 +120,16 @@ export default function Preferences() {
                          className="preferences-form"
                          onSubmit={handleOnSubmit}>
                          {/* ALERTS */}
-                         <label htmlFor="alerts-on">Alerts On</label>
+                         <label
+                              htmlFor="alerts-on"
+                              className="preference-name">
+                              Alerts On
+                         </label>
                          <select
                               name="alerts-on"
                               id="alerts-on"
                               value={alertsOn === null ? "" : alertsOn.toString()}
+                              className="preference-select"
                               onChange={(e) => {
                                    // if the target value is true set alerts on to true (otherwise it will set alerts on to false)
                                    setAlertsOn(e.target.value === "true");
@@ -137,11 +142,16 @@ export default function Preferences() {
                          </select>
                          {errors.alertsOn && <p className="preference-field-error">{errors.alertsOn}</p>}
                          {/* LOCATIONS */}
-                         <label htmlFor="location">Location</label>
+                         <label
+                              htmlFor="location"
+                              className="preference-name">
+                              Location
+                         </label>
                          <select
                               name="location"
                               id="location"
                               value={location === null ? "" : location}
+                              className="preference-select"
                               onChange={(e) => {
                                    setLocation(e.target.value);
                                    if (errors.location) {
@@ -154,11 +164,16 @@ export default function Preferences() {
                          </select>
                          {errors.location && <p className="preference-field-error">{errors.location}</p>}
                          {/* EVENTS THROUGH DATE */}
-                         <label htmlFor="events-through">Events Through</label>
+                         <label
+                              htmlFor="events-through"
+                              className="preference-name">
+                              Events Through
+                         </label>
                          <input
                               type="date"
                               id="events-through"
                               name="events-through"
+                              className="preference-input"
                               min={minDate}
                               max={maxDate}
                               value={eventsThrough}
@@ -171,8 +186,12 @@ export default function Preferences() {
                          />
                          {errors.eventsThrough && <p className="preference-field-error">{errors.eventsThrough}</p>}
                          {/* EVENT TYPES */}
-                         <fieldset>
-                              <legend htmlFor="types">Select Your Favorite Event Types:</legend>
+                         <fieldset className="preference-checkbox-boxes">
+                              <legend
+                                   htmlFor="types"
+                                   className="preference-name">
+                                   Select Your Favorite Event Types:
+                              </legend>
                               {eventOptions.types
                                    .filter((type) => type !== "Undefined")
                                    .map((type) => (
@@ -182,6 +201,7 @@ export default function Preferences() {
                                                   id={type}
                                                   name="types"
                                                   value={type}
+                                                  className="preference-input-checkbox"
                                                   checked={types?.includes(type) || false}
                                                   onChange={(e) => {
                                                        const type = e.target.value;
@@ -202,8 +222,12 @@ export default function Preferences() {
                                    ))}
                          </fieldset>
                          {/* GENRES */}
-                         <fieldset>
-                              <legend htmlFor="genres">Select Your Favorite Genres:</legend>
+                         <fieldset className="preference-checkbox-boxes">
+                              <legend
+                                   htmlFor="genres"
+                                   className="preference-name">
+                                   Select Your Favorite Genres:
+                              </legend>
                               {eventOptions.genres
                                    .filter((genre) => genre !== "Undefined")
                                    .map((genre) => (
@@ -214,6 +238,7 @@ export default function Preferences() {
                                                   name="genres"
                                                   value={genre}
                                                   checked={genres?.includes(genre) || false}
+                                                  className="preference-input-checkbox"
                                                   onChange={(e) => {
                                                        const genre = e.target.value;
                                                        const isChecked = e.target.checked;
@@ -231,12 +256,21 @@ export default function Preferences() {
                                                             );
                                                   }}
                                              />
-                                             <label htmlFor={genre}>{genre}</label>
+
+                                             <label
+                                                  htmlFor={genre}
+                                                  className="preference-genre-name">
+                                                  {genre}
+                                             </label>
                                         </div>
                                    ))}
                          </fieldset>
                          {/* SUBMIT BUTTON */}
-                         <button type="submit">Save Preferences</button>
+                         <button
+                              type="submit"
+                              className="save-preferences-button">
+                              Save Preferences
+                         </button>
                     </form>
                )}
           </div>
