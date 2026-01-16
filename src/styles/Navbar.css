@@ -63,6 +63,7 @@ nav {
 .notification-bell {
      color: var(--darkest-blue-color);
      position: relative;
+     font-size: 24px;
 }
 
 .notification-bell:hover {
@@ -91,7 +92,7 @@ nav {
      align-items: center;
      justify-content: center;
      border-radius: 50%;
-     background-color: var(--darkest-blue-color);
+     background-color: var(--medium-purple-color);
      color: white;
      min-width: 32px;
      min-height: 32px;
@@ -113,34 +114,33 @@ nav {
 #log-out-button {
      display: flex;
      align-items: center;
-     background-color: var(--darkest-blue-color);
-     color: var(--white-text-color);
+     background-color: transparent;
+     color: var(--darkest-blue-color);
      font-weight: 200;
      border-radius: 8px;
      border: none;
-     padding: 8px 16px;
      cursor: pointer;
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-     font-size: inherit;
      font-weight: 400;
+     font-size: 16px;
      text-decoration: none;
      justify-content: center;
 }
 
 #log-in-button {
-     width: 80px;
+     width: 70px;
      margin-left: auto;
      margin-right: 8px;
 }
 
 #log-out-button {
-     width: 96px;
+     width: 70px;
 }
 
 #log-out-button:hover,
 #log-in-button:hover {
-     background-color: var(--medium-purple-color);
-     color: var(--darkest-blue-color);
+     color: var(--medium-purple-color);
+     cursor: pointer;
 }
 .main-nav-link {
      color: var(--darkest-blue-color);

@@ -1,6 +1,6 @@
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext, useRef } from "react";
-import { FaBell } from "react-icons/fa";
+import { FaRegBell } from "react-icons/fa6";
 
 import { IoMenu } from "react-icons/io5";
 import { NotificationsContext } from "../contexts/NotificationsContext";
@@ -70,8 +70,7 @@ export default function RootLayout() {
           <div className="first-letter-logout-container">
                <div className="first-letter">{firstLetterUser}</div>
                <div className="notification-bell-container">
-                    <FaBell
-                         size={28}
+                    <FaRegBell
                          className="notification-bell"
                          onClick={handleNotificationClick}
                     />
