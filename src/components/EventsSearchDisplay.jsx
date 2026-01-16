@@ -16,25 +16,32 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                          {currentSearchResponse.foundEvents.map((foundEvent) => (
                               <li
                                    key={foundEvent._id}
-                                   className="event-list-item">
-                                   <div className="display-event-image-container">
+                                   className="search-event-list-item">
+                                   <div className="search-event-image-save">
                                         <img
-                                             className="display-event-image"
+                                             className="search-event-image"
                                              alt="image of event"
                                              src={foundEvent.eventImageUrl}
                                         />
+                                        <SaveEventButton
+                                             className="search-event-save-button"
+                                             eventId={foundEvent._id}
+                                        />
                                    </div>
-                                   <div className="display-event-name">{foundEvent.eventName}</div>
+                                   <div className="search-event-name">{foundEvent.eventName}</div>
                                    {foundEvent.eventTypeName && foundEvent.eventTypeName !== "Undefined" ? (
-                                        <div className="diplay-event-genre-sub-genre">
-                                             {foundEvent.eventTypeName} {foundEvent.genreName ? `• ${foundEvent.genreName}` : null}{" "}
-                                             {foundEvent.subGenreName ? `• ${foundEvent.subGenreName}` : null}
+                                        <div className="search-event-genre-sub-genre">
+                                             {foundEvent.eventTypeName}{" "}
+                                             {foundEvent.genreName && foundEvent.genreName !== "Undefined" ? `• ${foundEvent.genreName}` : null}{" "}
+                                             {foundEvent.subGenreName && foundEvent.subGenreName !== "Undefined"
+                                                  ? `• ${foundEvent.subGenreName}`
+                                                  : null}
                                         </div>
                                    ) : null}
-                                   <div className="display-event-city-venue">
+                                   <div className="search-event-city-venue">
                                         {foundEvent.cityName} • {foundEvent.venueName}
                                    </div>
-                                   <div className="display-event-date-time">{dayjs(foundEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
+                                   <div className="search-event-date-time">{dayjs(foundEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
                                    {foundEvent.ticketMasterUrl ? (
                                         <button
                                              onClick={() => window.open(foundEvent.ticketMasterUrl, "_blank")}
@@ -42,11 +49,10 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                              Get tickets!
                                         </button>
                                    ) : (
-                                        <div className="display-event-tickets-unavailable">
+                                        <div className="serach-event-tickets-unavailable">
                                              Tickets currently unavailable ... event {foundEvent.eventStatusCode}
                                         </div>
                                    )}
-                                   <SaveEventButton eventId={foundEvent._id} />
                               </li>
                          ))}
                     </ul>

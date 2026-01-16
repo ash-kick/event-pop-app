@@ -1,6 +1,7 @@
 import EventSearchDisplay from "../../components/EventsSearchDisplay";
 import { EventOptionsContext } from "../../contexts/EventOptionsContext";
 import { useState, useContext, useEffect } from "react";
+import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 
 export default function Search() {
@@ -114,10 +115,13 @@ export default function Search() {
      return (
           <div className="search-container">
                <div className="search-bar-display">
-                    <form onSubmit={handleSubmit}>
-                         <h2>Search for events: </h2>
-                         <label>location</label>
+                    <h2 className="search-header">Search for Events</h2>
+                    <form
+                         onSubmit={handleSubmit}
+                         className="search-bar">
+                         <label>location: </label>
                          <select
+                              className="search-bar-select"
                               type="text"
                               name="usercity"
                               value={submittedCity || ""}
@@ -135,12 +139,18 @@ export default function Search() {
                                    ))
                               )}
                          </select>
+                         <div className="search-bar-seperator"></div>
                          <input
                               type="search"
                               placeholder="Artist, Venue, Keyword"
+                              className="search-bar-input"
                               value={currentSearchBarValue}
                               onChange={(event) => setCurrentSearchBarValue(event.target.value)}></input>
-                         <button type="submit">Search</button>
+                         <button
+                              type="submit"
+                              className="search-bar-button">
+                              <FaSearch className="search-icon" />
+                         </button>
                     </form>
                     <EventSearchDisplay
                          currentSearchResponse={currentSearchResponse}
