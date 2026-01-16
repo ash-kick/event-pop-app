@@ -16,3 +16,7 @@
 .my-events-list-item {
      list-style-type: none;
 }
+
+.saved-event-image {
+     width: 100px; /* place holder */
+}

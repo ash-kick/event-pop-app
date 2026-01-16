@@ -35,9 +35,18 @@ export default function MyEvents() {
                                    <li
                                         key={savedEvent._id}
                                         className="my-events-list-item">
-                                        <p>Event: {savedEvent.eventName}</p>
-                                        <p>Date: {savedEvent.startDateTime}</p>
-                                        <p>Venue: {savedEvent.venueName}</p>
+                                        <div className="saved-event-image-container">
+                                             <img
+                                                  src={savedEvent.eventImageUrl}
+                                                  alt="image of event"
+                                                  className="saved-event-image"
+                                             />
+                                        </div>
+                                        <div className="saved-event-details-container">
+                                             <p>{savedEvent.eventName}</p>
+                                             <p>{savedEvent.startDateTime}</p>
+                                             <p>{savedEvent.venueName}</p>
+                                        </div>
                                         <button onClick={() => handleClick(savedEvent)}>Remove</button>
                                    </li>
                               ))}
