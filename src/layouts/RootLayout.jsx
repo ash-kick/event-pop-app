@@ -100,7 +100,11 @@ export default function RootLayout() {
                <header>
                     <nav>
                          <NavLink to="/">
-                              <img src="../assets/event-pop-icon-small.png" />
+                              <img
+                                   src="../assets/event-pop-icon-small.png"
+                                   alt="event pop icon"
+                                   className="event-pop-icon-landing"
+                              />
                          </NavLink>
                          <button
                               className="drop-down-menu-button"

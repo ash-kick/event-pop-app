@@ -4,9 +4,10 @@ nav {
      background-color: var(--palest-purple-color);
      color: var(--darkest-blue-color);
      font-family: Arial, Helvetica, sans-serif;
-     width: 100%;
+     width: 90%;
      height: 56px;
      display: flex;
+     justify-self: center;
      align-items: center;
      position: relative;
 }
