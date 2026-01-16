@@ -26,40 +26,36 @@ export default function MyEvents() {
 
      return (
           <div className="my-events-container">
-               <div className="saved-event-feed">
-                    <h2>View Your Saved Events</h2>
-                    {loading ? (
-                         <Loading message="Loading saved events ..."></Loading>
-                    ) : (
-                         <ul className="my-events-list">
-                              {savedEvents?.map((savedEvent) => (
-                                   <li
-                                        key={savedEvent._id}
-                                        className="my-events-list-item">
-                                        <div className="saved-event-image-container">
-                                             <img
-                                                  src={savedEvent.eventImageUrl}
-                                                  alt="image of event"
-                                                  className="saved-event-image"
-                                             />
-                                        </div>
-                                        <div className="saved-event-details-container">
-                                             <div className="saved-event-name">{savedEvent.eventName}</div>
-                                             <div className="saved-event-date-time">
-                                                  {dayjs(savedEvent.startDateTime).format("ddd, MMM D • h:mm A")}
-                                             </div>
-                                             <div className="saved-event-venue">{savedEvent.venueName}</div>
-                                             <button
-                                                  onClick={() => handleClick(savedEvent)}
-                                                  className="remove-event-button">
-                                                  Remove
-                                             </button>
-                                        </div>
-                                   </li>
-                              ))}
-                         </ul>
-                    )}
-               </div>
+               <h2 className="my-events-header">Your Saved Events</h2>
+               {loading ? (
+                    <Loading message="Loading saved events ..."></Loading>
+               ) : (
+                    <ul className="my-events-list">
+                         {savedEvents?.map((savedEvent) => (
+                              <li
+                                   key={savedEvent._id}
+                                   className="my-events-list-item">
+                                   <div className="saved-event-image-container">
+                                        <img
+                                             src={savedEvent.eventImageUrl}
+                                             alt="image of event"
+                                             className="saved-event-image"
+                                        />
+                                   </div>
+                                   <div className="saved-event-details-container">
+                                        <div className="saved-event-name">{savedEvent.eventName}</div>
+                                        <div className="saved-event-date-time">{dayjs(savedEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
+                                        <div className="saved-event-venue">{savedEvent.venueName}</div>
+                                        <button
+                                             onClick={() => handleClick(savedEvent)}
+                                             className="remove-event-button">
+                                             Remove
+                                        </button>
+                                   </div>
+                              </li>
+                         ))}
+                    </ul>
+               )}
           </div>
      );
 }
