@@ -30,9 +30,11 @@ export default function MyEvents() {
                     {loading ? (
                          <Loading message="Loading saved events ..."></Loading>
                     ) : (
-                         <ul>
+                         <ul className="my-events-list">
                               {savedEvents?.map((savedEvent) => (
-                                   <li key={savedEvent._id}>
+                                   <li
+                                        key={savedEvent._id}
+                                        className="my-events-list-item">
                                         <p>Event: {savedEvent.eventName}</p>
                                         <p>Date: {savedEvent.startDateTime}</p>
                                         <p>Venue: {savedEvent.venueName}</p>

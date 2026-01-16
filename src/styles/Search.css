@@ -1,13 +1,7 @@
 /* Search */
 
 .search-container {
-     background: linear-gradient(
-          var(--darkest-purple-color),
-          var(--medium-purple-color),
-          var(--medium-purple-color),
-          var(--light-medium-purple-color),
-          var(--palest-purple-color)
-     );
+     background: linear-gradient(var(--darkest-purple-color), var(--darkest-purple-color), var(--medium-purple-color), var(--palest-purple-color));
      display: flex;
      flex-direction: column;
      align-items: center;
