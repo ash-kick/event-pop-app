@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { FaBell } from "react-icons/fa";
 
 import { IoMenu } from "react-icons/io5";
@@ -20,6 +20,7 @@ export default function RootLayout() {
      const [userName, setUserName] = useState(null);
      const navigate = useNavigate();
      const [menuOpen, setMenuOpen] = useState(false);
+     const menuRef = useRef(null);
      // using this to retrigger auth check
      const location = useLocation();
      useEffect(() => {
@@ -33,6 +34,21 @@ export default function RootLayout() {
                setUserName(null);
           }
      }, [location]);
+
+     // adding logic for closing menu on click outside of drop down
+     useEffect(() => {
+          const handleClickOutside = (e) => {
+               if (menuRef.current && !menuRef.current.contains(e.target)) {
+                    setMenuOpen(false);
+               }
+          };
+          if (menuOpen) {
+               document.addEventListener("click", handleClickOutside);
+          }
+          return () => {
+               document.removeEventListener("click", handleClickOutside);
+          };
+     }, [menuOpen]);
 
      const handleLogout = () => {
           localStorage.removeItem("token");
@@ -106,14 +122,17 @@ export default function RootLayout() {
                                    className="event-pop-icon-landing"
                               />
                          </NavLink>
-                         <button
-                              className="drop-down-menu-button"
-                              onClick={() => {
-                                   setMenuOpen(!menuOpen);
-                              }}>
-                              <IoMenu className="io-menu-icon"></IoMenu>
-                         </button>
-                         {menuOpen ? <div className="nav-links-small-screen">{navLinks("small-screen")}</div> : null}
+                         <div ref={menuRef}>
+                              <button
+                                   className="drop-down-menu-button"
+                                   onClick={(e) => {
+                                        e.stopPropagation();
+                                        setMenuOpen(!menuOpen);
+                                   }}>
+                                   <IoMenu className="io-menu-icon"></IoMenu>
+                              </button>
+                              {menuOpen ? <div className="nav-links-small-screen">{navLinks("small-screen")}</div> : null}
+                         </div>
                          <div className="nav-links-large-screen">{navLinks("large-screen")}</div>
                          {isAuthenticated ? firstLetterLogoutButton : logInButton}
                     </nav>
