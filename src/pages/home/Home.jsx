@@ -61,8 +61,13 @@ export default function Home() {
                                         <div className="upcoming-event-name">{upcomingEvent.eventName}</div>
                                         {upcomingEvent.eventTypeName && upcomingEvent.eventTypeName !== "Undefined" ? (
                                              <div className="upcoming-event-genre-sub-genre">
-                                                  {upcomingEvent.eventTypeName} {upcomingEvent.genreName ? `• ${upcomingEvent.genreName}` : null}{" "}
-                                                  {upcomingEvent.subGenreName ? `• ${upcomingEvent.subGenreName}` : null}
+                                                  {upcomingEvent.eventTypeName}
+                                                  {upcomingEvent.genreName && upcomingEvent.genreName !== "Undefined"
+                                                       ? `• ${upcomingEvent.genreName}`
+                                                       : null}
+                                                  {upcomingEvent.subGenreName && upcomingEvent.subGenreName !== "Undefined"
+                                                       ? `• ${upcomingEvent.subGenreName}`
+                                                       : null}
                                              </div>
                                         ) : null}
                                         <div className="upcoming-event-city-venue">
