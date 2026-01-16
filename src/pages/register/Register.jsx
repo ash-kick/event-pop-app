@@ -39,30 +39,36 @@ export default function Register() {
      }
      return (
           <div className="register-container">
-               <h2>Register</h2>
+               <h2 className="register-header">Register</h2>
                {error && <div className="register-error-message">{error}</div>}
                {success && <div className="register-success-message">{successMessage}</div>}
-               <form onSubmit={onSubmit}>
-                    <label>username</label>
+               <form
+                    onSubmit={onSubmit}
+                    className="register-form">
+                    <label className="register-label">username</label>
                     <input
                          type="text"
                          name="username"
-                         required></input>
-                    <label>email</label>
+                         required
+                         className="register-input"></input>
+                    <label className="register-label">email</label>
                     <input
                          type="email"
                          name="email"
-                         required></input>
-                    <label>password</label>
+                         required
+                         className="register-input"></input>
+                    <label className="register-label">password</label>
                     <input
                          type="password"
                          name="password"
-                         required></input>
-                    <label>city</label>
+                         required
+                         className="register-input"></input>
+                    <label className="register-label">city</label>
                     <select
                          type="text"
                          name="usercity"
-                         required>
+                         required
+                         className="register-input">
                          {loading ? (
                               <option> Loading cities ...</option>
                          ) : (
