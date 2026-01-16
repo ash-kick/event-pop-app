@@ -5,8 +5,8 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 export default function EventSearchDisplay({ currentSearchResponse, searchError, handleNextPage, handlePreviousPage, currentPage }) {
      if (searchError) {
           return (
-               <div>
-                    <p>{searchError}</p>
+               <div className="search-error-message-container">
+                    <p className="search-error-message">{searchError}</p>
                </div>
           );
      }
