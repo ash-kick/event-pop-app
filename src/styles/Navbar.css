@@ -115,6 +115,7 @@ nav {
      align-items: center;
      background-color: var(--darkest-blue-color);
      color: var(--white-text-color);
+     font-weight: 200;
      border-radius: 8px;
      border: none;
      padding: 8px 16px;
