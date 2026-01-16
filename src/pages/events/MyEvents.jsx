@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { SavedEventContext } from "../../contexts/SavedEventsContext";
 import axios from "axios";
 import Loading from "../../components/Loading";
+import dayjs from "dayjs";
 
 export default function MyEvents() {
      const { savedEvents, loading, fetchSavedEvents } = useContext(SavedEventContext);
@@ -43,11 +44,17 @@ export default function MyEvents() {
                                              />
                                         </div>
                                         <div className="saved-event-details-container">
-                                             <p>{savedEvent.eventName}</p>
-                                             <p>{savedEvent.startDateTime}</p>
-                                             <p>{savedEvent.venueName}</p>
+                                             <div className="saved-event-name">{savedEvent.eventName}</div>
+                                             <div className="saved-event-date-time">
+                                                  {dayjs(savedEvent.startDateTime).format("ddd, MMM D • h:mm A")}
+                                             </div>
+                                             <div className="saved-event-venue">{savedEvent.venueName}</div>
+                                             <button
+                                                  onClick={() => handleClick(savedEvent)}
+                                                  className="remove-event-button">
+                                                  Remove
+                                             </button>
                                         </div>
-                                        <button onClick={() => handleClick(savedEvent)}>Remove</button>
                                    </li>
                               ))}
                          </ul>
