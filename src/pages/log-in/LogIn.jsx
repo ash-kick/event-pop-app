@@ -38,29 +38,35 @@ export default function LogIn() {
      return (
           <div className="login-register-container">
                <div className="login-container">
-                    <h2>Login</h2>
+                    <h2 className="login-header">Log In</h2>
                     {error && <div>{error}</div>}
                     {success && <div>{successMessage}</div>}
                     <form onSubmit={onSubmit}>
-                         <label htmlFor="username">
+                         <label
+                              htmlFor="username"
+                              className="login-label">
                               username<br></br>
                          </label>
                          <input
                               type="text"
                               id="username"
-                              name="username"></input>
+                              name="username"
+                              className="login-input"></input>
                          <br></br>
-                         <label htmlFor="password">
+                         <label
+                              htmlFor="password"
+                              className="login-label">
                               password<br></br>
                          </label>
                          <input
                               type="password"
                               id="password"
-                              name="password"></input>
+                              name="password"
+                              className="login-input"></input>
                          <br></br>
                          <input
                               type="submit"
-                              value="Login"
+                              value="Log In"
                               className="login-button"
                               disabled={isSubmitting}></input>
                     </form>
