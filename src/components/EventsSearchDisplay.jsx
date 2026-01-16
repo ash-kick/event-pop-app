@@ -32,8 +32,8 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                    <div className="search-event-name">{foundEvent.eventName}</div>
                                    {foundEvent.eventTypeName && foundEvent.eventTypeName !== "Undefined" ? (
                                         <div className="search-event-genre-sub-genre">
-                                             {foundEvent.eventTypeName}{" "}
-                                             {foundEvent.genreName && foundEvent.genreName !== "Undefined" ? `• ${foundEvent.genreName}` : null}{" "}
+                                             {foundEvent.eventTypeName}
+                                             {foundEvent.genreName && foundEvent.genreName !== "Undefined" ? `• ${foundEvent.genreName}` : null}
                                              {foundEvent.subGenreName && foundEvent.subGenreName !== "Undefined"
                                                   ? `• ${foundEvent.subGenreName}`
                                                   : null}
