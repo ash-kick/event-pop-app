@@ -50,9 +50,7 @@ export default function EventSearchDisplay({ currentSearchResponse, searchError,
                                              Get tickets!
                                         </button>
                                    ) : (
-                                        <div className="serach-event-tickets-unavailable">
-                                             Tickets currently unavailable ... event {foundEvent.eventStatusCode}
-                                        </div>
+                                        <div className="search-event-tickets-unavailable">{foundEvent.eventStatusCode}</div>
                                    )}
                               </li>
                          ))}

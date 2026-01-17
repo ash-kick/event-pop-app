@@ -188,3 +188,17 @@
      word-wrap: break-word;
      overflow-wrap: break-word;
 }
+
+.search-event-tickets-unavailable {
+     background: transparent;
+     border: solid var(--darkest-blue-color);
+     border-radius: 8px;
+     color: var(--darkest-blue-color);
+     min-width: fit-content;
+     font-size: 16px;
+     padding: 4px;
+     margin: 8px 8px 0px 0px;
+     min-width: fit-content;
+     width: 70px;
+     text-align: center;
+}
