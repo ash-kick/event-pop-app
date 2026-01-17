@@ -7,17 +7,17 @@ export default function Landing() {
                     <div className="landing-hero-left">
                          <h1 className="landing-header-text">Find events you'll love</h1>
                          <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
-                         <Link
-                              to="/register"
+                         <button
+                              onClick={() => navigate("/register")}
                               className="landing-get-started-button">
                               Get Started
-                         </Link>
+                         </button>
                     </div>
                     <div className="landing-hero-right">
                          <img
-                              src="../../assets/event-pop-landing-photo-concert.webp"
-                              alt="Concert crowd"
-                              className="landing-hero-image"
+                              src="../assets/event-card-example.png"
+                              alt="Event card example"
+                              className="event-card-example-image"
                          />
                     </div>
                </div>
