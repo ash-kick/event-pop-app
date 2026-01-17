@@ -10,11 +10,13 @@ Future state: Sharing features allow you to include your friends and/or family i
 
 -    🔎 Finds events for users based on their preferences.
 -    ✅ Allows users to set event and location preferences.
+-    🔔 Allows users to set in app notifications for events.
+-    🩷 Allows users to save events from various locations in the site.
 
 Future features:
 
 -    👯 Allows users to share events with other users.
--    🔔 Allows users to set notifications for events.
+-    ⌚️ Cron job for pulling events on a regular cadence.
 
 ### App Layout Diagram:
 
@@ -27,6 +29,14 @@ Future features:
 ### App Landing Page:
 
 ![EventPop Landing Page Screenshot](assets/event-pop-app-landing.png)
+
+### App Preferences Page:
+
+![EventPop Preferences Page Screenshot](assets/event-pop-preferences.png)
+
+### App Saved Events Page:
+
+![EventPop Saved Events Page Screenshot](assets/event-pop-saved-events.png)
 
 # Springboard Capstone Project Requirements & Details
 
