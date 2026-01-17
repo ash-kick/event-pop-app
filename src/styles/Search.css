@@ -114,6 +114,7 @@
      border-radius: 16px;
      font-size: 18px;
      color: var(--darkest-blue-color);
+     max-width: 700px;
 }
 
 .search-event-image {
@@ -127,6 +128,9 @@
 
 .search-event-name {
      font-weight: 800;
+     word-wrap: break-word;
+     overflow-wrap: break-word;
+     word-break: break-word;
 }
 
 @media (max-width: 1000px) {
