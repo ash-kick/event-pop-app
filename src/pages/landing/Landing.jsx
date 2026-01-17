@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Landing() {
+     const navigate = useNavigate();
      return (
           <div className="landing-container">
                <div className="landing-hero">
