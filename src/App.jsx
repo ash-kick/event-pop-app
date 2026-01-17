@@ -15,6 +15,7 @@ import Preferences from "./pages/preferences/Preferences";
 import LogIn from "./pages/log-in/LogIn";
 import Register from "./pages/register/Register";
 import Notifications from "./pages/notifications/Notifications";
+import NotFound from "./pages/not-found/NotFound";
 
 const router = createBrowserRouter(createRoutesFromElements(<Route element={<RootLayout />}></Route>));
 
@@ -81,6 +82,9 @@ function App() {
                                                   </AlreadyAuthed>
                                              }
                                              path="/register"></Route>
+                                        <Route
+                                             element={<NotFound />}
+                                             path="*"></Route>
                                    </Route>
                               </Routes>
                          </div>
