@@ -4,7 +4,7 @@
   "description": "Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Sharing features allow you to include your friends and/or family in your plans for maximum group enjoyment!",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -44,6 +44,8 @@
   },
   "devDependencies": {
     "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2"
+    "@types/react-dom": "^19.2.2",
+    "jest": "^30.2.0",
+    "supertest": "^7.2.2"
   }
 }
