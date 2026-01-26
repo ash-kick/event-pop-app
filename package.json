@@ -15,6 +15,15 @@
     "type": "git",
     "url": "git+https://github.com/ash-kick/event-pop-app.git"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/server/tests/**/*.test.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/server/tests/setupTests.js"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
