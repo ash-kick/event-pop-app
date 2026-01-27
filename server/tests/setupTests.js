@@ -5,8 +5,6 @@ process.env.NODE_ENV = "test";
 // Load environment variables
 require("dotenv").config();
 const mongoose = require("mongoose");
-const User = require("../models/user");
-const EventPreference = require("../models/eventPreference");
 
 // Connect to test database before all tests
 beforeAll(async () => {
