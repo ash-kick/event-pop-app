@@ -1,39 +1,61 @@
 const request = require ("supertest");
 const app = require("../app.js");
 const Event = require("../models/event.js");
+const User = require("../models/user");
+const EventPreference = require("../models/eventPreference");
+const {createTestEvents} = require("./testDataHelper.js");
 
+
+// EVENT TEST BLOCK
 describe("Event endpoint tests", ()=>{
-    // CLEAN UP EVENT/USER DATA
+    
+// TEST SET UP
+    // Create variables for users during event tests
+    let userToken;
+    let userId;
+    let userName;
+    let userCity;
+    let eventTestDataResponse;
+    // Create and login user, set all user related variables
+    async function createUserTestData(){
+        const registerResponse = await request(app).post("/api/user/register", ).send({
+            userName: "event_test_username",
+            password: "event_test_password",
+            email: "event_test_email@example.com",
+            userCity: "San Francisco"
+        });
+
+            const response = await request(app).post("/api/user/login", ).send({
+            userName: "event_test_username",
+            password: "event_test_password"
+        });
+        userToken = response.body.token;
+        userId = response.body.user;
+        userName = response.body.userName;
+        userCity = response.body.userCity;
+    };
+    // Clean up all user and event data and pull in a fresh set
     beforeAll(async()=>{
         await User.deleteMany({});
         await EventPreference.deleteMany({});
-    })
-    beforeEach(async () => {
         await Event.deleteMany({});
-        });
-
-    // CREATE AND LOGIN A TEST USER
-    async function createEventTestData(){
-    await request(app).post("/api/user/register", ).send({
-        userName: "test_username",
-        password: "test_password",
-        email: "test_user_email@example.com",
-        userCity: "San Francisco"
-    });
-        const response = await request(app).post("/api/user/login", ).send({
-        userName: "test_username",
-        password: "test_password"
+        eventTestDataResponse =  await createTestEvents();
+        await createUserTestData();
     });
 
-    await request(app).post // LEFT OFF HERE NEED TO CREATE TEST HELPER WITH DUMMY EVENT DATA
-}
-createEventTestData();
-    // ADD A SAVED EVENT
+    // TESTS
+    // Add saved event
     test("User is able to save an event", async ()=>{
-        const response = await request(app).post("/api/event/")
-
+        const response = await request(app).post("/api/events/saved-event").set("Authorization", `Bearer ${userToken}`).send(
+        {
+            eventId: eventTestDataResponse.event0._id
         })
-    // DISPLAY SAVED EVENTS
+        expect(response.status).toBe(200);
+        expect(response.body.message === "Event added successfully");
+        })
+    // Display saved events
+    test("User can see all saved events", async ()=>{
+    })
     // DELETE A SAVED EVENT
     // DISPLAY SEARCH RESULT EVENTS
     // DISPLAY 3 UPCOMING EVENTS BY LOCATION OLDEST TO NEWEST
