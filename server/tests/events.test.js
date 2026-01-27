@@ -55,8 +55,20 @@ describe("Event endpoint tests", ()=>{
         })
     // Display saved events
     test("User can see all saved events", async ()=>{
+        await request(app).post("/api/events/saved-event").set("Authorization", `Bearer ${userToken}`).send(
+            {
+                eventId: eventTestDataResponse.event1._id
+            });
+        const response = await request(app).get("/api/events/saved-event").set("Authorization", `Bearer ${userToken}`);
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty("savedEvents");
+        expect(response.body.savedEvents.length).toBeGreaterThan(0);
     })
-    // DELETE A SAVED EVENT
+    // Delete a saved event
+    test("User can delete a saved event", async ()=>{
+        
+    })
+
     // DISPLAY SEARCH RESULT EVENTS
     // DISPLAY 3 UPCOMING EVENTS BY LOCATION OLDEST TO NEWEST
 })
