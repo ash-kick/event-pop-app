@@ -77,5 +77,21 @@ describe("Event endpoint tests", ()=>{
         expect(response.body.message).toBe("Event removed successfully")
     })
     // Display event search results
+    test("User can search events", async ()=>{
+            const response = await request(app).get("/api/events/search").set("Authorization", `Bearer ${userToken}`).query({
+                searchValue: eventTestDataResponse.event3.genreName,
+                cityNameValue: eventTestDataResponse.event3.cityName
+            })
+            expect(response.status).toBe(200);
+            expect(response.body).toHaveProperty("foundEvents");
+            expect(response.body.foundEvents.length).toBeGreaterThan(0);
+    })
     // Display 3 upcoming events in user location
+    test("User's upcoming events feed shows 3 upcoming events in their location", async ()=>{
+        const response = await request(app).get("/api/events/upcoming").set("Authorization", `Bearer ${userToken}`).query({
+            userCity: userCity,
+        })
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty("upcomingEvents");
+    })
 })

@@ -3,7 +3,7 @@ const Event = require("../models/event");
 
 // SAVED EVENTS FUNCTIONALITY (ADD, DELETE, DISPLAY)
 
-// add a saved event
+// Add a saved event
 exports.addSavedEvent = async (req, res, next) => {
      try {
           const eventToSave = await Event.findOne({ _id: req.body.eventId });
@@ -37,7 +37,7 @@ exports.addSavedEvent = async (req, res, next) => {
      }
 };
 
-// delete a saved event
+// Delete a saved event
 exports.deleteSavedEvent = async (req, res, next) => {
      try {
           const eventToDelete = await Event.findOne({ _id: req.body.eventId });
@@ -62,7 +62,7 @@ exports.deleteSavedEvent = async (req, res, next) => {
      }
 };
 
-// display saved events
+// Display saved events
 exports.getSavedEvents = async (req, res, next) => {
      try {
           const user = await User.findById(req.user.id).populate("savedEvents");
@@ -79,7 +79,7 @@ exports.getSavedEvents = async (req, res, next) => {
      }
 };
 
-// DISPLAY SEARCH RESULT EVENTS
+// Display search event results
 
 exports.getSearchedEvents = async (req, res, next) => {
      try {
@@ -119,7 +119,7 @@ exports.getSearchedEvents = async (req, res, next) => {
      }
 };
 
-// DISPLAY UPCOMING EVENTS BY LOCATION OLDEST TO NEWEST
+// Display upcoming events newest to oldest
 
 exports.getUpcomingEventsByCity = async (req, res, next) => {
      try {
