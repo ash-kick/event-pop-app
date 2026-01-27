@@ -13,7 +13,7 @@ describe("Event endpoint tests", ()=>{
         });
 
     // CREATE AND LOGIN A TEST USER
-    async function createEventTestUser(){
+    async function createEventTestData(){
     await request(app).post("/api/user/register", ).send({
         userName: "test_username",
         password: "test_password",
@@ -24,11 +24,13 @@ describe("Event endpoint tests", ()=>{
         userName: "test_username",
         password: "test_password"
     });
+
+    await request(app).post // LEFT OFF HERE NEED TO CREATE TEST HELPER WITH DUMMY EVENT DATA
 }
-createEventTestUser();
+createEventTestData();
     // ADD A SAVED EVENT
     test("User is able to save an event", async ()=>{
-
+        const response = await request(app).post("/api/event/")
 
         })
     // DISPLAY SAVED EVENTS
