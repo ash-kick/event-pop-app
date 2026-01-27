@@ -66,9 +66,16 @@ describe("Event endpoint tests", ()=>{
     })
     // Delete a saved event
     test("User can delete a saved event", async ()=>{
-        
+        await request(app).post("/api/events/saved-event").set("Authorization", `Bearer ${userToken}`).send(
+            {
+                eventId: eventTestDataResponse.event2._id
+            });
+        const response = await request(app).delete("/api/events/saved-event").set("Authorization", `Bearer ${userToken}`).send({
+            eventId: eventTestDataResponse.event2._id
+        })
+        expect(response.status).toBe(200);
+        expect(response.body.message).toBe("Event removed successfully")
     })
-
-    // DISPLAY SEARCH RESULT EVENTS
-    // DISPLAY 3 UPCOMING EVENTS BY LOCATION OLDEST TO NEWEST
+    // Display event search results
+    // Display 3 upcoming events in user location
 })
