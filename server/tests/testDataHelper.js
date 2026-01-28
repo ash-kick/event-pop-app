@@ -5,11 +5,12 @@ const request = require ("supertest");
 
 // function for creating test data to be used for event testing
 async function createTestEvents(){
+const  uniqueSuffix = Date.now();
 const testEventData = [
     {
       eventName: "Odesza: The Last Goodbye Tour",
-      ticketMasterEventId: "TM_TEST_001",
-      ticketMasterUrl: "https://www.ticketmaster.com/event/TM_TEST_001",
+      ticketMasterEventId: `TM_TEST_001_${uniqueSuffix}`,
+      ticketMasterUrl: `https://www.ticketmaster.com/event/TM_TEST_001_${uniqueSuffix}`,
       eventImageUrl: "https://example.com/images/odesza.jpg",
       eventTypeId: "KZFzniwnSyZfZ7v7nJ",
       eventTypeName: "Music",
@@ -29,8 +30,8 @@ const testEventData = [
     },
     {
       eventName: "Golden State Warriors vs LA Lakers",
-      ticketMasterEventId: "TM_TEST_002",
-      ticketMasterUrl: "https://www.ticketmaster.com/event/TM_TEST_002",
+      ticketMasterEventId: `TM_TEST_002_${uniqueSuffix}`,
+      ticketMasterUrl: `https://www.ticketmaster.com/event/TM_TEST_002_${uniqueSuffix}`,
       eventImageUrl: "https://example.com/images/warriors-lakers.jpg",
       eventTypeId: "KZFzniwnSyZfZ7v7nE",
       eventTypeName: "Sports",
@@ -50,8 +51,8 @@ const testEventData = [
     },
     {
       eventName: "Outside Lands Music & Arts Festival - Day 1",
-      ticketMasterEventId: "TM_TEST_003",
-      ticketMasterUrl: "https://www.ticketmaster.com/event/TM_TEST_003",
+      ticketMasterEventId: `TM_TEST_003_${uniqueSuffix}`,
+      ticketMasterUrl: `https://www.ticketmaster.com/event/TM_TEST_003_${uniqueSuffix}`,
       eventImageUrl: "https://example.com/images/outsidelands.jpg",
       eventTypeId: "KZFzniwnSyZfZ7v7nJ",
       eventTypeName: "Music",
@@ -71,8 +72,8 @@ const testEventData = [
     },
     {
         eventName: "Taylor Swift | The Eras Tour",
-        ticketMasterEventId: "TM_TEST_LA_001",
-        ticketMasterUrl: "https://www.ticketmaster.com/event/TM_TEST_LA_001",
+        ticketMasterEventId: `TM_TEST_LA_001_${uniqueSuffix}`,
+        ticketMasterUrl: `https://www.ticketmaster.com/event/TM_TEST_LA_001_${uniqueSuffix}`,
         eventImageUrl: "https://example.com/images/taylor-swift-eras.jpg",
         eventTypeId: "KZFzniwnSyZfZ7v7nJ",
         eventTypeName: "Music",
@@ -92,8 +93,8 @@ const testEventData = [
       },
       {
         eventName: "Los Angeles Dodgers vs San Diego Padres",
-        ticketMasterEventId: "TM_TEST_LA_002",
-        ticketMasterUrl: "https://www.ticketmaster.com/event/TM_TEST_LA_002",
+        ticketMasterEventId: `TM_TEST_LA_002_${uniqueSuffix}`,
+        ticketMasterUrl: `https://www.ticketmaster.com/event/TM_TEST_LA_002_${uniqueSuffix}`,
         eventImageUrl: "https://example.com/images/dodgers-padres.jpg",
         eventTypeId: "KZFzniwnSyZfZ7v7nE",
         eventTypeName: "Sports",
@@ -113,8 +114,8 @@ const testEventData = [
       },
       {
         eventName: "The Weeknd After Hours Til Dawn Tour",
-        ticketMasterEventId: "TM_TEST_LA_003",
-        ticketMasterUrl: "https://www.ticketmaster.com/event/TM_TEST_LA_003",
+        ticketMasterEventId: `TM_TEST_LA_003_${uniqueSuffix}`,
+        ticketMasterUrl: `https://www.ticketmaster.com/event/TM_TEST_LA_003_${uniqueSuffix}`,
         eventImageUrl: "https://example.com/images/the-weeknd.jpg",
         eventTypeId: "KZFzniwnSyZfZ7v7nJ",
         eventTypeName: "Music",
@@ -175,7 +176,7 @@ async function loginTestUser(testUserName, testPassword){
 // create notifications
 
 async function createUserNotifications(testUserId, testEventId1, testEventId2, testEventId3){
-  
+
 const testNotificationData = [
   {
     userId: testUserId,
@@ -193,6 +194,7 @@ const testNotificationData = [
     read: false
   }
 ]
+
   const createdTestNotifications = await Notification.insertMany(testNotificationData);
   return{
     notifications: createdTestNotifications,
@@ -206,5 +208,6 @@ const testNotificationData = [
 module.exports = {
     createTestEvents,
     createTestUser,
-    loginTestUser
+    loginTestUser,
+    createUserNotifications
 }
