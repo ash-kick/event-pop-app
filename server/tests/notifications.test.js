@@ -8,9 +8,9 @@ const {createTestUser, loginTestUser, createUserNotifications, createTestEvents}
 
 describe("Notification endpoint tests", ()=>{
 let token;
-let userCity;
 let userId;
 let uniqueSuffix;
+let notificationResponse;
 
 beforeEach(async ()=>{
     // cleanup all tests
@@ -30,12 +30,11 @@ beforeEach(async ()=>{
     const loginResponse = await loginTestUser(testNotificationUser, testNotificationPassword);
     // return the token and userCity
     token = loginResponse.token;
-    userCity = loginResponse.userCity;
     userId = registerResponse.userId;
     // create events for notifications
     const eventData = await createTestEvents(uniqueSuffix);
     // add notifications for a user
-    const notificationResponse = await createUserNotifications(userId, eventData.event0._id, eventData.event1._id, eventData.event2._id);
+    notificationResponse = await createUserNotifications(userId, eventData.event0._id, eventData.event1._id, eventData.event2._id);
 });
 // getting notifications for a user
 test("Get user notifications", async()=>{
@@ -45,10 +44,15 @@ test("Get user notifications", async()=>{
 });
 // marking a notification for a user as read
 test("Mark notification as read", async()=>{
-    console.log("Hi a second test is happening")
+    const response = await request(app).patch(`/api/notifications/${notificationResponse.notification0._id}/read`).set("Authorization", `Bearer ${token}`);
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe("Notification marked as read");
 });
 // marking all notifications for a user as read
 test("Mark all notifications as read", async()=>{
-    console.log("Hi a second test is happening")
+    const response = await request(app).patch("/api/notifications/read-all").set("Authorization", `Bearer ${token}`);
+    expect(response.status).toBe(200);
+    expect(response.body.message).toBe("All notifications marked as read");
+    expect(response.body.updatedCount).toBe(3);
 });
 })
