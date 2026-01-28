@@ -7,8 +7,8 @@ const {createTestEvents} = require("./testDataHelper.js");
 
 
 // EVENT TEST BLOCK
+
 describe("Event endpoint tests", ()=>{
-    
 // TEST SET UP
 const uniqueId = Date.now();
 const testUserName = `event_test_username_${uniqueId}`;
@@ -51,6 +51,7 @@ const testEmail = `event_test_email_${uniqueId}@example.com`;
         });
 
     // TESTS
+    
     // Add saved event
     test("User is able to save an event", async ()=>{
         const response = await request(app).post("/api/events/saved-event").set("Authorization", `Bearer ${userToken}`).send(
