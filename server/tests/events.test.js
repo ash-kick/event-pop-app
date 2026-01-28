@@ -19,7 +19,7 @@ const testEmail = `event_test_email_${uniqueId}@example.com`;
     let eventTestDataResponse;
     // Create and login user, set all user related variables
     async function createUserTestData(){
-        const registerResponse = await request(app).post("/api/user/register", ).send({
+        await request(app).post("/api/user/register", ).send({
             userName: testUserName,
             password: "event_test_password",
             email: testEmail,
