@@ -1,4 +1,6 @@
 const Event = require("../models/event");
+const app = require("../app.js");
+const request = require ("supertest");
 
 // function for creating test data to be used for event testing
 async function createTestEvents(){
@@ -146,6 +148,30 @@ const testEventData = [
 
 }
 
+// create test user
+async function createTestUser(testUserName, testPassword, testEmail, testUserCity){
+  await request(app).post("/api/user/register", ).send({
+    userName: testUserName,
+    password: testPassword,
+    email: testEmail,
+    userCity: testUserCity
+});
+}
+// login test user
+async function loginTestUser(testUserName, testPassword){
+  const response = await request(app).post("/api/user/login", ).send({
+    userName: testUserName,
+    password: testPassword
+});
+
+  return {
+    token: response.body.token,
+    userCity: response.body.userCity
+  };
+}
+
 module.exports = {
-    createTestEvents
+    createTestEvents,
+    createTestUser,
+    loginTestUser
 }
