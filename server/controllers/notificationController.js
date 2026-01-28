@@ -39,6 +39,7 @@ exports.markOneNotificationRead = async (req, res, next) => {
           next(err);
      }
 };
+
 // MARK ALL NOTIFICATIONS AS READ
 exports.markAllNotificationsRead = async (req, res, next) => {
      try {
