@@ -10,16 +10,17 @@ describe("Notification endpoint tests", ()=>{
 let token;
 let userCity;
 let userId;
+let uniqueSuffix;
 
 beforeEach(async ()=>{
     // cleanup all tests
     await User.deleteMany({ userName: { $regex: /^test_notification_/ } });
     await EventPreference.deleteMany({});
-    await Event.deleteMany({});
+    await Event.deleteMany({ ticketMasterEventId: `${uniqueSuffix}`});
     await Notification.deleteMany({});
     // variables for user register and login
     const uniqueId = Date.now();
-    const uniqueSuffix = Date.now();
+    uniqueSuffix = Date.now();
     const testNotificationUser = `test_notification_user${uniqueId}`
     const testNotificationEmail = `test_notification_user${uniqueId}@email.com`
     const testNotificationPassword= "test_notification_password";
@@ -35,11 +36,12 @@ beforeEach(async ()=>{
     const eventData = await createTestEvents(uniqueSuffix);
     // add notifications for a user
     const notificationResponse = await createUserNotifications(userId, eventData.event0._id, eventData.event1._id, eventData.event2._id);
-})
+});
 // getting notifications for a user
 test("Get user notifications", async()=>{
     const response = await request(app).get("/api/notifications/").set("Authorization", `Bearer ${token}`);
     expect(response.status).toBe(200);
+    expect(response.body.notifications.length).toBeGreaterThan(0);
 });
 // marking a notification for a user as read
 test("Mark notification as read", async()=>{
