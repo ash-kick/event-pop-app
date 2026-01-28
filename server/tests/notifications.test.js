@@ -8,6 +8,7 @@ const {createTestUser, loginTestUser} = require("./testDataHelper.js")
 describe("Notification endpoint tests", ()=>{
 let token;
 let userCity;
+let userId;
 
 beforeEach(async ()=>{
     // cleanup all tests
@@ -20,11 +21,12 @@ beforeEach(async ()=>{
     const testNotificationPassword= "test_notification_password";
     const testNotificationCity= "Los Angeles";
     // create test user and log them in
-    await createTestUser(testNotificationUser, testNotificationPassword, testNotificationEmail, testNotificationCity);
+    const registerResponse = await createTestUser(testNotificationUser, testNotificationPassword, testNotificationEmail, testNotificationCity);
     const loginResponse = await loginTestUser(testNotificationUser, testNotificationPassword);
     // return the token and userCity
     token = loginResponse.token;
     userCity = loginResponse.userCity;
+    userId = registerResponse.userId;
 })
 // getting notifications for a user
 

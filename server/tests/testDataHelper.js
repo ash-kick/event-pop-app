@@ -150,12 +150,13 @@ const testEventData = [
 
 // create test user
 async function createTestUser(testUserName, testPassword, testEmail, testUserCity){
-  await request(app).post("/api/user/register", ).send({
+  const response = await request(app).post("/api/user/register", ).send({
     userName: testUserName,
     password: testPassword,
     email: testEmail,
     userCity: testUserCity
 });
+return{ userId: response.body._id}
 }
 // login test user
 async function loginTestUser(testUserName, testPassword){
