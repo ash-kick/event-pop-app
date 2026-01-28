@@ -19,6 +19,7 @@ beforeEach(async ()=>{
     await Notification.deleteMany({});
     // variables for user register and login
     const uniqueId = Date.now();
+    const uniqueSuffix = Date.now();
     const testNotificationUser = `test_notification_user${uniqueId}`
     const testNotificationEmail = `test_notification_user${uniqueId}@email.com`
     const testNotificationPassword= "test_notification_password";
@@ -31,21 +32,21 @@ beforeEach(async ()=>{
     userCity = loginResponse.userCity;
     userId = registerResponse.userId;
     // create events for notifications
-    const eventData = await createTestEvents();
+    const eventData = await createTestEvents(uniqueSuffix);
     // add notifications for a user
     const notificationResponse = await createUserNotifications(userId, eventData.event0._id, eventData.event1._id, eventData.event2._id);
-    console.log(notificationResponse);
 })
 // getting notifications for a user
-test("testing, testing", async()=>{
-    console.log("Hi a test is happening")
+test("Get user notifications", async()=>{
+    const response = await request(app).get("/api/notifications/").set("Authorization", `Bearer ${token}`);
+    expect(response.status).toBe(200);
 });
 // marking a notification for a user as read
-test("testing, testing", async()=>{
+test("Mark notification as read", async()=>{
     console.log("Hi a second test is happening")
 });
 // marking all notifications for a user as read
-test("testing, testing", async()=>{
+test("Mark all notifications as read", async()=>{
     console.log("Hi a second test is happening")
 });
 })

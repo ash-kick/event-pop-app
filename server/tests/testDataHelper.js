@@ -4,8 +4,7 @@ const app = require("../app.js");
 const request = require ("supertest");
 
 // function for creating test data to be used for event testing
-async function createTestEvents(){
-const  uniqueSuffix = Date.now();
+async function createTestEvents(uniqueSuffix){
 const testEventData = [
     {
       eventName: "Odesza: The Last Goodbye Tour",

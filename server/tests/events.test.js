@@ -44,10 +44,11 @@ const testEmail = `event_test_email_${uniqueId}@example.com`;
             await Event.deleteMany({});
             
             // Create fresh user and events for each test
+            const uniqueSuffix = Date.now();
             const userData = await createUserTestData();
             userToken = userData.token;
             userCity = userData.userCity;
-            eventTestDataResponse = await createTestEvents();
+            eventTestDataResponse = await createTestEvents(uniqueSuffix);
         });
 
     // TESTS
