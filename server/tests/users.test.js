@@ -4,17 +4,18 @@ const User = require("../models/user");
 const EventPreference = require("../models/eventPreference");
 
 describe("User endpoint tests", ()=>{
+    const uniqueId = Date.now();
     // Clean up before each test
     beforeEach(async () => {
-            await User.deleteMany({});
+            await User.deleteMany({ userName: { $regex: /^test_username/ } });
             await EventPreference.deleteMany({});
          });
     //User can register with new credentials
     test("User is able to register with new userName and password", async ()=>{
             const response = await request(app).post("/api/user/register", ).send({
-            userName: "test_username",
+            userName: `test_username_${uniqueId}`,
             password: "test_password",
-            email: "test_user_email@example.com",
+            email: `test_user_email_${uniqueId}@example.com`,
             userCity: "San Francisco"
         });
             expect(response.status).toBe(201);
@@ -24,15 +25,14 @@ describe("User endpoint tests", ()=>{
         })
     //User can login with correct username and password
     test("User is able to login with correct userName and password", async ()=>{
-
         await request(app).post("/api/user/register", ).send({
-            userName: "test_username",
+            userName: `test_username_${uniqueId}_login`,
             password: "test_password",
-            email: "test_user_email@example.com",
+            email: `test_user_email_${uniqueId}@login_example.com`,
             userCity: "San Francisco"
         });
             const response = await request(app).post("/api/user/login", ).send({
-            userName: "test_username",
+            userName: `test_username_${uniqueId}_login`,
             password: "test_password"
         });
             expect(response.status).toBe(200);

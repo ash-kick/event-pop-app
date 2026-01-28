@@ -1,8 +1,6 @@
 const Event = require("../models/event");
-const request = require("supertest");
-const app = require("../app")
 
-
+// function for creating test data to be used for event testing
 async function createTestEvents(){
 const testEventData = [
     {
