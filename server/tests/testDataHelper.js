@@ -1,4 +1,5 @@
 const Event = require("../models/event");
+const Notification = require("../models/notifications")
 const app = require("../app.js");
 const request = require ("supertest");
 
@@ -169,6 +170,37 @@ async function loginTestUser(testUserName, testPassword){
     token: response.body.token,
     userCity: response.body.userCity
   };
+}
+
+// create notifications
+
+async function createUserNotifications(testUserId, testEventId1, testEventId2, testEventId3){
+  
+const testNotificationData = [
+  {
+    userId: testUserId,
+    event: testEventId1,
+    read: false
+  },
+  {
+    userId: testUserId,
+    event: testEventId2,
+    read: false
+  },
+  {
+    userId: testUserId,
+    event: testEventId3,
+    read: false
+  }
+]
+  const createdTestNotifications = await Notification.insertMany(testNotificationData);
+  return{
+    notifications: createdTestNotifications,
+    notificationIds: createdTestNotifications.map(notification => notification._id.toString()),
+    notification0: createdTestNotifications[0],
+    notification1: createdTestNotifications[1],
+    notification2: createdTestNotifications[2],
+  }
 }
 
 module.exports = {

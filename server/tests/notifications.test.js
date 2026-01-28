@@ -27,6 +27,8 @@ beforeEach(async ()=>{
     token = loginResponse.token;
     userCity = loginResponse.userCity;
     userId = registerResponse.userId;
+
+    console.log(userId);
 })
 // getting notifications for a user
 
