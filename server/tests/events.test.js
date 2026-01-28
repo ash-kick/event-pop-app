@@ -17,6 +17,7 @@ const testEmail = `event_test_email_${uniqueId}@example.com`;
     let userToken;
     let userCity;
     let eventTestDataResponse;
+    let uniqueSuffix;
     // Create and login user, set all user related variables
     async function createUserTestData(){
         await request(app).post("/api/user/register", ).send({
@@ -41,10 +42,10 @@ const testEmail = `event_test_email_${uniqueId}@example.com`;
             // Clean up only data from this test file (by unique identifier)
             await User.deleteMany({ userName: { $regex: /^event_test_username_/ } });
             await EventPreference.deleteMany({});
-            await Event.deleteMany({});
+            await Event.deleteMany({ticketMasterEventId: `${uniqueSuffix}`});
             
             // Create fresh user and events for each test
-            const uniqueSuffix = Date.now();
+            uniqueSuffix = Date.now();
             const userData = await createUserTestData();
             userToken = userData.token;
             userCity = userData.userCity;
