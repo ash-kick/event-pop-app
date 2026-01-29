@@ -9,16 +9,31 @@ test.describe("Search Page",()=>{
        await expect(page.getByRole("searchbox")).toBeVisible();
        await expect(page.getByPlaceholder("Artist, Venue, Keyword")).toBeVisible();
     });
-    test("should allow user to search for keywords and pull up events", async({page})=>{
+    test("should allow user to search for locations and keywords", async({page})=>{
         await page.goto("/search");
         await page.getByPlaceholder("Artist, Venue, Keyword").fill("rock");
         await expect(page.getByRole("searchbox")).toHaveValue("rock");
+        await expect(page.getByRole("combobox")).toHaveText("Los AngelesSan Francisco");
+        await expect(page.getByRole("combobox")).toHaveValue("Los Angeles");
     })
-    test("should allow user to pull up events that match keyword", async({page})=>{
+    test("should allow user to pull up events that match keyword and pagination should work", async({page})=>{
         await page.goto("/search");
         await page.getByPlaceholder("Artist, Venue, Keyword").fill("rock");
         await page.click('button[type="submit"]');
         // need to add way to check on results being returned
+        let searchResults = page.getByRole('listitem');
+        await expect(searchResults.filter({ hasText: /rock/i })).toHaveCount(10);
+        for(let i=0; i<searchResults.length; i++){
+            await expect (searchResults.nth(i).getByRole('button')).toHaveCount(1);
+        }
+        // next and previous button
+        const nextButton = page.locator(".next-button");
+        await expect(nextButton).toBeVisible();
+        await nextButton.click();
+        const previousButton = page.locator(".previous-button")
+        await expect(previousButton).toBeVisible();
+        await previousButton.click();
+        await expect(previousButton).toBeHidden();
     })
 }
 )
