@@ -36,6 +36,12 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      // no auth tests
+      name: 'chromium-unauthenticated',
+      testMatch: /(login|register)\.spec\.js/,   // or /landing\.spec\.js/ etc.
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
       name: 'setup',
       testMatch: /auth\.setup\.js/,
       use: { ...devices['Desktop Chrome'] },
