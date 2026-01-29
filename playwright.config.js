@@ -48,6 +48,7 @@ export default defineConfig({
     },
     {
       name: 'chromium',
+      testIgnore: /(login|register)\.spec\.js/,
       use: {
         ...devices['Desktop Chrome'],
         storageState: 'tests/.auth/user.json',
@@ -57,6 +58,7 @@ export default defineConfig({
 
     {
       name: 'firefox',
+      testIgnore: /(login|register)\.spec\.js/,
       use: {
         ...devices['Desktop Firefox'],
         storageState: 'tests/.auth/user.json',
@@ -66,6 +68,7 @@ export default defineConfig({
 
     {
       name: 'webkit',
+      testIgnore: /(login|register)\.spec\.js/,
       use: {
         ...devices['Desktop Safari'],
         storageState: 'tests/.auth/user.json',
