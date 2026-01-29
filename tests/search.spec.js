@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 test.describe("Search Page",()=>{
     test("should have correct metadata and elements", async ({page})=>{
@@ -19,12 +19,12 @@ test.describe("Search Page",()=>{
     test("should allow user to pull up events that match keyword and pagination should work", async({page})=>{
         await page.goto("/search");
         await page.getByPlaceholder("Artist, Venue, Keyword").fill("rock");
-        await page.click('button[type="submit"]');
+        await page.click("button[type=\"submit\"]");
         // need to add way to check on results being returned
-        let searchResults = page.getByRole('listitem');
+        let searchResults = page.getByRole("listitem");
         await expect(searchResults.filter({ hasText: /rock/i })).toHaveCount(10);
         for(let i=0; i<searchResults.length; i++){
-            await expect (searchResults.nth(i).getByRole('button')).toHaveCount(1);
+            await expect (searchResults.nth(i).getByRole("button")).toHaveCount(1);
         }
         // next and previous button
         const nextButton = page.locator(".next-button");

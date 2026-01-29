@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 test.describe("Landing Page", ()=>{
   test("should have correct metadata and elements", async({ page })=>{
