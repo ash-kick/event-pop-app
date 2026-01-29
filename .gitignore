@@ -8,3 +8,10 @@ build/
 .idea/
 *.log
 server/test-data/scratchPad.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
