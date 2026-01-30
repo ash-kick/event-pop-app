@@ -26,6 +26,9 @@ test.describe("Search Page",()=>{
         for(let i=0; i<searchResults.length; i++){
             await expect (searchResults.nth(i).getByRole("button")).toHaveCount(1);
         }
+        let firstListItem = page.getByRole("listitem").first();
+        let firstListSaveButton = firstListItem.locator(".saved-event-button-container");
+        await firstListSaveButton.click();
         // next and previous button
         const nextButton = page.locator(".next-button");
         await expect(nextButton).toBeVisible();
