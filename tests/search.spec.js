@@ -27,9 +27,8 @@ test.describe("Search Page",()=>{
             await expect (searchResults.nth(i).getByRole("button")).toHaveCount(1);
         }
         // try saving an event
-        let firstListItem = page.getByRole("listitem").first();
-        let firstListSaveButton = firstListItem.locator(".saved-event-button-container");
-        await firstListSaveButton.click();
+        let firstUnsavedItem = page.getByRole("listitem").filter({has: page.locator(".save-event-button")}).first();
+        await firstUnsavedItem.locator(".save-event-button").click();
         // next and previous button
         const nextButton = page.locator(".next-button");
         await expect(nextButton).toBeVisible();
