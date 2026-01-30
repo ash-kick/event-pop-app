@@ -45,28 +45,32 @@ export default function Register() {
                <form
                     onSubmit={onSubmit}
                     className="register-form">
-                    <label className="register-label">username</label>
+                    <label htmlFor="register-username" className="register-label">username</label>
                     <input
                          type="text"
                          name="username"
+                         id="register-username"
                          required
                          className="register-input"></input>
-                    <label className="register-label">email</label>
+                    <label htmlFor="register-email" className="register-label">email</label>
                     <input
                          type="email"
                          name="email"
+                         id="register-email"
                          required
                          className="register-input"></input>
-                    <label className="register-label">password</label>
+                    <label htmlFor="register-password" className="register-label">password</label>
                     <input
                          type="password"
                          name="password"
+                         id="register-password"
                          required
                          className="register-input"></input>
-                    <label className="register-label">city</label>
+                    <label htmlFor="register-usercity" className="register-label">city</label>
                     <select
                          type="text"
                          name="usercity"
+                         id="register-usercity"
                          required
                          className="register-input">
                          {loading ? (
