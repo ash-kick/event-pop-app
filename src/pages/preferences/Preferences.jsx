@@ -118,6 +118,7 @@ export default function Preferences() {
                ) : (
                     <form
                          className="preferences-form"
+                         role="form"
                          onSubmit={handleOnSubmit}>
                          {/* ALERTS */}
                          <label
