@@ -21,4 +21,4 @@ test("should display saved events for user", async ({ page })=>{
     await savedEvents.first().getByRole("button", { name: "Remove" }).click();
     await expect(savedEvents).toHaveCount(savedEventsCount - 1);
 })
-})
+});

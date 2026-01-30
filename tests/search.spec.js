@@ -29,6 +29,10 @@ test.describe("Search Page",()=>{
         // try saving an event
         let firstUnsavedItem = page.getByRole("listitem").filter({has: page.locator(".save-event-button")}).first();
         await firstUnsavedItem.locator(".save-event-button").click();
+        let secondUnsavedItem = page.getByRole("listitem").filter({has: page.locator(".save-event-button")}).first();
+        await secondUnsavedItem.locator(".save-event-button").click();
+        let thirdUnsavedItem = page.getByRole("listitem").filter({has: page.locator(".save-event-button")}).first();
+        await thirdUnsavedItem.locator(".save-event-button").click();
         // next and previous button
         const nextButton = page.locator(".next-button");
         await expect(nextButton).toBeVisible();
