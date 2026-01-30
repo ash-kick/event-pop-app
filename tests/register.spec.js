@@ -10,5 +10,20 @@ test.describe("Register Page",()=>{
        await expect(page.getByLabel("email")).toBeVisible();
        await expect(page.getByLabel("password")).toBeVisible();
        await expect(page.getByLabel("city")).toBeVisible();
+       await expect(page.locator("input[type=\"submit\"]")).toBeVisible();
     });
+
+    test("should allow user to fill out fields and submit form", async({page})=>{
+        const registerUserName = `register_${Date.now()}`;
+        const registerPassword = `passpass_${Date.now()}`;
+        const registerEmail = `register_${Date.now()}@example.com`;
+        const registerCity = "San Francisco";
+
+
+        await page.goto("/register");
+        await page.getByLabel("username").fill(registerUserName);
+        await page.getByLabel("email").fill(registerEmail);
+        await page.getByLabel("password").fill(registerPassword);
+        await page.getByLabel("city").selectOption(registerCity);
+    })
 })
