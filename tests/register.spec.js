@@ -14,16 +14,18 @@ test.describe("Register Page",()=>{
     });
 
     test("should allow user to fill out fields and submit form", async({page})=>{
+        // create variables for filling out registration form
         const registerUserName = `register_${Date.now()}`;
         const registerPassword = `passpass_${Date.now()}`;
         const registerEmail = `register_${Date.now()}@example.com`;
         const registerCity = "San Francisco";
-
-
+        // fill out registration form
         await page.goto("/register");
         await page.getByLabel("username").fill(registerUserName);
         await page.getByLabel("email").fill(registerEmail);
         await page.getByLabel("password").fill(registerPassword);
         await page.getByLabel("city").selectOption(registerCity);
+        await page.click("input[type=\"submit\"]");
+        await page.waitForURL(/\/login/);
     })
 })
