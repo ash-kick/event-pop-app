@@ -8,7 +8,7 @@ Future state: Sharing features allow you to include your friends and/or family i
 
 ### EventPop Demo Video:
 
-<video controls src="assets/event-pop-demo.mp4" title="Title"></video>
+https://github.com/user-attachments/assets/3b1695cb-3d76-451f-baa4-9311ad780fb1
 
 ### App Features:
 
