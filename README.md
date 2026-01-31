@@ -32,15 +32,6 @@ Future features:
 
 ![EventPop Landing Page Screenshot](assets/event-pop-app-landing.png)
 
-### App Preferences Page:
-
-![EventPop Preferences Page Screenshot](assets/event-pop-preferences.png)
-
-### App Saved Events Page:
-
-![EventPop Saved Events Page Screenshot](assets/event-pop-saved-events.png)
-
-![EventPop Logo](assets/event-pop-logo.png)
 
 # Springboard Capstone Project Requirements & Details
 
@@ -153,3 +144,16 @@ Questions from bootcamp project -- Going with idea 3: event recommendation app (
 -    finds and recommends events for users on a set cadence
 -    allows users to share events with friends/invite them
 -    creates a calendar with events you save/RSVP to
+
+
+## Additional App Related Images/Logos
+
+### App Preferences Page:
+
+![EventPop Preferences Page Screenshot](assets/event-pop-preferences.png)
+
+### App Saved Events Page:
+
+![EventPop Saved Events Page Screenshot](assets/event-pop-saved-events.png)
+
+![EventPop Logo](assets/event-pop-logo.png)
