@@ -7,7 +7,7 @@ test.describe("Preferences page", ()=>{
         await expect(page.getByRole("navigation")).toBeVisible();
         await expect(page.getByRole("heading", {name: "Your Preferences"})).toBeVisible();
         await expect(page.getByRole("form")).toBeVisible();
-        // check that all form sections are populating
+        // check that all form sections are populating with at least one option
         const preferenceLabels = [
             "Alerts On",
             "Location",
@@ -25,8 +25,20 @@ test.describe("Preferences page", ()=>{
             await expect(group).toBeVisible();
             await expect(group.getByRole("checkbox")).not.toHaveCount(0);
         }
-        // check that all options are populating for genres and event types
     }) 
-
-    // test("should allow user to select new preferences and save them")
+    test("should allow user to select new preferences and save them", async ({ page }) => {
+        await page.goto("/preferences");
+        const genreSection = page.getByRole("group", { name: "Select Your Favorite Genres:" });
+        const firstUnchecked = genreSection.getByRole("checkbox", { checked: false }).first();
+        await expect(firstUnchecked).toBeVisible();
+        // remember which checkbox is being clicked (so it can be checked after)
+        const label = await firstUnchecked.getAttribute("value");
+        await firstUnchecked.click();
+        // confirm that checkbox is now checked
+        await expect(genreSection.getByRole("checkbox", { name: label, exact: true })).toBeChecked();
+        const savePreferencesButton = page.getByRole("button", { name: "Save Preferences" });
+        await savePreferencesButton.click();
+        await genreSection.getByRole("checkbox", { name: label, exact: true }).click();
+        await savePreferencesButton.click();
+    });
 })
