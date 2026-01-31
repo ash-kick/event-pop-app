@@ -81,6 +81,10 @@
           justify-content: space-around;
      }
 
+     .upcoming-event-list-item{
+          max-width: 300px;
+     }
+
      .upcoming-event-container {
           display: flex;
           align-items: center;
