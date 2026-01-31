@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Login Page", ()=>{
-    test("should have correct metadata and elements", async ({page})=>{
+test.describe("Login Page", () => {
+    test("should have correct metadata and elements", async ({ page }) => {
         await page.goto("/login");
         await expect(page).toHaveTitle("EventPop");
         await expect(page.getByRole("navigation")).toBeVisible();
@@ -9,8 +9,8 @@ test.describe("Login Page", ()=>{
         await expect(page.getByText("username")).toBeVisible();
         await expect(page.getByText("password")).toBeVisible();
         await expect(page.locator("input[type=\"submit\"]")).toBeVisible();
-    })
-    test("should allow user to login", async ({page})=>{
+    });
+    test("should allow user to login", async ({ page }) => {
         await page.goto("/login");
         await page.fill("[name=\"username\"]", process.env.TEST_USER_NAME);
         await expect(page.getByLabel("username")).toHaveValue(process.env.TEST_USER_NAME);
@@ -18,6 +18,5 @@ test.describe("Login Page", ()=>{
         await expect(page.getByLabel("password")).toHaveValue(process.env.TEST_USER_PASSWORD);
         await page.click("input[type=\"submit\"]");
         await page.waitForURL(/\/home/);
-    })
-})
-
+    });
+});
