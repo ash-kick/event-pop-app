@@ -63,6 +63,28 @@ const testUsers = [
           createdAt: new Date("2024-07-05"),
           editedAt: new Date("2024-11-21"),
      },
+     {
+          _id: userId5,
+          username: "green",
+          email: "green@email.com",
+          password: "passgreen",
+          alerts: [],
+          friends: [friendId1, friendId2],
+          eventPreferences: [prefId3],
+          createdAt: new Date("2024-03-05"),
+          editedAt: new Date("2024-11-15"),
+     },
+     {
+          _id: userId6,
+          username: "blue",
+          email: "blue@email.com",
+          password: "passblue",
+          alerts: [],
+          friends: [friendId1, friendId2],
+          eventPreferences: [prefId3],
+          createdAt: new Date("2024-03-05"),
+          editedAt: new Date("2024-11-15"),
+     },
 ];
 
 module.exports = { testUsers, userId1, userId2, userId3, prefId1, prefId2, prefId3 };

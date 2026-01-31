@@ -24,7 +24,6 @@
 
 .upcoming-event-container {
      color: var(--palest-purple-color);
-     width: 100%;
      min-height: 200px;
      display: flex;
      flex-direction: column;
@@ -82,7 +81,7 @@
      }
 
      .upcoming-event-list-item{
-          max-width: 300px;
+          max-width: 400px;
      }
 
      .upcoming-event-container {
@@ -91,8 +90,8 @@
      }
 
      .upcoming-event-image {
-          width: 350px;
-          height: 200px;
+          width: 400px;
+          height: 250px;
           object-fit: cover;
           object-position: center;
           border-radius: 16px;
