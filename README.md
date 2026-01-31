@@ -4,8 +4,6 @@ Welcome to the EventPop App 💗! This app is intended to help find fun things f
 
 Future state: Sharing features allow you to include your friends and/or family in your plans for maximum group enjoyment!
 
-![EventPop Logo](assets/event-pop-logo.png)
-
 ### EventPop Demo Video:
 
 https://github.com/user-attachments/assets/3b1695cb-3d76-451f-baa4-9311ad780fb1
@@ -41,6 +39,8 @@ Future features:
 ### App Saved Events Page:
 
 ![EventPop Saved Events Page Screenshot](assets/event-pop-saved-events.png)
+
+![EventPop Logo](assets/event-pop-logo.png)
 
 # Springboard Capstone Project Requirements & Details
 
