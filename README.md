@@ -6,6 +6,10 @@ Future state: Sharing features allow you to include your friends and/or family i
 
 ![EventPop Logo](assets/event-pop-logo.png)
 
+### EventPop Demo Video:
+
+![EventPop Demo](assets/event-pop-demo.mp4)
+
 ### App Features:
 
 -    🔎 Finds events for users based on their preferences.
