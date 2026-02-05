@@ -18,7 +18,6 @@ const app = express();
 // Middlewear
 app.use(cors());
 app.use(express.json());
-app.use(errorHandler);
 
 // Connect to db
 connectDB();
@@ -29,6 +28,7 @@ app.use("/api/event-preferences", eventPreferenceRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/sync", syncRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use(errorHandler);
 
 // Start server
 
