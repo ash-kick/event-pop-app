@@ -16,7 +16,7 @@ export default function Landing() {
                     </div>
                     <div className="landing-hero-right">
                          <img
-                              src="../assets/event-card-example.png"
+                              src="/assets/event-card-example.png"
                               alt="Event card example"
                               className="event-card-example-image"
                          />

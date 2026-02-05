@@ -116,7 +116,7 @@ export default function RootLayout() {
                     <nav>
                          <NavLink to="/">
                               <img
-                                   src="../assets/event-pop-icon-small.png"
+                                   src="/assets/event-pop-icon-small.png"
                                    alt="event pop icon"
                                    className="event-pop-icon-landing"
                               />
