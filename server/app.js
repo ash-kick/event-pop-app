@@ -21,12 +21,13 @@ const allowedOrigins = [
      "http://localhost:5173",
      process.env.FRONTEND_URL,
    ].filter(Boolean);
-
+   
    app.use(cors({
      origin: allowedOrigins,
-     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
      allowedHeaders: ["Content-Type", "Authorization"],
+     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
    }));
+   
 // Express set up
 app.use(express.json());
 
