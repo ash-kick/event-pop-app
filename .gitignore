@@ -10,6 +10,7 @@ tests/.auth/
 .idea/
 *.log
 server/test-data/scratchPad.json
+server/test-data/users.js
 
 # Playwright
 /test-results/
