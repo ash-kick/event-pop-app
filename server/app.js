@@ -28,6 +28,8 @@ app.use("/api/event-preferences", eventPreferenceRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/sync", syncRoutes);
 app.use("/api/notifications", notificationRoutes);
+
+// Use error handler
 app.use(errorHandler);
 
 // Start server
