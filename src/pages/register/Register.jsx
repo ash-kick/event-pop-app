@@ -27,7 +27,6 @@ export default function Register() {
                     userCity: formData.get("usercity"),
                });
                setSuccess(true);
-               console.log(response.data);
                setTimeout(() => {
                     navigate("/login");
                }, 1000);

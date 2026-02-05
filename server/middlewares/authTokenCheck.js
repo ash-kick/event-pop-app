@@ -10,10 +10,7 @@ const authenticateToken = async (req, res, next) => {
           req.user = jwt.verify(token, JWT_SECRET);
           next();
      } catch (err) {
-          console.log("JWT verification failed...");
-          console.log("Error name:", err.name);
-          console.log("Error message:", err.message);
-          console.log("Full error:", err);
+          console.log("JWT verification failed");
           return res.status(401).json({ message: "Unauthorized" });
      }
 };
