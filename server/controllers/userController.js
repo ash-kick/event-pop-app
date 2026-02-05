@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET_DEV = process.env.JWT_SECRET_DEV;
+const JWT_SECRET = process.env.JWT_SECRET;
 const { createPreferenceForUser } = require("./eventPreferenceController");
 
 // create new user & event preferences
@@ -31,7 +31,7 @@ exports.registerUser = async (req, res, next) => {
 // jwt token generation variables, token will expire after 24 hrs
 const maxAgeToken = 1 * 24 * 60 * 60;
 const createToken = (id, userName) => {
-     return jwt.sign({ id, userName }, JWT_SECRET_DEV, {
+     return jwt.sign({ id, userName }, JWT_SECRET, {
           expiresIn: maxAgeToken,
      });
 };
