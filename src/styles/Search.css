@@ -145,6 +145,21 @@
           font-size: 16px;
           padding: 0;
      }
+
+     .search-bar{     
+          padding: 12px;
+          font-size: 12px;
+     }
+     .search-bar-select{
+          font-size: 10px;
+     }
+     .search-bar-input {
+          font-size: 10px;
+     }
+     .search-bar-button {
+          font-size: 12px;
+          width: 12px;
+     }
 }
 
 .search-event-image-save {
