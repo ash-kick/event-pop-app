@@ -76,7 +76,7 @@ Questions from bootcamp project -- Going with idea 3: event recommendation app (
 7. What does your database schema look like?
 
 -    Note that we have not learned about backend/data structures yet so this is a work in progress.
--    ![Table Sets Diagram for EventPop]()
+-    See data diagram above.
 
 8. What kinds of issues might you run into with your API? This is especially important
    if you are creating your own API, web scraping produces notoriously messy data.
