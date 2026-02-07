@@ -1,4 +1,4 @@
-# ![EventPop Logo](assets/event-pop-icon-small.png) EventPop App
+# ![EventPop Logo](public/assets/event-pop-icon-small.png) EventPop App
 
 Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Currently supporting LA and SF.
 
@@ -24,15 +24,15 @@ Future features:
 
 ### App Layout Diagram:
 
-![EventPop Diagram](assets/event-pop-app-diagram.png)
+![EventPop Diagram](public/assets/event-pop-app-diagram.png)
 
 ### App Data Structure Diagram:
 
-![EventPop Data Diagram](assets/event-pop-app-data-structure.png)
+![EventPop Data Diagram](public/assets/event-pop-app-data-structure.png)
 
 ### App Landing Page:
 
-![EventPop Landing Page Screenshot](assets/event-pop-app-landing.png)
+![EventPop Landing Page Screenshot](public/assets/event-pop-app-landing.png)
 
 
 # Springboard Capstone Project Requirements & Details
@@ -152,10 +152,10 @@ Questions from bootcamp project -- Going with idea 3: event recommendation app (
 
 ### App Preferences Page:
 
-![EventPop Preferences Page Screenshot](assets/event-pop-preferences.png)
+![EventPop Preferences Page Screenshot](public/assets/event-pop-preferences.png)
 
 ### App Saved Events Page:
 
-![EventPop Saved Events Page Screenshot](assets/event-pop-saved-events.png)
+![EventPop Saved Events Page Screenshot](public/assets/event-pop-saved-events.png)
 
-![EventPop Logo](assets/event-pop-logo.png)
+![EventPop Logo](public/assets/event-pop-logo.png)
