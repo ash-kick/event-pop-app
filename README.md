@@ -2,7 +2,7 @@
 
 Welcome to the EventPop App 💗! This app is intended to help find fun things for you to do in your area tailored to your preferences! Currently supporting LA and SF.
 
-## New!! Production app deployed with Vercel & Render
+## New!! Latest version of app deployed with Vercel & Render
 
 https://event-pop-app.vercel.app/
 
