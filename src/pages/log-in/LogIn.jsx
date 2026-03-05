@@ -9,6 +9,13 @@ export default function LogIn() {
      const [success, setSuccess] = useState(false);
      const successMessage = "Login successful!";
      const navigate = useNavigate();
+     async function handleDemoClick(e) {
+          e.preventDefault();
+          console.log("You clicked demo!");
+          const response = await axios.post("/api/user/login", {
+               // need to figure out what goes here
+          });
+     }
      async function onSubmit(e) {
           e.preventDefault();
           // clearing any old error or success status
@@ -70,6 +77,8 @@ export default function LogIn() {
                               className="login-button"
                               disabled={isSubmitting}></input>
                     </form>
+                    <p>or...</p>
+                    <button onClick={handleDemoClick}>Continue as Demo</button>
                </div>
                <div className="register-note-container">
                     <p className="register-note-text">
