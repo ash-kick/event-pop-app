@@ -19,12 +19,12 @@ export default function LogIn() {
           setIsSubmitting(true);
           try {
                const response = await axios.post("/api/user/login", {
-                    role: "demo",
+                    userRole: "demo",
                });
                localStorage.setItem("token", response.data.token);
                localStorage.setItem("userName", response.data.userName);
                localStorage.setItem("userCity", response.data.userCity);
-               localStorage.setItem("role", response.data.userRole);
+               localStorage.setItem("userRole", response.data.userRole);
                setSuccess(true);
                setTimeout(() => {
                     window.location.href = "/home";

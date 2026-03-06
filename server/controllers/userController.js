@@ -39,7 +39,7 @@ const createToken = (id, userName) => {
 // log in user and generate token
 exports.loginUser = async (req, res, next) => {
      // first check if this is a demo login request
-     if (req.body.role === "demo") {
+     if (req.body.userRole === "demo") {
           try {
                const demoUser = await User.findOne({ userRole: demo });
                const token = createToken(demoUser._id, demoUser.userName);
@@ -48,6 +48,7 @@ exports.loginUser = async (req, res, next) => {
                     token: token,
                     userName: demoUser.userName,
                     userCity: demoUser.userCity,
+                    userRole: demoUser.userRole,
                });
           } catch (err) {
                console.log("Demo log in unsuccessful");
