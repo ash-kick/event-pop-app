@@ -107,6 +107,7 @@ export default function LogIn() {
                          className="demo-login-button">
                          Continue as Demo
                     </button>
+                    <p className="demo-message">Explore EventPop instantly - no account required</p>
                </div>
                <div className="register-note-container">
                     <p className="register-note-text">

@@ -35,7 +35,7 @@
 
 .login-button {
      background: transparent;
-     border: solid var(--darkest-blue-color);
+     border: 1.5px solid var(--darkest-blue-color);
      border-radius: 8px;
      color: var(--darkest-blue-color);
      margin: 8px;
@@ -43,19 +43,23 @@
 }
 
 .demo-login-button {
-     background: transparent;
-     border: solid var(--darkest-blue-color);
+     background: rgba(255, 255, 255, 0.18);
+     border: 2px solid white;
+     color: white;
+     font-weight: 500;
      border-radius: 8px;
-     color: var(--darkest-blue-color);
-     box-shadow: 0 0 8px var(--hot-pink-color);
      margin: 8px;
      font-size: 16px;
 }
 
-.login-button:hover,
-.demo-login-button:hover {
+.login-button:hover {
      cursor: pointer;
      background-color: rgba(255, 255, 255, 0.25);
+}
+
+.demo-login-button:hover {
+     cursor: pointer;
+     box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
 }
 
 .login-button,
@@ -70,7 +74,7 @@
      align-items: center;
      gap: 0.75rem;
      width: 100%;
-     margin: 1rem 0;
+     margin: 0;
 }
 
 .or-divider hr {
@@ -78,4 +82,16 @@
      border: none;
      border-top: 1px solid var(--palest-purple-color);
      margin: 0;
+}
+
+.demo-message {
+     font-size: 7px;
+     opacity: 0.6;
+}
+
+/* register reroute */
+
+.register-note-text {
+     color: var(--darkest-blue-shadow-color);
+     font-size: 12px;
 }
