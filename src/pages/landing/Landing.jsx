@@ -9,7 +9,7 @@ export default function Landing() {
                          <h1 className="landing-header-text">Find events you'll love</h1>
                          <p className="landing-subhead">Personalized picks based on your vibe, location, and schedule.</p>
                          <button
-                              onClick={() => navigate("/register")}
+                              onClick={() => navigate("/login")}
                               className="landing-get-started-button">
                               Get Started
                          </button>
