@@ -110,7 +110,7 @@ export default function LogIn() {
                </div>
                <div className="register-note-container">
                     <p className="register-note-text">
-                         If you have not registered please register{" "}
+                         Don't have an account? Register{" "}
                          <a
                               href="/register"
                               className="link-to-register">
