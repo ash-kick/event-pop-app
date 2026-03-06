@@ -52,7 +52,7 @@ export default function Notifications() {
                                                               </div>
                                                          </div>
                                                          <div className="save-mark-read-container">
-                                                              <SaveEventButton eventId={notification.event._id} />
+                                                              <SaveEventButton eventId={notification.event?._id} />
                                                               <button
                                                                    onClick={() => markNotificationRead(notification._id)}
                                                                    className="mark-read-button">
@@ -83,7 +83,7 @@ export default function Notifications() {
                                                                    {dayjs(notification.event?.startDateTime).format("ddd, MMM D • h:mm A")}
                                                               </div>
                                                          </div>
-                                                         <SaveEventButton eventId={notification.event._id} />
+                                                         <SaveEventButton eventId={notification.event?._id} />
                                                     </li>
                                                ))
                                         : null}
