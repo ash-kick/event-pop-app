@@ -38,27 +38,44 @@ const createToken = (id, userName) => {
 
 // log in user and generate token
 exports.loginUser = async (req, res, next) => {
-     try {
-          const user = await User.findOne({ userName: req.body.userName });
-          if (!user) {
-               return res.status(401).json({ message: "Invalid credentials" });
-          }
-          const passwordMatch = await bcrypt.compare(req.body.password, user.password);
-          if (passwordMatch) {
-               console.log("Log in was successful");
-               // genearte jwt token on successful password match
-               const token = createToken(user._id, user.userName);
-               // respond with the user id and token
+     // first check if this is a demo login request
+     if (req.body.role === "demo") {
+          try {
+               const demoUser = await User.findOne({ userRole: demo });
+               const token = createToken(demoUser._id, demoUser.userName);
                res.status(200).json({
-                    user: user._id,
+                    user: demoUser._id,
                     token: token,
-                    userName: user.userName,
-                    // need this for searching upcoming events in your area later
-                    userCity: user.userCity,
+                    userName: demoUser.userName,
+                    userCity: demoUser.userCity,
                });
-          } else return res.status(401).json({ message: "Invalid credentials" });
-     } catch (err) {
-          console.log("Log in unsuccessful");
-          next(err);
+          } catch (err) {
+               console.log("Demo log in unsuccessful");
+               next(err);
+          }
+     } else {
+          try {
+               const user = await User.findOne({ userName: req.body.userName });
+               if (!user) {
+                    return res.status(401).json({ message: "Invalid credentials" });
+               }
+               const passwordMatch = await bcrypt.compare(req.body.password, user.password);
+               if (passwordMatch) {
+                    console.log("Log in was successful");
+                    // genearte jwt token on successful password match
+                    const token = createToken(user._id, user.userName);
+                    // respond with the user id and token
+                    res.status(200).json({
+                         user: user._id,
+                         token: token,
+                         userName: user.userName,
+                         // need this for searching upcoming events in your area later
+                         userCity: user.userCity,
+                    });
+               } else return res.status(401).json({ message: "Invalid credentials" });
+          } catch (err) {
+               console.log("Log in unsuccessful");
+               next(err);
+          }
      }
 };
