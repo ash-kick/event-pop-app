@@ -12,9 +12,24 @@ export default function LogIn() {
      async function handleDemoClick(e) {
           e.preventDefault();
           console.log("You clicked demo!");
-          const response = await axios.post("/api/user/login", {
-               // need to figure out what goes here
-          });
+          // clearing any old error or success status
+          setError(null);
+          setSuccess(false);
+          // start of submit process
+          setIsSubmitting(true);
+          try {
+               const response = await axios.post("/api/user/login", {
+                    role: "demo",
+               });
+               localStorage.setItem("token", response.data.token);
+               localStorage.setItem("userName", response.data.userName);
+               localStorage.setItem("userCity", response.data.userCity);
+               localStorage.setItem("role", response.data.userRole);
+          } catch (err) {
+               setError(getErrorMessage(err));
+          } finally {
+               setIsSubmitting(false);
+          }
      }
      async function onSubmit(e) {
           e.preventDefault();
