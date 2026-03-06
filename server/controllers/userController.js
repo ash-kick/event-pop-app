@@ -41,7 +41,7 @@ exports.loginUser = async (req, res, next) => {
      // first check if this is a demo login request
      if (req.body.userRole === "demo") {
           try {
-               const demoUser = await User.findOne({ userRole: demo });
+               const demoUser = await User.findOne({ userRole: "demo" });
                const token = createToken(demoUser._id, demoUser.userName);
                res.status(200).json({
                     user: demoUser._id,
