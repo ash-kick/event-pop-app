@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { getErrorMessage } from "../../utils/errorHandler";
 import axios from "axios";
 
@@ -8,7 +7,8 @@ export default function LogIn() {
      const [error, setError] = useState(null);
      const [success, setSuccess] = useState(false);
      const successMessage = "Login successful!";
-     const navigate = useNavigate();
+
+     // for handling demo logins
      async function handleDemoClick(e) {
           e.preventDefault();
           console.log("You clicked demo!");
@@ -25,12 +25,17 @@ export default function LogIn() {
                localStorage.setItem("userName", response.data.userName);
                localStorage.setItem("userCity", response.data.userCity);
                localStorage.setItem("role", response.data.userRole);
+               setSuccess(true);
+               setTimeout(() => {
+                    window.location.href = "/home";
+               }, 500);
           } catch (err) {
                setError(getErrorMessage(err));
           } finally {
                setIsSubmitting(false);
           }
      }
+     // for handling user logins
      async function onSubmit(e) {
           e.preventDefault();
           // clearing any old error or success status
