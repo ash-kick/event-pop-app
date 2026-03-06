@@ -97,8 +97,16 @@ export default function LogIn() {
                               className="login-button"
                               disabled={isSubmitting}></input>
                     </form>
-                    <p>or...</p>
-                    <button onClick={handleDemoClick}>Continue as Demo</button>
+                    <div className="or-divider">
+                         <hr></hr>
+                         <span>or</span>
+                         <hr></hr>
+                    </div>
+                    <button
+                         onClick={handleDemoClick}
+                         className="demo-login-button">
+                         Continue as Demo
+                    </button>
                </div>
                <div className="register-note-container">
                     <p className="register-note-text">
