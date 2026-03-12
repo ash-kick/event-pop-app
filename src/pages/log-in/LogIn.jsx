@@ -6,12 +6,14 @@ export default function LogIn() {
      const [isSubmitting, setIsSubmitting] = useState(false);
      const [error, setError] = useState(null);
      const [success, setSuccess] = useState(false);
+     const [demo, setDemo] = useState(false);
      const successMessage = "Login successful!";
 
      // for handling demo logins
      async function handleDemoClick(e) {
           e.preventDefault();
           console.log("You clicked demo!");
+          setDemo(true);
           // clearing any old error or success status
           setError(null);
           setSuccess(false);
@@ -31,7 +33,7 @@ export default function LogIn() {
                }, 500);
           } catch (err) {
                setError(getErrorMessage(err));
-          } finally {
+               setDemo(false);
                setIsSubmitting(false);
           }
      }
@@ -102,11 +104,15 @@ export default function LogIn() {
                          <span>or</span>
                          <hr></hr>
                     </div>
-                    <button
-                         onClick={handleDemoClick}
-                         className="demo-login-button">
-                         Continue as Demo
-                    </button>
+                    {demo && isSubmitting ? (
+                         <div className="demo-loading-message">Demo loading ...</div>
+                    ) : (
+                         <button
+                              onClick={handleDemoClick}
+                              className="demo-login-button">
+                              Continue as Demo
+                         </button>
+                    )}
                     <p className="demo-message">Explore EventPop instantly - no account required</p>
                </div>
                <div className="register-note-container">
