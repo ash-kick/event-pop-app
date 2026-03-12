@@ -1,7 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Landing() {
      const navigate = useNavigate();
+     // useEffect for "waking up" db for demo
+     useEffect(() => {
+          async function wakeUp() {
+               try {
+                    await axios.get("/api/health/wake-up");
+               } catch (err) {
+                    console.log(err);
+               }
+          }
+          wakeUp();
+     }, []);
      return (
           <div className="landing-container">
                <div className="landing-hero">

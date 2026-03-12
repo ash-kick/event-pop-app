@@ -13,7 +13,7 @@ export default function LogIn() {
      useEffect(() => {
           async function wakeUp() {
                try {
-                    await fetch("/api/health/wake-up");
+                    await axios.get("/api/health/wake-up");
                } catch (err) {
                     console.log(err);
                }
@@ -116,7 +116,10 @@ export default function LogIn() {
                          <hr></hr>
                     </div>
                     {demo && isSubmitting ? (
-                         <div className="demo-loading-message">Demo loading ...</div>
+                         <div className="demo-loading-message">
+                              <p>Launching demo environment…</p>
+                              <p>First load may take ~30 seconds</p>
+                         </div>
                     ) : (
                          <button
                               onClick={handleDemoClick}
