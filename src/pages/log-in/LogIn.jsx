@@ -118,7 +118,7 @@ export default function LogIn() {
                     {demo && isSubmitting ? (
                          <div className="demo-loading-message">
                               <p>Launching demo environment…</p>
-                              <p>First load may take ~30 seconds</p>
+                              <p>Note: first load may take ~30 seconds due to free hosting cold start.</p>
                          </div>
                     ) : (
                          <button
