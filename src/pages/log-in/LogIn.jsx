@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getErrorMessage } from "../../utils/errorHandler";
 import axios from "axios";
 
@@ -9,6 +9,17 @@ export default function LogIn() {
      const [demo, setDemo] = useState(false);
      const successMessage = "Login successful!";
 
+     // useEffect for "waking up" db for demo
+     useEffect(() => {
+          async function wakeUp() {
+               try {
+                    await fetch("/api/health/wake-up");
+               } catch (err) {
+                    console.log(err);
+               }
+          }
+          wakeUp();
+     }, []);
      // for handling demo logins
      async function handleDemoClick(e) {
           e.preventDefault();
