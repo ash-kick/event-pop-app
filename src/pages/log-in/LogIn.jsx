@@ -115,18 +115,23 @@ export default function LogIn() {
                          <span>or</span>
                          <hr></hr>
                     </div>
-                    {demo && isSubmitting ? (
-                         <div className="demo-loading-message">
-                              <p>Launching demo environment…</p>
-                              <p>Note: first load may take ~30 seconds due to free hosting cold start.</p>
-                         </div>
-                    ) : (
-                         <button
-                              onClick={handleDemoClick}
-                              className="demo-login-button">
-                              Continue as Demo
-                         </button>
-                    )}
+                    <div className="demo-action-container">
+                         {demo && isSubmitting ? (
+                              <div
+                                   className="demo-loading-message"
+                                   role="status"
+                                   aria-live="polite">
+                                   <p>Launching demo environment…</p>
+                                   <p>Note: first load may take ~30 seconds due to free hosting cold start.</p>
+                              </div>
+                         ) : (
+                              <button
+                                   onClick={handleDemoClick}
+                                   className="demo-login-button">
+                                   Continue as Demo
+                              </button>
+                         )}
+                    </div>
                     <p className="demo-message">Explore EventPop instantly - no account required</p>
                </div>
                <div className="register-note-container">
