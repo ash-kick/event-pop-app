@@ -30,7 +30,10 @@
      border: none;
      font-weight: 200;
      color: white;
-     min-height: 24px;
+     min-width: 260px;
+     min-height: 44px;
+     box-sizing: border-box;
+     padding: 0 12px;
      margin-top: 4px;
      margin-bottom: 4px;
 }
@@ -71,6 +74,12 @@
      display: block;
      margin-left: auto;
      margin-right: auto;
+}
+
+@media (max-width: 800px) {
+     .login-input {
+          min-width: 220px;
+     }
 }
 
 .or-divider {
