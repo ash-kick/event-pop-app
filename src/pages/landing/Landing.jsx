@@ -28,11 +28,13 @@ export default function Landing() {
                          </button>
                     </div>
                     <div className="landing-hero-right">
-                         <img
-                              src="/assets/event-card-example.png"
-                              alt="Event card example"
-                              className="event-card-example-image"
-                         />
+                         <div className="landing-hero-image-container">
+                              <img
+                                   src="/assets/event-card-example.png"
+                                   alt="Event card example"
+                                   className="event-card-example-image"
+                              />
+                         </div>
                     </div>
                </div>
                <div className="landing-feature-cards">
