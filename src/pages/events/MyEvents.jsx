@@ -44,13 +44,19 @@ export default function MyEvents() {
                                    </div>
                                    <div className="saved-event-details-container">
                                         <div className="saved-event-name">{savedEvent.eventName}</div>
-                                        <div className="saved-event-date-time">{dayjs(savedEvent.startDateTime).format("ddd, MMM D • h:mm A")}</div>
-                                        <div className="saved-event-venue">{savedEvent.venueName}</div>
-                                        <button
-                                             onClick={() => handleClick(savedEvent)}
-                                             className="remove-event-button">
-                                             Remove
-                                        </button>
+                                        <div className="saved-event-second-row">
+                                             <div className="saved-event-date-venue">
+                                                  <div className="saved-event-date-time">
+                                                       {dayjs(savedEvent.startDateTime).format("ddd, MMM D • h:mm A")}
+                                                  </div>
+                                                  <div className="saved-event-venue">{savedEvent.venueName}</div>
+                                             </div>
+                                             <button
+                                                  onClick={() => handleClick(savedEvent)}
+                                                  className="remove-event-button">
+                                                  Remove
+                                             </button>
+                                        </div>
                                    </div>
                               </li>
                          ))}

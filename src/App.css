@@ -92,7 +92,6 @@ footer {
 .save-preferences-button,
 .mark-read-button,
 .mark-all-read-button,
-.remove-event-button,
 .get-tickets-button,
 .not-found-link {
      min-width: 260px;
@@ -113,7 +112,6 @@ footer {
      .save-preferences-button,
      .mark-read-button,
      .mark-all-read-button,
-     .remove-event-button,
      .get-tickets-button,
      .not-found-link {
           min-width: 220px;
