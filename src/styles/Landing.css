@@ -105,14 +105,6 @@
           min-width: 25%;
           min-height: 80px;
      }
-
-     .landing-get-started-button {
-          min-width: 220px;
-          height: 60px;
-          font-size: 24px;
-          border-radius: 10px;
-          padding: 0 22px;
-     }
 }
 
 /* buttons */
@@ -121,7 +113,7 @@
      background: linear-gradient(92deg, var(--hot-pink-color) 0%, var(--light-hot-pink-color) 100%);
      border: none;
      border-radius: 12px;
-     min-width: 260px;
+     min-width: 350px;
      height: 72px;
      padding: 0 30px;
      font-size: 28px;
