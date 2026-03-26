@@ -42,11 +42,9 @@
 
 .login-button {
      background: transparent;
-     border: 1.5px solid var(--darkest-blue-color);
-     border-radius: 8px;
+     border: 2px solid var(--darkest-blue-color);
      color: var(--darkest-blue-color);
      margin: 8px;
-     font-size: 16px;
 }
 
 .demo-login-button {
@@ -54,9 +52,7 @@
      border: 2px solid white;
      color: white;
      font-weight: 500;
-     border-radius: 8px;
      margin: 8px;
-     font-size: 16px;
 }
 
 .login-button:hover {

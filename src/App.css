@@ -90,7 +90,6 @@ footer {
 .demo-login-button,
 .register-button,
 .save-preferences-button,
-.mark-read-button,
 .mark-all-read-button,
 .get-tickets-button,
 .not-found-link {
@@ -110,11 +109,10 @@ footer {
      .demo-login-button,
      .register-button,
      .save-preferences-button,
-     .mark-read-button,
      .mark-all-read-button,
      .get-tickets-button,
      .not-found-link {
-          min-width: 220px;
+          width: 220px;
           height: 60px;
           border-radius: 10px;
           font-size: 18px;

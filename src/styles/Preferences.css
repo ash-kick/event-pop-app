@@ -73,7 +73,6 @@
 .save-preferences-button {
      background: transparent;
      border: solid var(--darkest-blue-color);
-     border-radius: 8px;
      color: var(--darkest-blue-color);
      margin: 8px;
 }

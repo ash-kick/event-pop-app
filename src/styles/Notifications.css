@@ -54,9 +54,17 @@
 .mark-read-button {
      background: transparent;
      border: solid var(--darkest-blue-color);
-     border-radius: 8px;
      color: var(--darkest-blue-color);
      margin-left: 8px;
+     min-width: 60px;
+     height: 28px;
+     border-radius: 6px;
+     padding: 0 22px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 16px;
+     box-sizing: border-box;
 }
 
 .mark-read-button:hover {
