@@ -38,58 +38,76 @@ export default function Register() {
      }
      return (
           <div className="register-container">
-               <h2 className="register-header">Register</h2>
-               {error && <div className="register-error-message">{error}</div>}
-               {success && <div className="register-success-message">{successMessage}</div>}
-               <form
-                    onSubmit={onSubmit}
-                    className="register-form">
-                    <label htmlFor="register-username" className="register-label">username</label>
-                    <input
-                         type="text"
-                         name="username"
-                         id="register-username"
-                         required
-                         className="register-input"></input>
-                    <label htmlFor="register-email" className="register-label">email</label>
-                    <input
-                         type="email"
-                         name="email"
-                         id="register-email"
-                         required
-                         className="register-input"></input>
-                    <label htmlFor="register-password" className="register-label">password</label>
-                    <input
-                         type="password"
-                         name="password"
-                         id="register-password"
-                         required
-                         className="register-input"></input>
-                    <label htmlFor="register-usercity" className="register-label">city</label>
-                    <select
-                         type="text"
-                         name="usercity"
-                         id="register-usercity"
-                         required
-                         className="register-input">
-                         {loading ? (
-                              <option> Loading cities ...</option>
-                         ) : (
-                              eventOptions?.locations.map((city) => (
-                                   <option
-                                        key={city}
-                                        value={city}>
-                                        {city}
-                                   </option>
-                              ))
-                         )}
-                    </select>
-                    <input
-                         type="submit"
-                         value={isSubmitting ? "registering..." : "register"}
-                         className="register-button"
-                         disabled={isSubmitting}></input>
-               </form>
+               <div className="register-header-form">
+                    <h2 className="register-header">Register</h2>
+                    {error && <div className="register-error-message">{error}</div>}
+                    {success && <div className="register-success-message">{successMessage}</div>}
+                    <form
+                         onSubmit={onSubmit}
+                         className="register-form">
+                         <label
+                              htmlFor="register-username"
+                              className="register-label">
+                              username
+                         </label>
+                         <input
+                              type="text"
+                              name="username"
+                              id="register-username"
+                              required
+                              className="register-input"></input>
+                         <label
+                              htmlFor="register-email"
+                              className="register-label">
+                              email
+                         </label>
+                         <input
+                              type="email"
+                              name="email"
+                              id="register-email"
+                              required
+                              className="register-input"></input>
+                         <label
+                              htmlFor="register-password"
+                              className="register-label">
+                              password
+                         </label>
+                         <input
+                              type="password"
+                              name="password"
+                              id="register-password"
+                              required
+                              className="register-input"></input>
+                         <label
+                              htmlFor="register-usercity"
+                              className="register-label">
+                              city
+                         </label>
+                         <select
+                              type="text"
+                              name="usercity"
+                              id="register-usercity"
+                              required
+                              className="register-input">
+                              {loading ? (
+                                   <option> Loading cities ...</option>
+                              ) : (
+                                   eventOptions?.locations.map((city) => (
+                                        <option
+                                             key={city}
+                                             value={city}>
+                                             {city}
+                                        </option>
+                                   ))
+                              )}
+                         </select>
+                         <input
+                              type="submit"
+                              value={isSubmitting ? "registering..." : "register"}
+                              className="register-button"
+                              disabled={isSubmitting}></input>
+                    </form>
+               </div>
           </div>
      );
 }
