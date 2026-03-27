@@ -32,7 +32,7 @@
      flex-direction: row;
      background-color: transparent;
      border: solid;
-     border-radius: 32px;
+     border-radius: 8px;
      padding: 24px;
      font-size: 16px;
      align-items: center;
@@ -58,7 +58,7 @@
      color: var(--white-text-color);
      border: none;
      font-family: "Manrope", san-serif;
-     text-align: center;
+     text-align: left;
      flex: 1;
      min-width: 0;
      overflow: hidden;
@@ -149,12 +149,13 @@
      .search-bar {
           padding: 12px;
           font-size: 12px;
+          height: 36px;
      }
      .search-bar-select {
           font-size: 10px;
      }
      .search-bar-input {
-          font-size: 10px;
+          font-size: 14px;
      }
      .search-bar-button {
           font-size: 12px;
