@@ -53,6 +53,9 @@
      padding: 8px;
      border-radius: 16px;
      color: var(--darkest-blue-color);
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
 }
 
 .upcoming-event-list-item:hover {
