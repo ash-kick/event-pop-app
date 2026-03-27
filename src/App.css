@@ -93,7 +93,7 @@ footer {
 .mark-all-read-button,
 .get-tickets-button,
 .not-found-link {
-     min-width: 260px;
+     width: 220px;
      height: 72px;
      border-radius: 12px;
      padding: 0 22px;
