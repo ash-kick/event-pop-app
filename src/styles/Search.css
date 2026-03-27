@@ -63,6 +63,7 @@
      min-width: 0;
      overflow: hidden;
      text-overflow: ellipsis;
+     font-size: 16px;
 }
 
 .search-bar-seperator {
