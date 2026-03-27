@@ -49,7 +49,7 @@
 .upcoming-event-list-item {
      list-style-type: none;
      margin: 8px;
-     min-height: 300px;
+     min-height: 500px;
      padding: 8px;
      border-radius: 16px;
      color: var(--darkest-blue-color);
@@ -80,7 +80,7 @@
           justify-content: space-around;
      }
 
-     .upcoming-event-list-item{
+     .upcoming-event-list-item {
           max-width: 400px;
      }
 
