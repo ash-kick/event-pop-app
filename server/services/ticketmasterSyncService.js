@@ -106,7 +106,7 @@ const fetchEventsForCity = async (cityName) => {
                               // check for valid event date if there is none skip the event
                               let eventDate = null;
                               if (event.dates.start.localDate && event.dates.start.localTime) {
-                                   eventDate = new Date(`${event.dates.start.localDate}T${event.dates.start.localTime}`);
+                                   eventDate = zonedTimeToUtc(`${event.dates.start.localDate}T${event.dates.start.localTime}`, cityTimezone);
                               } else if (event.dates.start.dateTime) {
                                    eventDate = new Date(event.dates.start.dateTime);
                               }
