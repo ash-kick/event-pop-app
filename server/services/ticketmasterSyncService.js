@@ -27,8 +27,7 @@ const fetchEventsForCity = async (cityName) => {
      // pull the correct UTC version of today's date by timezone for the city
      const cityTimezone = CITY_TIMEZONES[cityName];
      const cityDateStr = new Date().toLocaleDateString("en-CA", { timeZone: cityTimezone });
-     const cityMidnight = new Date(`${cityDateStr}T00:00:00`);
-     const cityTodayUTC = zonedTimeToUtc(cityMidnight, cityTimezone);
+     const cityTodayUTC = zonedTimeToUtc(`${cityDateStr}T00:00:00`, cityTimezone);
 
      // adding date range definitions to later limit the number of API results to be less than 1000 will start with 3 months
      const dateRanges = Array.from({ length: 3 }, (_, i) => {
@@ -65,7 +64,7 @@ const fetchEventsForCity = async (cityName) => {
                     const currentItemCount = PAGE_SIZE * pageNumber;
                     if (currentItemCount >= MAX_ITEMS_LIMIT) {
                          console.log(
-                              `Reached ticketmaster API item limit ${MAX_ITEMS_LIMIT} for ${cityName} with date range ${dateRange.start} to ${dateRange.end}`
+                              `Reached ticketmaster API item limit ${MAX_ITEMS_LIMIT} for ${cityName} with date range ${dateRange.start} to ${dateRange.end}`,
                          );
                          hitItemLimit = true;
                          break;
@@ -73,7 +72,7 @@ const fetchEventsForCity = async (cityName) => {
                     // check if next page would go over ticket master page limit
                     if (pageNumber > MAX_PAGE) {
                          console.log(
-                              `Reached ticketmaster API page limit ${MAX_PAGE} for ${cityName} with date range ${dateRange.start} to ${dateRange.end}`
+                              `Reached ticketmaster API page limit ${MAX_PAGE} for ${cityName} with date range ${dateRange.start} to ${dateRange.end}`,
                          );
                          hitItemLimit = true;
                          break;
@@ -105,10 +104,11 @@ const fetchEventsForCity = async (cityName) => {
                          for (const event of ticketMasterEvents) {
                               // check for valid event date if there is none skip the event
                               let eventDate = null;
-                              if (event.dates.start.localDate && event.dates.start.localTime) {
-                                   eventDate = zonedTimeToUtc(`${event.dates.start.localDate}T${event.dates.start.localTime}`, cityTimezone);
-                              } else if (event.dates.start.dateTime) {
+                              if (event.dates.start.dateTime) {
                                    eventDate = new Date(event.dates.start.dateTime);
+                              } else if (event.dates.start.localDate && event.dates.start.localTime) {
+                                   const eventTimezone = event.dates.timezone || cityTimezone;
+                                   eventDate = zonedTimeToUtc(`${event.dates.start.localDate}T${event.dates.start.localTime}`, eventTimezone);
                               }
                               // if the date is invalid skip to next event; note that isNaN(eventDate) is meant to check if a bad date was passed
                               if (!eventDate || isNaN(eventDate)) {
@@ -183,7 +183,7 @@ const fetchEventsForCity = async (cityName) => {
                // add warning if a limit has been hit and it's impacted the data pull
                if (hitItemLimit) {
                     console.log(
-                         `Warning: Some events may have been skipped for ${cityName} in date range ${dateRange.start} to ${dateRange.end} due to API limits.`
+                         `Warning: Some events may have been skipped for ${cityName} in date range ${dateRange.start} to ${dateRange.end} due to API limits.`,
                     );
                }
           }
